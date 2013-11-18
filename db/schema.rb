@@ -14,19 +14,25 @@
 ActiveRecord::Schema.define(version: 20131118224955) do
 
   create_table "bloggers", force: true do |t|
-    t.string "name"
-    t.string "xml_address"
-    t.string "semester"
+    t.string   "name"
+    t.string   "xml_address"
+    t.integer  "semester"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "posts", force: true do |t|
-    t.string  "title"
-    t.text    "body"
-    t.integer "blogger_id"
+    t.string   "title"
+    t.text     "body"
+    t.integer  "blogger_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", force: true do |t|
-    t.string "name"
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end

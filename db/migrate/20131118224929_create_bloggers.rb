@@ -3,7 +3,9 @@ class CreateBloggers < ActiveRecord::Migration
     create_table :bloggers do |t|
       t.string :name
       t.string :xml_address
-      t.string :semester
+      t.integer :semester
+
+      t.timestamps
     end
   end
 end

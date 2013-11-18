@@ -4,6 +4,8 @@ class CreatePosts < ActiveRecord::Migration
       t.string :title
       t.text :body
       t.integer :blogger_id
+
+      t.timestamps
     end
   end
 end
