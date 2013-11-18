@@ -4,6 +4,8 @@ BlogAggregator::Application.routes.draw do
     resources :posts
   end
 
+  
+
   get '/pages/home' => 'pages#index'
   get '/pages/:id/dashboard' => 'pages#dashboard'
 

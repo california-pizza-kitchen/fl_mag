@@ -4,6 +4,8 @@ class PagesController < ApplicationController
   end
 
   def dashboard
+    @user = User.first
+    @blogger = Blogger.new
   end
 
 end
