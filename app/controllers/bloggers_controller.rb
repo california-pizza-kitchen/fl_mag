@@ -1,0 +1,2 @@
+class BloggersControllers < ApplicationController
+end
