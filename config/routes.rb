@@ -1,8 +1,10 @@
 BlogAggregator::Application.routes.draw do
 
   resources :bloggers do
-    resources :posts
+    resources :feeds
   end
+
+  get '/feeds/create_all' => 'feeds#create_all'
 
   
 
