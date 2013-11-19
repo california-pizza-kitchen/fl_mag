@@ -11,9 +11,10 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 
 #OUR GEMS
+gem 'unicorn'
 gem 'sidekick'
-gem 'anjlab-bootstrap-rails', '>= 3.0.0.0', :require => 'bootstrap-rails'
 gem 'feedzirra'
+gem 'anjlab-bootstrap-rails', '>= 3.0.0.0', :require => 'bootstrap-rails'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
@@ -24,7 +25,7 @@ end
 # gem 'bcrypt-ruby', '~> 3.1.2'
 
 # Use unicorn as the app server
-# gem 'unicorn'
+
 
 # Use Capistrano for deployment
 # gem 'capistrano', group: :development

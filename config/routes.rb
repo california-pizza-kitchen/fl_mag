@@ -1,13 +1,15 @@
 BlogAggregator::Application.routes.draw do
 
+  resources :feeds
+
   resources :bloggers do
-    resources :posts
+    resource :feeds
   end
 
   get '/pages/home' => 'pages#index'
   get '/pages/dashboard' => 'pages#dashboard'
 
-  root 'pages#dashboard'
+  root 'pages#home'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
