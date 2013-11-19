@@ -21,10 +21,6 @@ class Feed < ActiveRecord::Base
     end
   end
 
-  def self.sort_by_date_published
-    self.all.sort_by{|entry| entry.published}.reverse
-  end
-
 end
 
     # t.string  "title"

@@ -2,7 +2,7 @@ class FeedsController < ApplicationController
 
   
   def index
-    @feeds = Feed.all
+    @entries = Entry.sort_by_date_published
   end
 
   def create
