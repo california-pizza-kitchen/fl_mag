@@ -6,7 +6,7 @@ class FeedsController < ApplicationController
 
   def update_all
     Blogger.all.each do |blogger|
-      feed = blogger.feed
+      latest = blogger.feed
       feedzirra_object = Feedzirra::Feed.fetch_and_parse(feed.feed_url) 
       feed.add_entries(feedzirra_object.entries)
     end 

@@ -22,13 +22,13 @@ ActiveRecord::Schema.define(version: 20131119180424) do
   end
 
   create_table "entries", force: true do |t|
-    t.string  "title"
-    t.string  "url"
-    t.string  "author"
-    t.text    "summary"
-    t.text    "content"
-    t.time    "published"
-    t.integer "feed_id"
+    t.string   "title"
+    t.string   "url"
+    t.string   "author"
+    t.text     "summary"
+    t.text     "content"
+    t.datetime "published"
+    t.integer  "feed_id"
   end
 
   create_table "feeds", force: true do |t|
@@ -37,14 +37,6 @@ ActiveRecord::Schema.define(version: 20131119180424) do
     t.string  "feed_url"
     t.time    "last_modified"
     t.integer "etag"
-  end
-
-  create_table "posts", force: true do |t|
-    t.string   "title"
-    t.text     "body"
-    t.integer  "blogger_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
   create_table "users", force: true do |t|

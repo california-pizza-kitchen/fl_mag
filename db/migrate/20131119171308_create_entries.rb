@@ -6,7 +6,7 @@ class CreateEntries < ActiveRecord::Migration
       t.string :author
       t.text :summary
       t.text :content
-      t.time :published
+      t.datetime :published
     end
   end
 end
