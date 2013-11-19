@@ -1,8 +1,5 @@
 class FeedsController < ApplicationController
 
-  def new
-  end
-
   def create
     new_feed = Feed.fetch
   end
@@ -20,6 +17,7 @@ class FeedsController < ApplicationController
     feed = @blogger.feed 
     feedzirra_object = Feedzirra::Feed.fetch_and_parse(feed.feed_url)   
     updated_feed = Feedzirra::Feed.update(feedzirra_object)
+
     updated_feed.new_entries if updated_feed.updated?     
   end
 

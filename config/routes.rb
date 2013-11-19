@@ -1,23 +1,18 @@
 BlogAggregator::Application.routes.draw do
 
+  resources :feeds
+
   resources :bloggers do
     resources :feeds
   end
 
   get '/feeds/create_all' => 'feeds#create_all'
 
-  
 
   get '/pages/home' => 'pages#index'
-  get '/pages/:id/dashboard' => 'pages#dashboard'
+  get '/pages/dashboard' => 'pages#dashboard'
 
-
-
-  # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
-
-  # You can have the root of your site routed with "root"
-   # root 'welcome#index'
+  root 'pages#home'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

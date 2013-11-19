@@ -8,6 +8,7 @@ class BloggersController < ApplicationController
     feedzirra_object = Feedzirra::Feed.fetch_and_parse(feed.feed_url) 
     feed.add_entries(feedzirra_object.entries)
     blogger.feed.save
+    redirect '/feeds/index'
   end
 
 
