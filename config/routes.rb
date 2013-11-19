@@ -1,6 +1,7 @@
 BlogAggregator::Application.routes.draw do
 
   resources :feeds
+  resources :users
 
   resources :bloggers do
     resources :feeds
@@ -10,7 +11,7 @@ BlogAggregator::Application.routes.draw do
 
 
   get '/pages/home' => 'pages#index'
-  get '/pages/dashboard' => 'pages#dashboard'
+  get '/users/dashboard' => 'users#show'
 
   root 'pages#home'
 
