@@ -21,6 +21,10 @@ class Feed < ActiveRecord::Base
     end
   end
 
+  def self.summary
+    self.content.slice(0,500)
+  end
+
 end
 
     # t.string  "title"
