@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131118224955) do
+ActiveRecord::Schema.define(version: 20131119172532) do
 
   create_table "bloggers", force: true do |t|
     t.string   "name"
@@ -21,12 +21,19 @@ ActiveRecord::Schema.define(version: 20131118224955) do
     t.datetime "updated_at"
   end
 
-  create_table "posts", force: true do |t|
-    t.string   "title"
-    t.text     "body"
-    t.integer  "blogger_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+  create_table "entries", force: true do |t|
+    t.string  "title"
+    t.string  "url"
+    t.string  "author"
+    t.text    "summary"
+    t.text    "content"
+    t.time    "published"
+    t.integer "feed_id"
+  end
+
+  create_table "feeds", force: true do |t|
+    t.integer "blogger_id"
+    t.string  "feed_xml"
   end
 
   create_table "users", force: true do |t|

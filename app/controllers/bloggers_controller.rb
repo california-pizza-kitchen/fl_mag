@@ -3,7 +3,7 @@ class BloggersController < ApplicationController
 
   def create
     blogger = Blogger.create(blogger_params)
-    # add_blogger_to_parser(blogger)
+    blogger.build_feed(params[:blogger][:feed_xml])
   end
 
 
