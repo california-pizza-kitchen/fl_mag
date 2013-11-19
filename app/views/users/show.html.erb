@@ -1,5 +1,34 @@
 <%= render 'form' %>
 
-<div>
-  
+<br>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Bloggers</h3>
+  </div>
+  <div class="panel-body">
+    <div class="list-group">
+      <table class="table">
+      <thead>
+        <tr>
+          <th>Semester</th>
+          <th>Name</th>
+          <th>XML Feed</th>
+        </tr>
+      </thead>
+      <tbody>
+      <% @bloggers.each do |blogger|  %>
+      <tr>
+        <td><%= blogger.semester %> </td>
+        <td><%= blogger.name %></td>
+        <td><%= blogger.feed_xml %></td>
+      </tr>
+      <% end %>
+      </tbody>
+      </table>
+    </div>
+  </div>
 </div>
+
+
+  
