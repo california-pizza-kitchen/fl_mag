@@ -6,8 +6,6 @@ class Feed < ActiveRecord::Base
     feed = Feedzirra::Feed.fetch_and_parse(feed_url)
     feed.sanitize_entries!
   end
-    
-  # private
   
   def add_entries(entries)
     entries.each do |entry|
@@ -22,6 +20,11 @@ class Feed < ActiveRecord::Base
       @entry.save
     end
   end
+
+  def self.sort_by_date_published
+    self.all.sort_by{|entry| entry.published}.reverse
+  end
+
 end
 
     # t.string  "title"
