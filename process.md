@@ -51,3 +51,13 @@ Things to do
     - individual student
     - individual blog
     - about?
+
+
+
+
+
+
+
+
+Feed Table  && Entries Table
+integerate feed code into app

@@ -15,6 +15,8 @@ gem 'sidekick'
 gem 'xml-simple'
 gem 'rest-client'
 
+gem 'feedzirra'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
