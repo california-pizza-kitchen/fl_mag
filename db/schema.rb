@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 20131119180424) do
 
   create_table "bloggers", force: true do |t|
     t.string   "name"
-    t.string   "xml_address"
+    t.string   "feed_xml"
     t.integer  "semester"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 20131119180424) do
   create_table "feeds", force: true do |t|
     t.integer "blogger_id"
     t.string  "feed_xml"
+    t.string  "feed_url"
     t.time    "last_modified"
     t.integer "etag"
   end
