@@ -36,6 +36,14 @@ ActiveRecord::Schema.define(version: 20131119172532) do
     t.string  "feed_xml"
   end
 
+  create_table "posts", force: true do |t|
+    t.string   "title"
+    t.text     "body"
+    t.integer  "blogger_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "users", force: true do |t|
     t.string   "name"
     t.datetime "created_at"

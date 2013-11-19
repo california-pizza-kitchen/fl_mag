@@ -12,9 +12,7 @@ gem 'jbuilder', '~> 1.2'
 
 #OUR GEMS
 gem 'sidekick'
-gem 'xml-simple'
-gem 'rest-client'
-
+gem 'anjlab-bootstrap-rails', '>= 3.0.0.0', :require => 'bootstrap-rails'
 gem 'feedzirra'
 
 group :doc do
