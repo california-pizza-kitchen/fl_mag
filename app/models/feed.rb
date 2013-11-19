@@ -2,8 +2,8 @@ class Feed < ActiveRecord::Base
   belongs_to :blogger
   has_many :entries
 
-  def self.fetch(feed_url)
-    feed = Feedzirra::Feed.fetch_and_parse(feed_url)
+  def self.fetch(feed_xml)
+    feed = Feedzirra::Feed.fetch_and_parse(feed_xml)
     feed.sanitize_entries!
   end
   

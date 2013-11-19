@@ -4,10 +4,16 @@ class BloggersController < ApplicationController
     blogger = Blogger.create(blogger_params)
     blogger.build_feed(:feed_xml => params[:blogger][:feed_xml])
     feed = blogger.feed
+
     feedzirra_object = Feedzirra::Feed.fetch_and_parse(feed.feed_xml)
-    feed.sanitize_entries! 
-    feed.add_entries(feedzirra_object.entries)
-    blogger.feed.save
+    begin
+      feedzirra_object.sanitize_entries! 
+      feed.add_entries(feedzirra_object.entries)
+      blogger.feed.save
+    rescue
+      "No xml file for blog!"
+    end
+
     redirect_to '/users/show'
   end
 
