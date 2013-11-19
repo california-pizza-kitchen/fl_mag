@@ -6,6 +6,10 @@ class Entry < ActiveRecord::Base
     self.feed.blogger.name
   end
 
+  def summarize
+    self.feed.content.slice
+  end
+
   def self.sort_by_date_published
     self.all.sort_by{|entry| entry.published}.reverse
   end

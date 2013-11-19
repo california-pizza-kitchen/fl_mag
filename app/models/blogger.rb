@@ -17,3 +17,5 @@ class Blogger < ActiveRecord::Base
     end
   end
 end
+
+# pagination

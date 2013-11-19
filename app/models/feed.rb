@@ -12,7 +12,6 @@ class Feed < ActiveRecord::Base
       @entry = self.entries.build(
         :title        => entry.title,
         :url          => entry.url,
-        :summary      => entry.summary,
         :content      => entry.content,
         :url          => entry.url,
         :published    => entry.published
