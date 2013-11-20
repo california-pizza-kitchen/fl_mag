@@ -7,26 +7,43 @@
     <h3 class="panel-title">Bloggers</h3>
   </div>
   <div class="panel-body">
+
+    <select id="semester-select">
+      <option>1</option>
+      <option>2</option>
+      <option>3</option>
+      <option>4</option>
+    </select>
+
     <div class="list-group">
       <table class="table">
-      <thead>
-        <tr>
-          <th>Semester</th>
-          <th>Name</th>
-          <th>XML Feed</th>
-        </tr>
-      </thead>
-      <tbody>
-      <% @bloggers.each do |blogger|  %>
-      <tr>
-        <td><%= blogger.semester %> </td>
-        <td><%= blogger.name %></td>
-        <td><%= blogger.feed_xml %></td>
-      </tr>
-      <% end %>
-      </tbody>
+        <thead>
+          <tr>
+            <th>Semester</th>
+            <th>Name</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @bloggers.each do |blogger|  %>
+          <tr>
+            <td><%= blogger.semester %> </td>
+            <td><%= blogger.name %></td>
+          </tr>
+          <% end %>
+        </tbody>
       </table>
     </div>
+  </div>
+  <div class="recent-posts">
+    <% @entries.each do |entry| %>
+      <a href="/bloggers/<%= entry.author_id %>/entries/<%= entry.id %>"><h1><%= entry.title %></h1></a><button id="publish">publish this post</button>
+      <a href="#"><h4><%= entry.author_name %></h4></a>
+      <hr>
+      <%= entry.summarize.html_safe if entry.summarize %>
+      <a href="/bloggers/<%= entry.author_id %>/entries/<%= entry.id %>">...read more</a>
+      <hr>
+      <br>
+    <% end %>
   </div>
 </div>
 

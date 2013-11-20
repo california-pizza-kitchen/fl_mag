@@ -2,16 +2,16 @@ class BloggersController < ApplicationController
 
   def create
     blogger = Blogger.create(blogger_params)
-
+    CreateWorker.perform_async(blogger.id)
     # begin
 
-      feedzirra_object = Feedzirra::Feed.fetch_and_parse(params[:blogger][:feed_xml])
-      feedzirra_object.sanitize_entries! 
+      # feedzirra_object = Feedzirra::Feed.fetch_and_parse(params[:blogger][:feed_xml])
+      # feedzirra_object.sanitize_entries! 
 
-      blogger.update(:feed_xml => params[:blogger][:feed_xml])
-      blogger.build_feed(:feed_xml => params[:blogger][:feed_xml])
-      feed = blogger.feed
-      blogger.feed.save
+      # blogger.update(:feed_xml => params[:blogger][:feed_xml])
+      # blogger.build_feed(:feed_xml => params[:blogger][:feed_xml])
+      # feed = blogger.feed
+      # blogger.feed.save
       # feed.add_entries(feedzirra_object.entries)
       # UpdateWorker.perform_async
 
@@ -29,6 +29,6 @@ class BloggersController < ApplicationController
   private
 
   def blogger_params
-    params.require(:blogger).permit(:name, :semester)
+    params.require(:blogger).permit(:name, :semester, :feed_xml)
   end
 end
