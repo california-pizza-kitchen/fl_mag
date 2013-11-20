@@ -2,7 +2,7 @@ class FeedsController < ApplicationController
 
   
   def index
-    @entries = Entry.sort_by_date_published
+    @entries = Entry.sort_by_date_published(Entry.featured_entries)
   end
 
   def create

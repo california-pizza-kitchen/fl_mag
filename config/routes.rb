@@ -7,6 +7,7 @@ BlogAggregator::Application.routes.draw do
     resources :feeds
   end
 
+  get '/entries/:id/update' => 'entries#update'
   get '/feeds/create_all' => 'feeds#create_all'
 
 

@@ -24,7 +24,12 @@ class Entry < ActiveRecord::Base
     end
   end
 
-  def self.sort_by_date_published
-    self.all.sort_by{|entry| entry.published}.reverse
+  def self.sort_by_date_published(collection)
+    collection.sort_by{|entry| entry.published}.reverse
   end
+
+  def self.featured_entries
+    self.where(:added? => true)
+  end
+
 end
