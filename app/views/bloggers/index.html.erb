@@ -1,10 +1,14 @@
 
-<div class="page-header">
-  <h1>Authors <small>Ruby 003</small></h1>
-</div>
+
+  <div class="page-header">
+    <h1>Authors <a href="/feeds"><small>Ruby 003</small></a></h1>
+  </div>
+
 
 <% @bloggers.each do |blogger| %>
-<h2><%= blogger.name %></h2>
+<a href="/bloggers/<%=blogger.id %>">
+  <h3><%= blogger.name %></h3>
+</a>
 Semester: <span class="badge badge-inverse">  <%= blogger.semester %></span><br>
 Posts: <span class="label label-info"><%= blogger.entries.count%></span>
 <br>
