@@ -6,7 +6,7 @@
 
 
 <% @bloggers.each do |blogger| %>
-<a href="/bloggers/<%=blogger.id %>">
+<a href="/bloggers/<%=blogger.slug %>">
   <h3><%= blogger.name %></h3>
 </a>
 Semester: <span class="badge badge-inverse">  <%= blogger.semester %></span><br>

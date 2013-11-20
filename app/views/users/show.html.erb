@@ -37,16 +37,16 @@
 </div>
   <div class="recent-posts">
     <% @entries.each do |entry| %>
-      <a href="/bloggers/<%= entry.author_id %>/entries/<%= entry.id %>"><h1><%= entry.title %></h1></a>
+      <a href="/bloggers/<%= entry.author_slug %>/entries/<%= entry.slug %>"><h1><%= entry.title %></h1></a>
       <% if entry.added? == false %>
-        <a href="/entries/<%= entry.id %>/update">publish this post</a>
+        <a href="/entries/<%= entry.slug %>/update">publish this post</a>
       <% elsif entry.added? == true %>
         Featured Post!
       <% end %>
       <a href="#"><h4><%= entry.author_name %></h4></a>
       <hr>
       <%= entry.summarize.html_safe if entry.summarize %>
-      <a href="/bloggers/<%= entry.author_id %>/entries/<%= entry.id %>">...read more</a>
+      <a href="/bloggers/<%= entry.author_slug %>/entries/<%= entry.slug %>">...read more</a>
       <hr>
       <br>
     <% end %>

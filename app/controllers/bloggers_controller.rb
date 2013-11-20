@@ -5,7 +5,7 @@ class BloggersController < ApplicationController
   end
 
   def show
-    @blogger = Blogger.find_by(:id => params[:id])
+    @blogger = Blogger.find_by(:slug => params[:slug])
   end
 
 

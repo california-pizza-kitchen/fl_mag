@@ -2,6 +2,12 @@ class Entry < ActiveRecord::Base
   belongs_to :feed
   belongs_to :blogger
 
+  before_save :slugify!
+
+  def slugify!
+    self.slug = self.title.downcase.gsub(' ','-')
+  end
+
   def self.most_recent
     order("published DESC").limit(1).first
   end
@@ -10,8 +16,8 @@ class Entry < ActiveRecord::Base
     self.feed.blogger.name
   end
 
-  def author_id
-    self.feed.blogger.id
+  def author_slug
+    self.feed.blogger.slug
   end
 
   def summarize

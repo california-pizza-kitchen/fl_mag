@@ -3,11 +3,11 @@ BlogAggregator::Application.routes.draw do
   resources :feeds
   resources :users
 
-  resources :bloggers do
-    resources :feeds
+  resources :bloggers, param: :slug do
+    resources :feeds, param: :slug
   end
 
-  get '/entries/:id/update' => 'entries#update'
+  get '/entries/:slug/update' => 'entries#update'
   get '/feeds/create_all' => 'feeds#create_all'
 
 
@@ -16,7 +16,7 @@ BlogAggregator::Application.routes.draw do
 
   root 'pages#home'
 
-  get '/bloggers/:blogger_id/entries/:id' => 'entries#show'
+  get '/bloggers/:blogger_slug/entries/:slug' => 'entries#show'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

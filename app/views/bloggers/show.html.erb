@@ -9,7 +9,7 @@ Posts: <span class="badge badge-inverse"> <%= @blogger.entries.count%></span>
   <h3><%= entry.title %></h3>
   <p><%= entry.published.to_s %></p>
   <%= entry.summarize.html_safe if entry.summarize %>
-  <a href="/bloggers/<%= entry.author_id %>/entries/<%= entry.id %>">...read more</a>
+  <a href="/bloggers/<%= entry.author_slug %>/entries/<%= entry.slug %>">...read more</a>
   <hr>
   <br>
 <% end %>

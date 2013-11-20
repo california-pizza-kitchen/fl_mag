@@ -1,9 +1,9 @@
 
 <% @entries.each do |entry| %>
-  <a href="/bloggers/<%= entry.author_id %>/entries/<%= entry.id %>"><h1><%= entry.title %></h1></a>
+  <a href="/bloggers/<%= entry.author_slug %>/entries/<%= entry.slug %>"><h1><%= entry.title %></h1></a>
 
 <h4>
-  <a href="/bloggers/<%= entry.author_id %>">
+  <a href="/bloggers/<%= entry.author_slug %>">
     <%= entry.author_name %>
   </a>
 </h4>
@@ -12,7 +12,7 @@
 
   <hr>
   <%= entry.summarize.html_safe if entry.summarize %>
-  <a href="/bloggers/<%= entry.author_id %>/entries/<%= entry.id %>">...read more</a>
+  <a href="/bloggers/<%= entry.author_slug %>/entries/<%= entry.slug %>">...read more</a>
   <hr>
   <br>
 <% end %>
