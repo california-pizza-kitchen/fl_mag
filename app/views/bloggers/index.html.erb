@@ -1,8 +1,18 @@
-<% @entries.each do |entry| %>
-  <a href="#"><h1><%= entry.title %></h1></a>
-  <a href="#"><h4><%= entry.author_name %></h4></a>
-  <hr>
-  <%= entry.content.to_s.html_safe %>
-  <hr>
-  <br>
+
+<div class="page-header">
+  <h1>Authors <small>Ruby 003</small></h1>
+</div>
+
+<% @bloggers.each do |blogger| %>
+<h2><%= blogger.name %></h2>
+Semester: <span class="badge badge-inverse">  <%= blogger.semester %></span><br>
+Posts: <span class="label label-info"><%= blogger.entries.count%></span>
+<br>
+<br>
+<hr>
+
 <% end %>
+
+
+
+

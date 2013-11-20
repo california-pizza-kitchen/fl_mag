@@ -34,6 +34,7 @@
       </table>
     </div>
   </div>
+</div>
   <div class="recent-posts">
     <% @entries.each do |entry| %>
       <a href="/bloggers/<%= entry.author_id %>/entries/<%= entry.id %>"><h1><%= entry.title %></h1></a><button id="publish">publish this post</button>
@@ -45,7 +46,7 @@
       <br>
     <% end %>
   </div>
-</div>
+
 
 
   

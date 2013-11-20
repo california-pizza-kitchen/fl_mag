@@ -7,4 +7,8 @@ class Blogger < ActiveRecord::Base
     # self.entries.sort_by{|entry| entry.published}.reverse.first
   end
 
+  def url
+    self.feed_xml[0..-9]
+  end
+
 end
