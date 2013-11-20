@@ -14,7 +14,8 @@ class Feed < ActiveRecord::Base
         :url          => entry.url,
         :content      => entry.content,
         :url          => entry.url,
-        :published    => entry.published
+        :published    => entry.published,
+        :author       => self.blogger
       )
       entry.save
     end
