@@ -1,13 +1,16 @@
 
 
-<a href="#"><h2><%= @blogger.name %></h2></a>
-<a href="#"><h4><%= @blogger.semester %></h4></a>
+<h1><%= @blogger.name %></h1>
+Semester: <span class="label label-info"><%= @blogger.semester %></span><br>
+Posts: <span class="badge badge-inverse"> <%= @blogger.entries.count%></span>
 <hr>
-<%= @blogger.entries.count%>
-<hr>
-<% @blogger.entires.each do |entry| %>
-<%= entry.title %>
-<%= entry.summarize.to_s.safe_html %>
-<hr>
+
+<% @blogger.entries.each do |entry| %>
+  <h3><%= entry.title %></h3>
+  <p><%= entry.published.to_s %></p>
+  <%= entry.summarize.html_safe if entry.summarize %>
+  <a href="/bloggers/<%= entry.author_id %>/entries/<%= entry.id %>">...read more</a>
+  <hr>
+  <br>
 <% end %>
-<br>
+
