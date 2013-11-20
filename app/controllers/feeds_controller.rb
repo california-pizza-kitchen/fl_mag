@@ -10,7 +10,7 @@ class FeedsController < ApplicationController
   end
 
   def update_all
-    Blogger.get_new_posts
+    # where the sidetiq job is run?
   end
 
   def show

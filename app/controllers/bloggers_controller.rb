@@ -2,17 +2,23 @@ class BloggersController < ApplicationController
 
   def create
     blogger = Blogger.create(blogger_params)
-    blogger.build_feed(:feed_xml => params[:blogger][:feed_xml])
-    feed = blogger.feed
 
-    feedzirra_object = Feedzirra::Feed.fetch_and_parse(feed.feed_xml)
-    begin
+    # begin
+
+      feedzirra_object = Feedzirra::Feed.fetch_and_parse(params[:blogger][:feed_xml])
       feedzirra_object.sanitize_entries! 
-      feed.add_entries(feedzirra_object.entries)
+
+      blogger.update(:feed_xml => params[:blogger][:feed_xml])
+      blogger.build_feed(:feed_xml => params[:blogger][:feed_xml])
+      feed = blogger.feed
+
+      # feed.add_entries(feedzirra_object.entries)
+      UpdateWorker.perform_async
+
       blogger.feed.save
-    rescue
-      "No xml file for blog!"
-    end
+    # rescue
+    #   blogger.update(:feed_xml => "No XML for blog!")
+    # end
 
     redirect_to '/users/show'
   end
@@ -23,6 +29,6 @@ class BloggersController < ApplicationController
   private
 
   def blogger_params
-    params.require(:blogger).permit(:name, :semester, :feed_xml)
+    params.require(:blogger).permit(:name, :semester)
   end
 end

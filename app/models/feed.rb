@@ -9,14 +9,14 @@ class Feed < ActiveRecord::Base
   
   def add_entries(entries)
     entries.each do |entry|
-      @entry = self.entries.build(
+      entry = self.entries.build(
         :title        => entry.title,
         :url          => entry.url,
         :content      => entry.content,
         :url          => entry.url,
         :published    => entry.published
       )
-      @entry.save
+      entry.save
     end
   end
 

@@ -11,15 +11,13 @@ class Entry < ActiveRecord::Base
   end
 
   def summarize
-    # binding.pry
     if self.content.include?("<p>")
       first = self.content.split("<p>")[1]
       second = self.content.split("<p>")[2]
-      first + second
+      first + second if first && second
     else
       self.content
     end
-    # binding.pry
   end
 
   def self.sort_by_date_published

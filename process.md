@@ -53,11 +53,22 @@ Things to do
     - about?
 
 
+THINGS TO DO:
+
+- background update job
+- admin authentication 
+---- validate form data
+- postgres + deployment
+
+- more views for admin section
 
 
+- jquery + css polishing
+  - moblie friend
 
 
+WISHLIST:
 
-
-Feed Table  && Entries Table
-integerate feed code into app
+- text or email digest (subscriptions)
+- frontend heavylifting
+  - bigslide implementation

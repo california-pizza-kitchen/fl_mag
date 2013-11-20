@@ -12,7 +12,8 @@ gem 'jbuilder', '~> 1.2'
 
 #OUR GEMS
 gem 'unicorn'
-gem 'sidekick'
+gem 'sidekiq'
+gem 'sidetiq', '0.4.0'
 gem 'feedzirra'
 gem 'anjlab-bootstrap-rails', '>= 3.0.0.0', :require => 'bootstrap-rails'
 gem 'better_errors'
