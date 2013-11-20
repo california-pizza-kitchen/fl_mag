@@ -15,6 +15,8 @@ BlogAggregator::Application.routes.draw do
 
   root 'pages#home'
 
+  get '/bloggers/:blogger_id/entries/:id' => 'entries#show'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

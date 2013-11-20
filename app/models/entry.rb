@@ -6,8 +6,20 @@ class Entry < ActiveRecord::Base
     self.feed.blogger.name
   end
 
+  def author_id
+    self.feed.blogger.id
+  end
+
   def summarize
-    self.feed.content.slice
+    # binding.pry
+    if self.content.include?("<p>")
+      first = self.content.split("<p>")[1]
+      second = self.content.split("<p>")[2]
+      first + second
+    else
+      self.content
+    end
+    # binding.pry
   end
 
   def self.sort_by_date_published
