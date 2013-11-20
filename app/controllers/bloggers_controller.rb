@@ -11,11 +11,11 @@ class BloggersController < ApplicationController
       blogger.update(:feed_xml => params[:blogger][:feed_xml])
       blogger.build_feed(:feed_xml => params[:blogger][:feed_xml])
       feed = blogger.feed
-
-      # feed.add_entries(feedzirra_object.entries)
-      UpdateWorker.perform_async
-
       blogger.feed.save
+      # feed.add_entries(feedzirra_object.entries)
+      # UpdateWorker.perform_async
+
+      
     # rescue
     #   blogger.update(:feed_xml => "No XML for blog!")
     # end

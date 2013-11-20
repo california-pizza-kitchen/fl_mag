@@ -56,9 +56,12 @@ Things to do
 THINGS TO DO:
 
 - background update job
-- admin authentication 
+- tests
+- admin authentication
+- parse from plain url
+
+
 ---- validate form data
-- postgres + deployment
 
 - more views for admin section
 

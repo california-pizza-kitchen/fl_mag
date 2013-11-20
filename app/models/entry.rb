@@ -2,6 +2,10 @@ class Entry < ActiveRecord::Base
   belongs_to :feed
   belongs_to :blogger
 
+  def self.most_recent
+    order("published DESC").limit(1).first
+  end
+  
   def author_name
     self.feed.blogger.name
   end
