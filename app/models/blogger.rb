@@ -4,7 +4,6 @@ class Blogger < ActiveRecord::Base
 
   def most_recent_entry
     self.entries.most_recent
-    # self.entries.sort_by{|entry| entry.published}.reverse.first
   end
 
   def url
