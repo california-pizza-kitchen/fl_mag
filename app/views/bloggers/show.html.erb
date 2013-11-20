@@ -1,0 +1,13 @@
+
+
+<a href="#"><h2><%= @blogger.name %></h2></a>
+<a href="#"><h4><%= @blogger.semester %></h4></a>
+<hr>
+<%= @blogger.entries.count%>
+<hr>
+<% @blogger.entires.each do |entry| %>
+<%= entry.title %>
+<%= entry.summarize.to_s.safe_html %>
+<hr>
+<% end %>
+<br>

@@ -1,0 +1,10 @@
+
+
+<% @bloggers.each do |blogger| %>
+  <a href="#"><h1><%= blogger.name %></h1></a>
+  <a href="#"><h4><%= entry.author_name %></h4></a>
+  <hr>
+  <%= entry.content.to_s.html_safe %>
+  <hr>
+  <br>
+<% end %>
