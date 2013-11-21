@@ -16,7 +16,7 @@ describe Entry do
   end 
 
   it "knows the name and slug of it's writer" do
-    joshua = Blogger.create(:name => "Joshua")
+    joshua = Blogger.create(:name => "Joshua", :feed_xml => "test")
     joshua.build_feed
     e1 = joshua.feed.entries.build(:title => "THE BEST POST EVER")
     joshua.feed.save
