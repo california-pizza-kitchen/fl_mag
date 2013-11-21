@@ -1,0 +1,8 @@
+- setup domain
+- feedzirra to parse xml content
+- sidekiq to manage background jobs to update blogs
+- sidetiq to handle recurrence of background jobs
+- authentification
+- authorization
+- convert from :ids to :slugs
+- 

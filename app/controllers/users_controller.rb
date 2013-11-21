@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:edit, :update, :destroy]
-  before_action :login_required
+  before_action :login_required#, except: [:new, :create]
 
   def show
     @user = User.first
@@ -19,7 +19,8 @@ class UsersController < ApplicationController
     user.password              = params[:password]
     user.password_confirmation = params[:password_confirmation]
     if user.save 
-      redirect_to '/login'
+      login(user.id)
+      redirect_to '/users/dashboard'
     else
       redirect_to '/register'
     end
