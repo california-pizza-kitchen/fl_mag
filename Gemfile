@@ -11,13 +11,14 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 
 #OUR GEMS
+gem 'bcrypt-ruby', '~> 3.1.2'
 gem 'unicorn'
 gem 'sidekiq'
 gem 'sidetiq', '0.4.0'
 gem 'feedzirra'
 gem 'anjlab-bootstrap-rails', '>= 3.0.0.0', :require => 'bootstrap-rails'
-gem 'better_errors'
-gem 'binding_of_caller'
+#gem 'better_errors'
+#gem 'binding_of_caller'
 gem 'pry'
 
 group :doc do
@@ -26,7 +27,7 @@ group :doc do
 end
 
 # Use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.1.2'
+
 
 # Use unicorn as the app server
 

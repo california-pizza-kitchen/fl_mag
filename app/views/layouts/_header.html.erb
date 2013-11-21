@@ -14,7 +14,11 @@
     <ul class="nav navbar-nav pull-right">
         <li><a href="/feeds">Magazine</a></li>
         <li><a href="/bloggers">Authors</a></li>
-        <li><a href="/users/1">Admin</a></li>
+        <% if logged_in? %>
+        <li><a href="/login">Dashboard</a></li>
+        <% else %>
+        <li><a href="/login">Login</a></li>
+        <% end %>
     </ul>
   </div> 
 </nav>

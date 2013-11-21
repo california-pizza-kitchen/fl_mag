@@ -6,7 +6,8 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-admin = User.create({name: "Admin"})
+admin = User.create({name: "admin", email: "admin@admin.com", password: "admin", password_confirmation: "admin"})
+
 ian = Blogger.create({name: "Ian Miller", feed_xml: "http://irmiller22.github.io/atom.xml", semester: 3})
 ian.build_feed(:feed_xml => ian.feed_xml)
 feed = ian.feed

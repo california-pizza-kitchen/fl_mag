@@ -7,15 +7,22 @@ BlogAggregator::Application.routes.draw do
     resources :feeds
   end
 
+  get  '/register' => 'users#new'
+  post '/register' => 'users#create'
+  
+  get  '/login' => 'sessions#new'
+  get  '/logout' => 'sessions#destroy'
+  
+  post '/sessions' => 'sessions#create'
+
   get '/feeds/create_all' => 'feeds#create_all'
 
-
-  get '/pages/home' => 'pages#index'
   get '/users/dashboard' => 'users#show'
+
+  get '/bloggers/:blogger_id/entries/:id' => 'entries#show'
 
   root 'pages#home'
 
-  get '/bloggers/:blogger_id/entries/:id' => 'entries#show'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

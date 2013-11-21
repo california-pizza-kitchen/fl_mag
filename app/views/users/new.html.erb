@@ -1,0 +1,8 @@
+<%= form_tag(users_path) do  %>
+name
+  <%= text_field_tag :name %>
+  Email<%= text_field_tag :email %>
+  Password<%= text_field_tag :password %>
+  <%= submit_tag "create yo'self" %>
+<% end %>
+<br>
