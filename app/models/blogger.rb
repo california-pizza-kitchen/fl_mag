@@ -5,7 +5,7 @@ class Blogger < ActiveRecord::Base
   before_save :slugify!
 
   def slugify!
-    self.slug = self.name.downcase.gsub(' ','-')
+    self.slug = self.name.downcase.gsub(/[\W,\s]/,'-')
   end
 
   def most_recent_entry
