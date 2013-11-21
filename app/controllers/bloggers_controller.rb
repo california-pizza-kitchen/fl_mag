@@ -10,6 +10,7 @@ class BloggersController < ApplicationController
 
 
   def create
+    # binding.pry
     blogger = Blogger.create(blogger_params)
     CreateWorker.perform_async(blogger.id)
     redirect_to '/users/show'
