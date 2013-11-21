@@ -1,6 +1,9 @@
 <%= form_tag(sessions_path) do  %>
-  Email<%= text_field_tag :email %>
-  Password<%= text_field_tag :password %>
-  <%= submit_tag "Login" %>
+  Email: <%= text_field_tag :email %><br><br>
+  Password: <%= text_field_tag :password %><br><br>
+  <%= submit_tag "Login" %><br><br>
 <% end %>
+
+<a href="/register">Need an account?</a>
+<br>
 <br>

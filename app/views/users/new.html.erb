@@ -1,8 +1,11 @@
 <%= form_tag(users_path) do  %>
-name
-  <%= text_field_tag :name %>
-  Email<%= text_field_tag :email %>
-  Password<%= text_field_tag :password %>
-  <%= submit_tag "create yo'self" %>
+  Name:  <%= text_field_tag :name %><br><br>
+  Email:  <%= text_field_tag :email %><br><br>
+  Password:  <%= text_field_tag :password %><br><br>
+  Confirm Password:  <%= text_field_tag :password_confirmation %><br><br>
+  <%= submit_tag "create yo'self" %><br>
 <% end %>
+<br>
+<a href="/login">Have an account?</a>
+<br>
 <br>

@@ -6,19 +6,21 @@
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </button>
-    <a class="navbar-brand" href="/feeds">
+    <a class="navbar-brand" href="/">
       <strong>Flatiron Magazine</strong></a>
   </div>
 
   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
     <ul class="nav navbar-nav pull-right">
         <li><a href="/feeds">Magazine</a></li>
-        <li><a href="/bloggers">Authors</a></li>
         <% if logged_in? %>
-        <li><a href="/login">Dashboard</a></li>
+        <li><a href="/bloggers">Authors</a></li>
+        <li><a href="/users/dashboard">Dashboard</a></li>
+        <li><a href="/logout"><span class="glyphicon glyphicon-remove"></span></a></li>
         <% else %>
-        <li><a href="/login">Login</a></li>
+        <li><a href="/login"><span class="glyphicon glyphicon-off"></span> </a></li>
         <% end %>
     </ul>
   </div> 
 </nav>
+

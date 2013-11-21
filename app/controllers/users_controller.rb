@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit,:update, :destroy]
+  before_action :set_user, only: [:edit, :update, :destroy]
 
   def show
     @user = User.first
@@ -13,12 +13,15 @@ class UsersController < ApplicationController
 
   def create
     user = User.new
-    user.name = params[:name]
-    user.email = params[:email]
-    user.password = params[:password]
+    user.name                  = params[:name]
+    user.email                 = params[:email]
+    user.password              = params[:password]
     user.password_confirmation = params[:password_confirmation]
-    user.save 
-    redirect_to "user/#{user.id}"
+    if user.save 
+      redirect_to '/login'
+    else
+      redirect_to '/register'
+    end
   end
 
   private

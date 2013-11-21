@@ -1,6 +1,6 @@
-<%= render 'form' %>
+<h1> Welcome <%= current_user.name %></h1>
 
-<br>
+<%= render 'form' %>
 
 <div class="panel panel-default">
   <div class="panel-heading">
@@ -37,9 +37,15 @@
 </div>
   <div class="recent-posts">
     <% @entries.each do |entry| %>
-      <a href="/bloggers/<%= entry.author_id %>/entries/<%= entry.id %>"><h1><%= entry.title %></h1></a><button id="publish">publish this post</button>
-      <a href="#"><h4><%= entry.author_name %></h4></a>
-      <hr>
+    <a href="/bloggers/<%= entry.author_id %>/entries/<%= entry.id %>">
+    <h1><%= entry.title %></h1>
+    <a href="/bloggers/<%=entry.author_id%>">
+      <h3><%= entry.author_name %></h3>
+    </a>
+
+    <button id="publish">publish this post</button>
+      
+    <hr>
       <%= entry.summarize.html_safe if entry.summarize %>
       <a href="/bloggers/<%= entry.author_id %>/entries/<%= entry.id %>">...read more</a>
       <hr>
