@@ -1,5 +1,6 @@
 class Blogger < ActiveRecord::Base
   validates :feed_xml, uniqueness: true 
+  validates :name, :feed_xml, presence: true
   has_one :feed
   has_many :entries, through: :feed
 
