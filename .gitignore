@@ -15,9 +15,10 @@
 /log/*.log
 /tmp
 
-# Ignore .DS_Store
-*.DS_Store
 
 
-# Ignore dump file
-dump.rdb
+
+ .DS_Store
+ *.DS_Store
+  app_builder_live_test/*/
+ +dump.rdb
