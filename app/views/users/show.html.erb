@@ -3,7 +3,7 @@
   <%= notice %>
 </p>
 <%= render 'form' %>
-
+<br>
 <div class="panel panel-default">
   <div class="panel-heading">
     <h3 class="panel-title">Bloggers</h3>
@@ -37,6 +37,9 @@
     </div>
   </div>
 </div>
+<hr>
+  <h1>Recently Fetched Posts</h1>
+<hr>
   <div class="recent-posts">
     <% @entries.each do |entry| %>
 
@@ -44,9 +47,11 @@
           <h1><%= entry.title %></h1>
       </a>
       <% if entry.added? == false %>
-        <a href="/entries/<%= entry.slug %>/update">publish this post</a>
+        <a href="/entries/<%= entry.slug %>/update">
+          <button type="button" class="btn btn-success">Publish</button>
+        </a>
       <% elsif entry.added? == true %>
-        Featured Post!
+        <button type="button" class="btn btn-warning">Featured Post</button>
       <% end %>
       <a href="#"><h4><%= entry.author_name %></h4></a>
       <hr>
