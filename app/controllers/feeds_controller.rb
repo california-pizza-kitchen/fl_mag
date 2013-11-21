@@ -2,7 +2,8 @@ class FeedsController < ApplicationController
 
   
   def index
-    @entries = Entry.sort_by_date_published
+    # binding.pry
+    @entries = Entry.sort_by_date_published(Entry.featured_entries)
   end
 
   def create
@@ -14,7 +15,7 @@ class FeedsController < ApplicationController
   end
 
   def show
-    @entry = Entry.find_by(:id => params[:id])
+    @entry = Entry.find_by(:slug => params[:slug])
   end
 
 end

@@ -53,19 +53,34 @@ Things to do
     - about?
 
 
+
+
+THINGS FOR AUTHORIZATION:
+
+  - permissions hash
+  - check on blogger#create
+  - check on users#show controller
+
+
+
+
+
+
+
+
 THINGS TO DO:
 
-- background update job
+
 - tests
 - admin authentication
+
+
 - parse from plain url
 
 
 ---- validate form data
 
 - more views for admin section
-
-
 - jquery + css polishing
   - moblie friend
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131120224824) do
+ActiveRecord::Schema.define(version: 20131120234134) do
 
   create_table "bloggers", force: true do |t|
     t.string   "name"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20131120224824) do
     t.integer  "semester"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "slug"
   end
 
   create_table "entries", force: true do |t|
@@ -29,6 +30,8 @@ ActiveRecord::Schema.define(version: 20131120224824) do
     t.text     "content"
     t.datetime "published"
     t.integer  "feed_id"
+    t.boolean  "added?",    default: false
+    t.string   "slug"
   end
 
   create_table "feeds", force: true do |t|
