@@ -21,16 +21,4 @@ class Feed < ActiveRecord::Base
     end
   end
 
-  def self.summary
-    self.content.slice(0,500)
-  end
-
 end
-
-    # t.string  "title"
-    # t.string  "url"
-    # t.string  "author"
-    # t.text    "summary"
-    # t.text    "content"
-    # t.time    "published"
-    # t.integer "feed_id"
