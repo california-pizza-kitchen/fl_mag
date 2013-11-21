@@ -33,18 +33,3 @@ class BloggersController < ApplicationController
     params.require(:blogger).permit(:name, :semester, :id, :feed_xml)
   end
 end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
