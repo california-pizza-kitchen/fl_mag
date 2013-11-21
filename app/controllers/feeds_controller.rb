@@ -1,5 +1,4 @@
 class FeedsController < ApplicationController
-
   
   def index
     # binding.pry

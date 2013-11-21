@@ -2,7 +2,7 @@ class UpdateWorker
   include Sidekiq::Worker
   include Sidetiq::Schedulable
 
-  recurrence { minutely }
+  recurrence { daily }
 
   def perform
     Blogger.all.each do |blogger|
