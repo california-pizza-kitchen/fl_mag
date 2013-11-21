@@ -39,4 +39,13 @@ describe Entry do
     expect(Entry.sort_by_date_published(Entry.all).last.title).to eq("post1")
   end
 
+  it "shows only entries that have been published" do
+    e1 = Entry.create(:title => "post1", :published => Time.now, :added? => true)
+    e2 = Entry.create(:title => "post2", :published => Time.now, :added? => false)
+
+    expect(Entry.featured_entries.count).to eq(1)
+  end
+
+  
+
 end
