@@ -24,7 +24,7 @@ class Entry < ActiveRecord::Base
     if self.content.include?("<p>")
       first = self.content.split("<p>")[1]
       second = self.content.split("<p>")[2]
-      first + second if first && second
+      "<p>" + first + "<p>" + second if first && second
     else
       self.content
     end
