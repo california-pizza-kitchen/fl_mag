@@ -6,10 +6,14 @@ Three Servers:
 - redis-server
 - bundle exec sidekiq
 
+-----
 
-checkout branch for feature work
-merge to local master when finished
-push master to here
+- checkout branch for feature work
+- merge to local master when finished
+- pull from here
+  - address any merge conflicts locally
+- push master to here
+
 
 
   THINGS TO DO:
