@@ -2,11 +2,28 @@ Three Servers:
 -----
 
 
-1 - unicorn
-2 - redis-server
-3 - bundle exec sidekiq
+- unicorn
+- redis-server
+- bundle exec sidekiq
 
 
 checkout branch for feature work
 merge to local master when finished
 push master to here
+
+
+  THINGS TO DO:
+
+
+    - controller tests
+    - feature tests
+    - validate form data
+
+    - text or email digest (subscriptions)
+      - subscriptions table in db
+      - sidekiq + sidetiq job to email weekly
+      - html + css styled email (personalized -- hello <name>!)
+
+
+    - Adam and Kelley features
+    - twitter tweet
