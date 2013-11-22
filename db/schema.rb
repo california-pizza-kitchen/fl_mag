@@ -29,8 +29,9 @@ ActiveRecord::Schema.define(version: 20131120234134) do
     t.text     "summary"
     t.text     "content"
     t.datetime "published"
+    t.datetime "mag_published"
     t.integer  "feed_id"
-    t.boolean  "added?",    default: false
+    t.boolean  "added?",        default: false
     t.string   "slug"
   end
 

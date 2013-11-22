@@ -1,5 +1,8 @@
-<a href="#"><h1><%= @entry.title %></h1></a>
-<a href="/bloggers/<%=@entry.author_slug %>"><h4><%= @entry.author_name %></h4></a>
+<h1><%= @entry.title %></h1>
+<a href="/bloggers/<%=@entry.author_slug %>">
+  <h4><%= @entry.author_name %></h4>
+</a>
+<span class="label"><a href="<%= @entry.url %>"><%= @entry.url %></a></span>
 <hr>
 <%= @entry.content.html_safe %>
 <hr>

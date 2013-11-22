@@ -17,8 +17,8 @@ class Feed < ActiveRecord::Base
       )
       if rss_entry.content
         entry.content = rss_entry.content
-      else
-        entry.content = rss_entry.description
+      elsif rss_entry.summary
+        entry.content = rss_entry.summary
       end
       entry.save
     end

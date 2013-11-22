@@ -2,7 +2,8 @@
 
 <h1><%= @blogger.name %></h1>
 Semester: <span class="label label-info"><%= @blogger.semester %></span><br>
-Posts: <span class="badge badge-inverse"> <%= @blogger.entries.count%></span>
+Posts: <span class="badge badge-inverse"> <%= @blogger.entries.count%></span><br>
+<span class="label"><a href="<%= @blogger.feed_url %>"><%= @blogger.feed_url %></a></span><br>
 <hr>
 
 <% @blogger.entries.each do |entry| %>
