@@ -1,7 +1,9 @@
-<h1> Welcome <%= current_user.name %></h1>
-<p id="notice">
-  <%= notice %>
-</p>
+<h1> Welcome <small><%= current_user.name %></small></h1>
+
+<div id="notice" class="alert alert-danger alert-dismissable">
+  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+  <strong><%= notice %></strong> 
+</div>
 <%= render 'form' %>
 <br>
 <div class="panel panel-default">
@@ -10,12 +12,12 @@
   </div>
   <div class="panel-body">
 
-    <select id="semester-select">
+<!-- <select id="semester-select">
       <option>1</option>
       <option>2</option>
       <option>3</option>
       <option>4</option>
-    </select>
+    </select> -->
 
     <div class="list-group">
       <table class="table">
@@ -38,7 +40,7 @@
   </div>
 </div>
 <hr>
-  <h1>Recently Fetched Posts</h1>
+  <h1><small>Recently Fetched Posts</small></h1>
 <hr>
   <div class="recent-posts">
     <% @entries.each do |entry| %>
@@ -46,12 +48,13 @@
       <a href="/bloggers/<%= entry.author_slug %>/entries/<%= entry.slug %>">
           <h1><%= entry.title %></h1>
       </a>
+      <a href="#"><h4><%= entry.author_name %></h4></a>
       <% if entry.added? == false %>
         <button type="button" class="btn btn-success publish" data-entry-slug="<%= entry.slug %>">Publish</button>
       <% elsif entry.added? == true %>
         <button type="button" class="btn btn-warning">Published!</button>
       <% end %>
-      <a href="#"><h4><%= entry.author_name %></h4></a>
+      
       <hr>
       <%= entry.summarize.html_safe if entry.summarize %>
       <a href="/bloggers/<%= entry.author_slug %>/entries/<%= entry.slug %>">...read more</a>

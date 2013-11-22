@@ -2,16 +2,16 @@
   <div class="row">
     <div class="col-xs-12 col-sm-6 col-md-8">
       <h1 style="color:#95a5a6">Featured Posts</h1>
+      <hr>
       <% @entries.reverse_each do |entry| %>
       <a href="/bloggers/<%= entry.author_slug %>/entries/<%= entry.slug %>">
-        <h1 style="color:#34495e"><%= entry.title %></h1>
+        <h1 style="color:#34495e"><%= entry.title.capitalize %></h1>
       </a>
       <h4>
         <a href="/bloggers/<%= entry.author_slug %>">
           <%= entry.author_name %>
         </a>
-        <small style="color:#95a5a6">Originally published <%= time_ago_in_words(entry.published)%> ago</small><br />
-        <div style="magrin-top: 5px;"><small><a href="<%= entry.url %>" target="blank"><%= entry.url %></a></small></div>
+        <small style="color:#95a5a6">Originally published <%= time_ago_in_words(entry.published)%> ago <a href="<%= entry.url %>" target="blank">here</a></small><br />
       </h4>
       <%= entry.summarize.html_safe if entry.summarize %>
       <a href="/bloggers/<%= entry.author_slug %>/entries/<%= entry.slug %>">...read more</a>

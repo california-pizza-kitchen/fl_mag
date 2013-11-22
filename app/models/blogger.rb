@@ -14,4 +14,8 @@ class Blogger < ActiveRecord::Base
     self.entries.most_recent
   end
 
+  def published_entries
+    self.entries.where(:added? => true).count
+  end
+
 end
