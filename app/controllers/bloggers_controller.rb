@@ -12,6 +12,12 @@ class BloggersController < ApplicationController
 
   def create
     blogger = Blogger.create(blogger_params)
+    if blogger.feed_url.end_with?('/')
+      blogger.update(
+        :feed_url => blogger.feed_url[0..-2]
+      )
+    end
+
     CreateWorker.perform_async(blogger.id)
     respond_to do |format|
       if blogger.save

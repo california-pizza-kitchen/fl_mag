@@ -15,6 +15,7 @@ class CreateWorker
   def perform(blogger_id)
     blogger = Blogger.find(blogger_id)
     blogger.build_feed(:feed_xml => xml_path(blogger))
+    blogger.feed.save
     feedzirra_object = Feedzirra::Feed.fetch_and_parse(blogger.feed.feed_xml)
     feedzirra_object.sanitize_entries! 
     blogger.feed.save
