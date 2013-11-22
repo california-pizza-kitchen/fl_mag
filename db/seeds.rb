@@ -8,22 +8,22 @@
 
 admin = User.create({name: "admin", email: "admin@admin.com", password: "admin", password_confirmation: "admin"})
 
-ian = Blogger.create({name: "Ian Miller", feed_xml: "http://irmiller22.github.io/atom.xml", semester: 3})
-ian.build_feed(:feed_xml => ian.feed_xml)
+ian = Blogger.create({name: "Ian Miller", feed_url: "http://irmiller22.github.io", semester: 3})
+ian.build_feed(:feed_xml => "http://irmiller22.github.io/atom.xml")
 feed = ian.feed
 feedzirra_object = Feedzirra::Feed.fetch_and_parse(feed.feed_xml) 
 feed.add_entries(feedzirra_object.entries)
 ian.feed.save
 
-kyle = Blogger.create({name: "Kyle Shike", feed_xml: "http://kyleshike.github.io/atom.xml", semester: 3})
-kyle.build_feed(:feed_xml => kyle.feed_xml)
+kyle = Blogger.create({name: "Kyle Shike", feed_url: "http://kyleshike.github.io", semester: 3})
+kyle.build_feed(:feed_xml => "http://kyleshike.github.io/atom.xml")
 feed = kyle.feed
 feedzirra_object = Feedzirra::Feed.fetch_and_parse(feed.feed_xml) 
 feed.add_entries(feedzirra_object.entries)
 kyle.feed.save
 
-john = Blogger.create({name: "John Richardson", feed_xml: "http://richardsonjm.github.io/atom.xml", semester: 3})
-john.build_feed(:feed_xml => john.feed_xml)
+john = Blogger.create({name: "John Richardson", feed_url: "http://richardsonjm.github.io", semester: 3})
+john.build_feed(:feed_xml => "http://richardsonjm.github.io/atom.xml")
 feed = john.feed
 feedzirra_object = Feedzirra::Feed.fetch_and_parse(feed.feed_xml) 
 feed.add_entries(feedzirra_object.entries)

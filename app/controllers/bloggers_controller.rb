@@ -28,6 +28,6 @@ class BloggersController < ApplicationController
   private
 
   def blogger_params
-    params.require(:blogger).permit(:name, :semester, :id, :feed_xml)
+    params.require(:blogger).permit(:name, :semester, :id, :feed_url)
   end
 end
