@@ -13,7 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require ../../../vendor/assets/mmenu/js/jquery.mmenu.js
-//= require turbolinks
 //= require_tree .
 
 //= require twitter/bootstrap
