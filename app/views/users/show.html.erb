@@ -47,11 +47,9 @@
           <h1><%= entry.title %></h1>
       </a>
       <% if entry.added? == false %>
-        <a href="/entries/<%= entry.slug %>/update">
-          <button type="button" class="btn btn-success">Publish</button>
-        </a>
+        <button type="button" class="btn btn-success publish" data-entry-slug="<%= entry.slug %>">Publish</button>
       <% elsif entry.added? == true %>
-        <button type="button" class="btn btn-warning">Featured Post</button>
+        <button type="button" class="btn btn-warning">Published!</button>
       <% end %>
       <a href="#"><h4><%= entry.author_name %></h4></a>
       <hr>

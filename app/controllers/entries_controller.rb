@@ -11,4 +11,10 @@ class EntriesController < ApplicationController
     @entry.update(:added? => true)
     redirect_to '/users/1'
   end
+
+  def publish
+    @entry = Entry.find_by(:slug => params[:slug])
+    @entry.update(:added? => true)
+    redirect_to '/users/1'
+  end
 end

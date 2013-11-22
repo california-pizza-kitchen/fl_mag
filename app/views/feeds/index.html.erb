@@ -10,7 +10,8 @@
         <a href="/bloggers/<%= entry.author_slug %>">
           <%= entry.author_name %>
         </a>
-        <small style="color:#95a5a6">Originally published <%= time_ago_in_words(entry.published)%> ago</small>
+        <small style="color:#95a5a6">Originally published <%= time_ago_in_words(entry.published)%> ago</small><br />
+        <div style="magrin-top: 5px;"><small><a href="<%= entry.url %>" target="blank"><%= entry.url %></a></small></div>
       </h4>
       <%= entry.summarize.html_safe if entry.summarize %>
       <a href="/bloggers/<%= entry.author_slug %>/entries/<%= entry.slug %>">...read more</a>

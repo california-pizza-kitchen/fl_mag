@@ -18,6 +18,7 @@ BlogAggregator::Application.routes.draw do
 
   get '/entries/:slug/update' => 'entries#update'
 
+  post '/entries/publish' => 'entries#publish'
 
 
   get '/feeds/create_all' => 'feeds#create_all'
