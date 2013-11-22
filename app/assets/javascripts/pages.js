@@ -1,4 +1,11 @@
 $( document ).ready(function() {
+  // $("#nav").mmenu({
+  //  header      : true,
+  //  searchfield : true,
+  //  counters    : true
+  // });
+
+
     $("#about").click(function(){
       $(".jumbotron").fadeOut(500,function(){
         $("#jumbo-title").text("curated from current students and alumni.");
@@ -7,5 +14,8 @@ $( document ).ready(function() {
 
       $(".jumbotron").fadeIn(1000);
     });
+
+
+
 });
 
