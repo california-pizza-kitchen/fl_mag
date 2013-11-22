@@ -17,6 +17,11 @@
 html, body {
     height: 100%;
 }
+
+a:hover{
+    text-decoration: none;
+}
+
 #footer {
     color: #666;
     background: #222;
@@ -37,11 +42,8 @@ html, body {
     margin: 0 auto -63px;
 }
 .push {
-    height: 63px;
+    height: 60px;
 }
-
-/* not required for sticky footer; just pushes hero down a bit 
-*/
 
 .wrapper > .container {
     padding-top: 60px;

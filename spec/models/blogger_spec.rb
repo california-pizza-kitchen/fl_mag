@@ -1,5 +1,5 @@
 require 'spec_helper'
-
+  
 describe Blogger do
 
   it "makes a slug from its name on save" do

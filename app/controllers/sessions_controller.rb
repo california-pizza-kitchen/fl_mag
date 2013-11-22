@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
       login(user.id)
       redirect_to "/users/dashboard"
     else
-      render :new
+      redirect_to '/'
     end
   end
 
