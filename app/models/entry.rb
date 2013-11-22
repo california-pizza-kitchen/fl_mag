@@ -35,7 +35,7 @@ class Entry < ActiveRecord::Base
   end
 
   def self.featured_entries
-    self.where(:added? => true)
+    self.where(:added? => true).sort_by{ |entry| entry.mag_published }
   end
 
 end

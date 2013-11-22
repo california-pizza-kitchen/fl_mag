@@ -1,6 +1,8 @@
 $(document).ready(function(){
 
-  $(".publish").click(function(){
+  $("body").on("click", ".publish", function(event){
+    event.preventDefault();
+
     var entry_slug_data = {
       slug: $(this).data("entry-slug")
     }
