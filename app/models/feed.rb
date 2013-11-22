@@ -7,16 +7,19 @@ class Feed < ActiveRecord::Base
     feed.sanitize_entries!
   end
   
-  def add_entries(entries)
-    entries.each do |entry|
+  def add_entries(rss_entries)
+    rss_entries.each do |rss_entry|
       entry = self.entries.build(
-        :title        => entry.title,
-        :url          => entry.url,
-        :content      => entry.content,
-        :url          => entry.url,
-        :published    => entry.published,
+        :title        => rss_entry.title,
+        :url          => rss_entry.url,
+        :published    => rss_entry.published,
         :author       => self.blogger
       )
+      if rss_entry.content
+        entry.content = rss_entry.content
+      else
+        entry.content = rss_entry.description
+      end
       entry.save
     end
   end
