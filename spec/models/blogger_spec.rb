@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Blogger do
 
   it "makes a slug from its name on save" do
-    b = Blogger.new(:name => "JohnBro")
+    b = Blogger.new(:name => "JohnBro", :feed_xml => "test")
     expect(b.slug).to eq(nil)
     b.save
     expect(b.slug).to eq("johnbro")
