@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131120234134) do
+ActiveRecord::Schema.define(version: 20131123204836) do
 
   create_table "bloggers", force: true do |t|
     t.string   "name"
@@ -35,11 +35,20 @@ ActiveRecord::Schema.define(version: 20131120234134) do
     t.string   "slug"
   end
 
+  create_table "entries_tags", force: true do |t|
+    t.integer "entry_id"
+    t.integer "tag_id"
+  end
+
   create_table "feeds", force: true do |t|
     t.integer "blogger_id"
     t.string  "feed_xml"
     t.time    "last_modified"
     t.integer "etag"
+  end
+
+  create_table "tags", force: true do |t|
+    t.string "word"
   end
 
   create_table "users", force: true do |t|

@@ -1,6 +1,8 @@
 class Entry < ActiveRecord::Base
   belongs_to :feed
   belongs_to :blogger
+  has_many :entries_tags
+  has_many :tags, through: :entries_tags
 
   before_save :slugify!
 
@@ -36,6 +38,12 @@ class Entry < ActiveRecord::Base
 
   def self.featured_entries
     self.where(:added? => true).sort_by{ |entry| entry.mag_published }
+  end
+
+  def create_tag(word)
+    tag = Tag.create(:word => word)
+    entry_tag = self.entries_tags.build(:tag_id => tag.id)
+    entry_tag.save
   end
 
 end
