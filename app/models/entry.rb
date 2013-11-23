@@ -5,7 +5,7 @@ class Entry < ActiveRecord::Base
   before_save :slugify!
 
   def slugify!
-    self.slug = self.title.downcase.gsub(/[\W,\s]/,'-')
+    self.title != nil ? self.slug = self.title.downcase.gsub(/[\W,\s]/,'-') : self.slug = self.id
   end
 
   def self.most_recent
