@@ -41,7 +41,7 @@ class Entry < ActiveRecord::Base
   end
 
   def create_tag(word)
-    tag = Tag.create(:word => word)
+    tag = Tag.find_or_create_by(:word => word)
     entry_tag = self.entries_tags.build(:tag_id => tag.id)
     entry_tag.save
   end
