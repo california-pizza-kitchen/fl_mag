@@ -15,7 +15,7 @@ class Feed < ActiveRecord::Base
         :published    => rss_entry.published,
         :author       => self.blogger
       )
-      if rss_entry.respond_to?(:content) && entry.content != nil
+      if rss_entry.respond_to?(:content)
         entry.content = rss_entry.content
       elsif rss_entry.respond_to?(:summary)
         entry.content = rss_entry.summary
