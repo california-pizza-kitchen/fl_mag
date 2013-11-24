@@ -24,8 +24,7 @@ gem 'rspec-rails'
 gem 'capybara'
 gem 'nokogiri'
 gem 'bootstrap-sass', '~> 3.0.2.0'
-#gem 'better_errors'
-#gem 'binding_of_caller'
+gem 'sanitize'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
