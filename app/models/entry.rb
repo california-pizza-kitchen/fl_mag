@@ -22,14 +22,32 @@ class Entry < ActiveRecord::Base
     self.feed.blogger.slug
   end
 
+  def safe_html(html)
+    Sanitize.clean(html,
+      {:remove_contents => true}
+      #:elements => %w[
+      #   a abbr b blockquote br cite code dd dfn dl dt em i kbd mark ol p pre
+      #   q s figcaption table samp small strike strong sub sup time u var td tr div figure span
+      # ],
+      # :attributes => {
+      #   :all => ['class']
+      # }
+      )
+
+  end
+
   def summarize
     if self.content
       if self.content.include?("<p>")
         first = self.content.split("<p>")[1]
         second = self.content.split("<p>")[2]
-        "<p>" + first + "<p>" + second if first && second
+        first = safe_html(first)
+        second = safe_html(second)
+        first = first + "</p>" if first && !first.end_with?("</p>")
+        second = second + "</p>" if second && !second.end_with?("</p>")
+        first + "<p>" + second if first && second
       else
-        self.content
+        "<p>" + self.content + "</p>"
       end
     end
   end
