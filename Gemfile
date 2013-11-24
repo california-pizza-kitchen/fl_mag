@@ -18,14 +18,14 @@ gem 'sidekiq'
 gem 'sidetiq', '0.4.0'
 gem 'feedzirra'
 gem 'anjlab-bootstrap-rails', '>= 3.0.0.0', :require => 'bootstrap-rails'
-#gem 'better_errors'
-#gem 'binding_of_caller'
 gem 'pry'
 gem 'rspec'
 gem 'rspec-rails'
 gem 'capybara'
 gem 'nokogiri'
 gem 'bootstrap-sass', '~> 3.0.2.0'
+#gem 'better_errors'
+#gem 'binding_of_caller'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
