@@ -6,7 +6,7 @@ class UsersController < ApplicationController
     @user = User.first
     @blogger = Blogger.new
     @bloggers = Blogger.all
-    @entries = Entry.sort_by_date_published(Entry.all)
+    @entries = Entry.sort_by_date_published(Entry.all)[0..20]
   end
 
   def new

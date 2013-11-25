@@ -21,6 +21,7 @@ class Feed < ActiveRecord::Base
         entry.content = rss_entry.summary
       end
       entry.save
+      entry.get_tags
     end
   end
 
