@@ -11,4 +11,11 @@ class EntriesController < ApplicationController
     @entry.update(:added? => true, :mag_published => Time.now)
     redirect_to '/users/1'
   end
+
+  def tag
+    entry_tag = EntriesTag.find_by(:entry_id => params[:entry_id], :tag_id => params[:tag_id])
+    entry_tag.update(:visible => true)
+    redirect_to '/users/1'
+    # binding.pry
+  end
 end

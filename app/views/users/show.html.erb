@@ -54,6 +54,20 @@
       <% elsif entry.added? == true %>
         <button type="button" class="btn btn-warning">Published!</button>
       <% end %>
+      <br/>
+      Add Tags: 
+<!--       <%# entry.tags.each do |tag| %>
+        <button type="button" class="btn btn-alert tag" data-entry-id="<%= entry.id %>" data-entry-tag-id="<%#= tag.id %>"><%#= tag.word %></button>
+      <%# end %> -->
+
+      <% entry.entries_tags.each do |entry_tag| %>
+
+        <% if entry_tag.visible == false %>
+          <button type="button" class="btn btn-success tag" data-entry-id="<%= entry.id %>" data-entry-tag-id="<%= entry_tag.tag.id %>"><%= entry_tag.tag.word %></button>
+        <% elsif entry_tag.visible == true %>
+            <button type="button" class="btn btn-warning tag" data-entry-id="<%= entry.id %>" data-entry-tag-id="<%= entry_tag.tag.id %>"><%= entry_tag.tag.word %></button>
+        <% end %>
+      <% end %>
       
       <hr>
       <%= entry.summarize.html_safe if entry.summarize %>
