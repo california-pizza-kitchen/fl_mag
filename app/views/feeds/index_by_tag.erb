@@ -2,7 +2,7 @@
   <h1 id="large_icon">//</h1>
   <div class="row">
     <div class="col-xs-12 col-sm-6 col-md-8">
-      <h2 style="color:#95a5a6">Featured Posts</h2>
+      <h2 style="color:#95a5a6"><%= @tag.display_word_or_word %></h2>
       <hr>
       <% @entries.reverse_each do |entry| %>
       <a href="/bloggers/<%= entry.author_slug %>/entries/<%= entry.slug %>">

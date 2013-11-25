@@ -22,6 +22,12 @@ class Entry < ActiveRecord::Base
     self.feed.blogger.slug
   end
 
+  def tags_added
+    self.entries_tags.collect do |entry_tag|
+      Tag.find(entry_tag.tag_id) if entry_tag.visible == true
+    end.reject(&:nil?)
+  end
+
   def safe_html(html)
     Sanitize.clean(html, {:remove_contents => true})
   end
@@ -56,7 +62,7 @@ class Entry < ActiveRecord::Base
     rough_tags = extractor.phrases(self.content, strength: 2, occur: 5)
     rough_tags.each do |tag|
       next if tag_filter(tag[0])
-      tag = Tag.find_or_create_by(:word => tag[0].pluralize)
+      tag = Tag.find_or_create_by(:word => tag[0].pluralize.downcase)
       EntriesTag.create(:entry_id => self.id, :tag_id => tag.id)
     end
   end
@@ -72,7 +78,7 @@ class Entry < ActiveRecord::Base
   def self.collect_by_tag(tag_id)
     tags = EntriesTag.where(:tag_id => tag_id, :visible => true)
     tags.collect do |tag|
-      Entry.find(tag.entry_id)
+      self.where(:id => tag.entry_id)
     end
   end
 
