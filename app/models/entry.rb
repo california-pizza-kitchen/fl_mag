@@ -52,6 +52,25 @@ class Entry < ActiveRecord::Base
     end
   end
 
+  def tag_filter(keyword)
+    skips = ["&", "<", ">", "quo", "p", "code", "project", "=", "[", "]", "\"", " ", "'", "li", "ul", "td", "tr", "da", "href", ":", ",", "h", "o"]
+    return true if skips.collect do |skip|
+      keyword.downcase.include?(skip)
+    end.uniq.include?(true)
+  end
+
+  def get_tags
+    # acts_as_taggable_on?
+    # skippables = ["&rsquo", "<", ">", "ldquo", "code", "project"]
+    extractor = Phrasie::Extractor.new
+    rough_tags = extractor.phrases(self.content, strength: 2, occur: 5)
+    rough_tags.each do |tag|
+      next if tag_filter(tag[0])
+      tag = Tag.find_or_create_by(:word => tag[0].pluralize)
+      EntriesTag.create(:entry_id => self.id, :tag_id => tag.id)
+    end
+  end
+
   def self.sort_by_date_published(collection)
     collection.sort_by{|entry| entry.published}.reverse
   end
@@ -60,10 +79,5 @@ class Entry < ActiveRecord::Base
     self.where(:added? => true).sort_by{ |entry| entry.mag_published }
   end
 
-  def create_tag(word)
-    tag = Tag.find_or_create_by(:word => word)
-    entry_tag = self.entries_tags.build(:tag_id => tag.id)
-    entry_tag.save
-  end
 
 end
