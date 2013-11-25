@@ -7,6 +7,8 @@ BlogAggregator::Application.routes.draw do
     resources :feeds, param: :slug
   end
 
+  post '/subscribe' => 'subscribers#create'
+  post '/unsubscribe' => 'subscribers#destroy'
 
   get  '/register' => 'users#new'
   post '/register' => 'users#create'

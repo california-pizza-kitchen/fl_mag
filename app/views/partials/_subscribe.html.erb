@@ -1,0 +1,24 @@
+<div class="modal fade" id="subscribe" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4>Subscribe for Weekly Updates</h4>
+        <div class="modal-body" >
+        <%= form_tag("/subscribe", method: "post") do %>
+          <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="name" class="form-control" id="name" name="name"placeholder="Name">
+          </div>
+          <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" class="form-control" id="email" name="email" placeholder="Enter">
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-success">Subscribe</button>
+            <button class="btn btn-default" data-dismiss="modal">Close</a>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

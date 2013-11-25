@@ -2,12 +2,18 @@ class EmailWorker
   include Sidekiq::Worker
   include Sidetiq::Schedulable
 
-  recurrence { weekly }
+  recurrence { minutely }
 
   def perform
-    Subscriber.all.each do |subscriber|
-      ModelMailer.digest_email(subscriber).deliver
+    sub_list = Subscriber.all
+    sub_list.each do |subscriber|
+      if subscriber.email.nil?
+      next
+      else
+        SubscriberMailer.digest_email(subscriber).deliver
+      end
     end
   end
 
 end
+

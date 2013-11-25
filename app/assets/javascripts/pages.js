@@ -1,9 +1,5 @@
 $( document ).ready(function() {
-  // $("#nav").mmenu({
-  //  header      : true,
-  //  searchfield : true,
-  //  counters    : true
-  // });
+
 
 
     $("#about").click(function(){

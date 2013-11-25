@@ -25,6 +25,7 @@
           <tr>
             <th>Semester</th>
             <th>Name</th>
+            <th>Published Posts</th>
           </tr>
         </thead>
         <tbody>
@@ -32,6 +33,7 @@
           <tr>
             <td><%= blogger.semester %> </td>
             <td><%= blogger.name %></td>
+            <td><%= blogger.published_entries%> / <%= blogger.entries.count%></td>
           </tr>
           <% end %>
         </tbody>
@@ -52,7 +54,7 @@
       <% if entry.added? == false %>
         <button type="button" class="btn btn-success publish" data-entry-slug="<%= entry.slug %>">Publish</button>
       <% elsif entry.added? == true %>
-        <button type="button" class="btn btn-warning">Published!</button>
+        <button type="button" class="btn btn-warning">Published</button>
       <% end %>
       <br/>
       Add Tags: 

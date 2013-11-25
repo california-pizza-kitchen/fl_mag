@@ -7,15 +7,14 @@
   <%= csrf_meta_tags %>
 </head>
   <body>
-    <h1 id="large_side">FLATIRON</h1>
     <div class="wrapper">
-    <%= render 'layouts/header' %>
-    <div class="container">
-      <br>
+      <%= render 'layouts/header' %>
+      <div class="container"><br>
       <%= yield %>
       </div>
     </div>
     <%= render 'layouts/footer' %>
     <%= render 'partials/modal' %>
+    <%= render 'partials/subscribe' %>
   </body>
 </html>

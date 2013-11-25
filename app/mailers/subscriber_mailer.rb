@@ -7,8 +7,8 @@ class SubscriberMailer < ActionMailer::Base
   end
 
   def digest_email(subscriber)
-    @new_entries = Entry.find(:all, :order => "mag_published desc", :limit => 5)
     @subscriber = subscriber
+    @new_entries = Entry.find(:all, :order => "mag_published desc", :limit => 5)
     mail to: subscriber.email, :subject => "Flatiron Magazine: Weekly Update"
   end
 
