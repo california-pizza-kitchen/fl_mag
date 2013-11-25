@@ -52,6 +52,24 @@ class Entry < ActiveRecord::Base
     end
   end
 
+  def keyword_filter(keyword)
+    skips = ["&", "<", ">", "quo", "p", "code", "project", "=", "[", "]", "\"", " ", "'"]
+    return true if skips.collect do |skip|
+      keyword.include?(skip)
+    end.uniq.include?(true)
+  end
+
+  def keywords
+    # acts_as_taggable_on
+    skippables = ["&rsquo", "<", ">", "ldquo", "code", "project"]
+    extractor = Phrasie::Extractor.new
+    rough_tags = extractor.phrases(self.content, strength: 2, occur: 5)
+    rough_tags.collect do |tag|
+      next if keyword_filter(tag[0])
+      tag[0]
+    end.reject(&:nil?)
+  end
+
   def self.sort_by_date_published(collection)
     collection.sort_by{|entry| entry.published}.reverse
   end
