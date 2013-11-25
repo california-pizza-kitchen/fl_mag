@@ -23,17 +23,7 @@ class Entry < ActiveRecord::Base
   end
 
   def safe_html(html)
-    Sanitize.clean(html,
-      {:remove_contents => true}
-      #:elements => %w[
-      #   a abbr b blockquote br cite code dd dfn dl dt em i kbd mark ol p pre
-      #   q s figcaption table samp small strike strong sub sup time u var td tr div figure span
-      # ],
-      # :attributes => {
-      #   :all => ['class']
-      # }
-      )
-
+    Sanitize.clean(html, {:remove_contents => true})
   end
 
   def summarize
@@ -79,5 +69,11 @@ class Entry < ActiveRecord::Base
     self.where(:added? => true).sort_by{ |entry| entry.mag_published }
   end
 
+  def self.collect_by_tag(tag_id)
+    tags = EntriesTag.where(:tag_id => tag_id, :visible => true)
+    tags.collect do |tag|
+      Entry.find(tag.entry_id)
+    end
+  end
 
 end

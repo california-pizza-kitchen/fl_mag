@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131125171919) do
+ActiveRecord::Schema.define(version: 20131125202213) do
 
   create_table "bloggers", force: true do |t|
     t.string   "name"
@@ -59,6 +59,8 @@ ActiveRecord::Schema.define(version: 20131125171919) do
 
   create_table "tags", force: true do |t|
     t.string "word"
+    t.string "slug"
+    t.string "display_word"
   end
 
   create_table "users", force: true do |t|

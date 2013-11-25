@@ -26,6 +26,11 @@ class UsersController < ApplicationController
     end
   end
 
+  def tags
+    @tags = Tag.all
+    @tag = Tag.new
+  end
+
   private
 
   def set_user

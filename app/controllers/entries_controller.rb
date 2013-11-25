@@ -6,6 +6,7 @@ class EntriesController < ApplicationController
     @blogger = Blogger.find_by(:slug => params[:blogger_slug])
   end
 
+
   def publish
     @entry = Entry.find_by(:slug => params[:slug])
     @entry.update(:added? => true, :mag_published => Time.now)

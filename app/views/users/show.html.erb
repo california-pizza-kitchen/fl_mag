@@ -63,9 +63,9 @@
       <% entry.entries_tags.each do |entry_tag| %>
 
         <% if entry_tag.visible == false %>
-          <button type="button" class="btn btn-success tag" data-entry-id="<%= entry.id %>" data-entry-tag-id="<%= entry_tag.tag.id %>"><%= entry_tag.tag.word %></button>
+          <button type="button" class="btn btn-success tag" data-entry-id="<%= entry.id %>" data-entry-tag-id="<%= entry_tag.tag.id %>"><%= entry_tag.tag.display_word_or_word %></button>
         <% elsif entry_tag.visible == true %>
-            <button type="button" class="btn btn-warning tag" data-entry-id="<%= entry.id %>" data-entry-tag-id="<%= entry_tag.tag.id %>"><%= entry_tag.tag.word %></button>
+            <button type="button" class="btn btn-warning tag" data-entry-id="<%= entry.id %>" data-entry-tag-id="<%= entry_tag.tag.id %>"><%= entry_tag.tag.display_word_or_word %></button>
         <% end %>
       <% end %>
       

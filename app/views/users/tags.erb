@@ -1,0 +1,9 @@
+
+<% if @tags %>
+  <% @tags.each do |tag| %>
+    <%= tag.word %> : <a href="/tags/<%= tag.id %>/edit">edit tag name</a><br />
+  <% end %>
+
+<% else %>
+  No tags to edit!
+<% end %>
