@@ -25,6 +25,7 @@ gem 'capybara'
 gem 'nokogiri'
 gem 'bootstrap-sass', '~> 3.0.2.0'
 gem 'sanitize'
+gem "figaro"
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.

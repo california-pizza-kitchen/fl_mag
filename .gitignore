@@ -22,3 +22,5 @@
  *.DS_Store
   app_builder_live_test/*/
  +dump.rdb
+# Ignore application configuration
+/config/application.yml

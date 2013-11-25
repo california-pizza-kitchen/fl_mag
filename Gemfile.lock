@@ -60,6 +60,9 @@ GEM
       loofah (~> 1.2.1)
       nokogiri (~> 1.6.0)
       sax-machine (~> 0.2.1)
+    figaro (0.7.0)
+      bundler (~> 1.0)
+      rails (>= 3, < 5)
     hike (1.2.3)
     i18n (0.6.5)
     ice_cube (0.11.1)
@@ -191,6 +194,7 @@ DEPENDENCIES
   capybara
   coffee-rails (~> 4.0.0)
   feedzirra
+  figaro
   jbuilder (~> 1.2)
   jquery-rails
   nokogiri
