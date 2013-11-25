@@ -24,10 +24,13 @@ BlogAggregator::Application.routes.draw do
 
 
   get '/feeds/create_all' => 'feeds#create_all'
+  get '/feeds/tag/:tag_slug' => 'feeds#index_by_tag'
 
   get '/users/dashboard' => 'users#show'
+  get '/users/:id/tags' => 'users#tags'
 
-
+  get '/tags/:id/edit' => 'tags#edit'
+  post '/tags/:id/update' => 'tags#update'
 
   root 'pages#home'
 

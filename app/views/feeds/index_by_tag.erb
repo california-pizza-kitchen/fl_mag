@@ -1,0 +1,39 @@
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-md-8">
+      <h2 style="color:#95a5a6">Featured Posts</h2>
+      <hr>
+      <% @entries.reverse_each do |entry| %>
+      <a href="/bloggers/<%= entry.author_slug %>/entries/<%= entry.slug %>">
+        <h1 style="color:black"><%= entry.title.capitalize %></h1>
+      </a>
+      <h4>
+        <a href="/bloggers/<%= entry.author_slug %>">
+          <span style="color:#e74c3c"><%= entry.author_name %></span>
+        </a>
+        <small style="color:#95a5a6">Originally published <%= time_ago_in_words(entry.published)%> ago <a href="<%= entry.url %>" target="blank">here</a></small><br />
+      </h4>
+      <%= entry.summarize.html_safe if entry.summarize %>
+      <a href="/bloggers/<%= entry.author_slug %>/entries/<%= entry.slug %>">...read more</a>
+      <hr>
+      <% end %>
+    <br>
+    </div>
+
+  <div class="col-xs-6 col-md-4" style="border-left:solid 1px #ecf0f1; height:90%">
+    <h2 style="color:#95a5a6"><small>Also Read</small></h2>
+    <hr>
+    <% @entries.reverse_each do |entry| %>
+    <a href="/bloggers/<%= entry.author_slug %>/entries/<%= entry.slug %>">
+      <h4 style="color:#95a5a6"><%= entry.title.capitalize %></h4>
+    </a>
+   
+    <h6>
+      <a href="/bloggers/<%= entry.author_slug %>">
+        <span style="color:#e74c3c"><%= entry.author_name %></span>
+      </a>
+    </h6>
+     <small style="color:#95a5a6">Published <%= time_ago_in_words(entry.published)%> ago</small>
+     <hr>
+    <% end %>
+    </div>
+  </div>

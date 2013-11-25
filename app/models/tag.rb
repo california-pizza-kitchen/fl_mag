@@ -1,15 +1,14 @@
 class Tag < ActiveRecord::Base
   has_many :entries_tags
 
+  before_save :slugify!
 
-=begin
-a new column in tags table "display name" 
-- editable by admin in simple crud page
-- if tag has display name, use is,
-  otherwise display the name it came with
+  def slugify!
+    self.slug = self.word.downcase.gsub(/[\W,\s]/,'-')
+  end
 
-- allow for an admin to create tags
-  - dropdown list to add a tag
+  def display_word_or_word
+    self.display_word != nil ? self.display_word : self.word
+  end
 
-=end
 end
