@@ -1,11 +1,9 @@
-Flatiron Weekly
-
 Hi, <%= @subscriber.first_name %>
 
 This week's issue of the Flatiron Magazine is here.
 
     <% @new_entries.each do |entry| %>
-    <%= entry.title %> written by <%= entry.author_name %>
+  <%= entry.title %> written by <%= entry.author_name %>
     www.magazine.flatironschool.com/<%= entry.slug %>
 
     <% end %>

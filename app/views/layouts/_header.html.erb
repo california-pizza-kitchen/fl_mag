@@ -14,13 +14,12 @@
     <ul class="nav navbar-nav pull-right">
         <li><a href="/feeds">Magazine</a></li>
         <% if logged_in? %>
-        <li><a href="/bloggers">Authors</a></li>
+        <li class="hover"><a href="/bloggers">Authors</a></li>
         <li><a href="/users/dashboard">Dashboard</a></li>
         <li><a href="/logout"><span class="glyphicon glyphicon-remove" alt=""></span></a></li>
         <% else %>
         <li><a href="#subscribe" data-toggle="modal">Subscribe</a></li>
         <li><a id="about">About</a></li>
-        <li><a href="#login" data-toggle="modal">Login</a></li>
         <% end %>
     </ul>
   </div> 

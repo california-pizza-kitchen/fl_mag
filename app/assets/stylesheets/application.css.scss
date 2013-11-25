@@ -21,7 +21,10 @@ html, body {
 
 a:hover {
     text-decoration: none !important;
+}
 
+.row a:hover{
+    color:#7f8c8d !important;
 }
 
 .navbar-nav li a:hover {
@@ -39,8 +42,10 @@ a:hover {
     color: #999;
 }
 
+
+
 #footer .school a:hover {
-    color: #3498db;
+    color: #3498db !important;
     text-decoration: none;
 }
 
