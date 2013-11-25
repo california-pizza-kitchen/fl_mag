@@ -8,7 +8,7 @@ class TagsController < ApplicationController
   def update
     @tag = Tag.find_by(:id => params[:id])
     @tag.update(tag_params)
-    redirect_to '/users/dashboard'
+    redirect_to '/users/1/tags'
   end
 
   private

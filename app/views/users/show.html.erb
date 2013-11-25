@@ -70,7 +70,7 @@
             <button type="button" class="btn btn-warning tag" data-entry-id="<%= entry.id %>" data-entry-tag-id="<%= entry_tag.tag.id %>"><%= entry_tag.tag.display_word_or_word %></button>
         <% end %>
       <% end %>
-      
+      <a href="/users/<%= current_user.id %>/tags">edit tags</a>
       <hr>
       <%= entry.summarize.html_safe if entry.summarize %>
       <a href="/bloggers/<%= entry.author_slug %>/entries/<%= entry.slug %>">...read more</a>

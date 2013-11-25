@@ -11,4 +11,14 @@ class Tag < ActiveRecord::Base
     self.display_word != nil ? self.display_word : self.word
   end
 
+  def self.alphabetized
+    self.all.sort_by do |tag| 
+      if tag.display_word
+        tag.display_word
+      else
+        tag.word
+      end
+    end
+  end
+
 end
