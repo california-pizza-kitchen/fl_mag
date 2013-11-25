@@ -13,6 +13,15 @@
         </a>
         <small style="color:#95a5a6">Originally published <%= time_ago_in_words(entry.published)%> ago <a href="<%= entry.url %>" target="blank">here</a></small><br />
       </h4>
+
+
+      <% entry.tags_added.each do |tag| %>
+        <a href="/feeds/tag/<%= tag.slug %>"><button type="button" class="btn btn-success"><%= tag.display_word_or_word %></button></a>
+      <% end %>
+      <br />
+
+
+
       <%= entry.summarize.html_safe if entry.summarize %>
       <a href="/bloggers/<%= entry.author_slug %>/entries/<%= entry.slug %>">...read more</a>
       <hr>
