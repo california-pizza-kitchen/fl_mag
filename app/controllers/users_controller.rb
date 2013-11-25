@@ -6,7 +6,7 @@ class UsersController < ApplicationController
     @user = User.first
     @blogger = Blogger.new
     @bloggers = Blogger.all
-    @entries = Entry.sort_by_date_published(Entry.all)[0..20]
+    @entries = Entry.sort_by_date_published(Entry.all)
   end
 
   def new
@@ -27,8 +27,7 @@ class UsersController < ApplicationController
   end
 
   def tags
-    @tags = Tag.all
-    @tag = Tag.new
+    @tags = Tag.alphabetized
   end
 
   private

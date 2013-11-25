@@ -6,7 +6,7 @@ class FeedsController < ApplicationController
 
   def index_by_tag
     @tag = Tag.find_by(:slug => params[:tag_slug])
-    @entries = Entry.sort_by_date_published(Entry.collect_by_tag(@tag.id))
+    @entries = Entry.collect_by_tag(@tag.id).flatten
   end
 
   def create
