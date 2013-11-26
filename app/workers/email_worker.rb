@@ -14,5 +14,5 @@ class EmailWorker
       end
     end
   end
-end
 
+end
