@@ -1,9 +1,16 @@
 
 <% if @tags %>
   <% @tags.each do |tag| %>
-    <%= tag.display_word == nil ? tag.word : tag.display_word %> : <a href="/tags/<%= tag.id %>/edit">
+  <% next if tag.ignore == true %>
+    <%= tag.display_word == nil ? tag.word : tag.display_word %> : 
+    <a href="/tags/<%= tag.id %>/edit">
       edit tag name
-    </a> : <a href="/tags/<%= tag.id %>/ignore">ignore this word</a><br />
+    </a> : 
+
+    <a href="/tags/<%= tag.id %>/ignore">
+      ignore this tag
+    </a>
+    <br />
 
   <% end %>
 

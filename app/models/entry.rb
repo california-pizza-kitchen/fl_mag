@@ -49,21 +49,31 @@ class Entry < ActiveRecord::Base
   end
 
   def tag_filter(keyword)
-    skips = ["&", "<", ">", "quo", "p", "code", "project", "=", "[", "]", "\"", " ", "'", "li", "ul", "td", "tr", "da", "href", ":", ",", "h", "o"]
+    skips = ["the", "a", "an", "it", "&", "way", "<", ">", "quo", "p", "code", "project", "=", "[", "]", "\"", " ", "'", "li", "ul", "td", "tr", "da", "href", ":", ",", "h", "o"]
     return true if skips.collect do |skip|
       keyword.downcase.include?(skip)
     end.uniq.include?(true)
   end
 
+# skip.match(/[^a-zA-Z]/).nil?
+
   def get_tags
-    # acts_as_taggable_on?
-    # skippables = ["&rsquo", "<", ">", "ldquo", "code", "project"]
     extractor = Phrasie::Extractor.new
-    rough_tags = extractor.phrases(self.content, strength: 2, occur: 5)
+    rough_tags = extractor.phrases(self.content, strength: 3, occur: 2)
     rough_tags.each do |tag|
       next if tag_filter(tag[0])
-      tag = Tag.find_or_create_by(:word => tag[0].pluralize.downcase)
-      EntriesTag.create(:entry_id => self.id, :tag_id => tag.id)
+      tag = Tag.find_or_create_by(:word => tag[0].downcase)
+      EntriesTag.create(:entry_id => self.id, :tag_id => tag.id) if tag.ignore != nil && tag.ignore != true
+    end
+    self.get_title_tags if self.title != nil
+  end
+
+  def get_title_tags
+    rough_tags = self.title.split(" ")
+    rough_tags.each do |tag|
+      next if tag_filter(tag)
+      tag = Tag.find_or_create_by(:word => tag.downcase) 
+      EntriesTag.create(:entry_id => self.id, :tag_id => tag.id) if tag.ignore != nil && tag.ignore != true
     end
   end
 

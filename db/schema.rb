@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131125202213) do
+ActiveRecord::Schema.define(version: 20131126145207) do
 
   create_table "bloggers", force: true do |t|
     t.string   "name"
@@ -58,9 +58,10 @@ ActiveRecord::Schema.define(version: 20131125202213) do
   end
 
   create_table "tags", force: true do |t|
-    t.string "word"
-    t.string "slug"
-    t.string "display_word"
+    t.string  "word"
+    t.string  "slug"
+    t.string  "display_word"
+    t.boolean "ignore",       default: false
   end
 
   create_table "users", force: true do |t|

@@ -27,6 +27,7 @@ gem 'bootstrap-sass', '~> 3.0.2.0'
 gem 'sanitize'
 gem "figaro"
 gem 'phrasie'
+gem 'will_paginate', '~> 3.0'
 
 
 group :doc do
