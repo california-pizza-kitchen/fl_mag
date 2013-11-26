@@ -7,7 +7,7 @@ BlogAggregator::Application.routes.draw do
     resources :feeds, param: :slug
   end
 
-  get '/subscribers/unsubscribe/:signature' => 'subscribers#unsubscribe', as: 'unsubscribe'
+  get '/unsubscribe/:signature' => 'subscribers#unsubscribe'
 
   post '/subscribe' => 'subscribers#create'
   post '/unsubscribe' => 'subscribers#destroy'
