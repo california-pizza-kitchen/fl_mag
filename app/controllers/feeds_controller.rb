@@ -1,7 +1,7 @@
 class FeedsController < ApplicationController
   
   def index
-    @entries = Entry.sort_by_date_published(Entry.featured_entries)
+    @entries = Entry.sort_by_date_published(Entry.featured_entries)[0..19]
   end
 
   def index_by_tag
