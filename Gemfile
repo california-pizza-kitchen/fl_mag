@@ -18,6 +18,8 @@ gem 'sidekiq'
 gem 'sidetiq', '0.4.0'
 gem 'feedzirra'
 gem 'anjlab-bootstrap-rails', '>= 3.0.0.0', :require => 'bootstrap-rails'
+gem 'twitter'
+
 #gem 'better_errors'
 #gem 'binding_of_caller'
 gem 'pry'
