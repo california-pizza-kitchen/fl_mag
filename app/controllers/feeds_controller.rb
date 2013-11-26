@@ -1,16 +1,16 @@
 class FeedsController < ApplicationController
   
   def index
-    # binding.pry
-    @entries = Entry.sort_by_date_published(Entry.featured_entries)
+    @entries = Entry.sort_by_date_published(Entry.featured_entries)[0..19]
+  end
+
+  def index_by_tag
+    @tag = Tag.find_by(:slug => params[:tag_slug])
+    @entries = Entry.collect_by_tag(@tag.id).flatten
   end
 
   def create
     new_feed = Feed.fetch
-  end
-
-  def update_all
-    # where the sidetiq job is run?
   end
 
   def show

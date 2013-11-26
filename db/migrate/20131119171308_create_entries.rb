@@ -7,6 +7,8 @@ class CreateEntries < ActiveRecord::Migration
       t.text :summary
       t.text :content
       t.datetime :published
+      t.datetime :mag_published
+
     end
   end
 end

@@ -23,7 +23,7 @@
       <table class="table">
         <thead>
           <tr>
-            <th>Semester</th>
+            <th class="semester">Semester</th>
             <th>Name</th>
           </tr>
         </thead>
@@ -44,13 +44,14 @@
 <hr>
   <div class="recent-posts">
     <% @entries.each do |entry| %>
-
-      <a href="/bloggers/<%= entry.author_slug %>/entries/<%= entry.slug %>">
+    <div class="entry" >
+      <a class="blogpost_url" href="/bloggers/<%= entry.author_slug %>/entries/<%= entry.slug %>">
           <h1><%= entry.title %></h1>
       </a>
       <a href="#"><h4><%= entry.author_name %></h4></a>
       <% if entry.added? == false %>
         <button type="button" class="btn btn-success publish" data-entry-slug="<%= entry.slug %>">Publish</button>
+        <button type="button" class="btn btn-success tweet" data-entry-slug="<%= entry.slug %>">Tweet</button>
       <% elsif entry.added? == true %>
         <button type="button" class="btn btn-warning">Published!</button>
       <% end %>
@@ -60,6 +61,7 @@
       <a href="/bloggers/<%= entry.author_slug %>/entries/<%= entry.slug %>">...read more</a>
       <hr>
       <br>
+     </div> 
     <% end %>
   </div>
 

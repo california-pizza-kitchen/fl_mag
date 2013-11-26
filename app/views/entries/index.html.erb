@@ -1,4 +1,4 @@
-
+<%= render 'partials/watermarks' %>
 
 <% @bloggers.each do |blogger| %>
   <a href="#"><h1><%= blogger.name %></h1></a>
@@ -7,3 +7,5 @@
   <%= entry.content.to_s.html_safe %>
   <hr>
 <% end %>
+<br>
+<br>

@@ -1,6 +1,8 @@
 $(document).ready(function(){
 
-  $(".publish").click(function(){
+  $("body").on("click", ".publish", function(event){
+    event.preventDefault();
+
     var entry_slug_data = {
       slug: $(this).data("entry-slug")
     }
@@ -13,17 +15,44 @@ $(document).ready(function(){
 
   });
 
-
   $(".tweet").click(function(){
-    var entry_slug_data = {
-      slug: $(this).data("entry-slug")
-    }
+   	var title = '"'+$(this).parent(".entry").find("h1").text()+'"'; 
+   	var semester = $(".semester").text(); 
+   	// var student 
+   	// var twitter_handle
+   	var blogpost_url = "http://"+window.location.host+""+ $(this).parent(".entry").find(".blogpost_url").attr("href"); 
+   	var tweet_string = title+ " guest post by " + semester + " twitter_handle "+ blogpost_url; 
+   	var data = { tweet: tweet_string };  
 
-    $.post('/entries/tweet', entry_slug_data, function(){});
+   	//console.log(data);
 
-    $(this).removeClass("btn-success");
-    $(this).addClass("btn-warning");
-    $(this).text("Tweeted!");
+   	$('.tweet_msg').text(tweet_string);
+
+   	//show modal
+   	$('#tweet').modal({
+   		show: true
+   	});
+
+  	$('form').submit(function(event) {
+
+   			//console.log(data);
+
+   			$.post('/users/tweet', data, function(return_data){
+
+   				//$('#tweet').modal('hide');
+   				console.log(return_data);
+   			});
+
+   			event.preventDefault();
+
+   		}); //end form submit
+
+    // $.post('/entries/tweet', entry_slug_data, function(){});
+
+    // $(this).removeClass("btn-success");
+    // $(this).addClass("btn-warning");
+    // $(this).text("Tweeted!");
+
 
   });
 });

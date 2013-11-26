@@ -13,9 +13,6 @@
  *= require_tree .
  */
 
-$navbar-inverse-link-hover-color: #95a5a6; 
-$body-bg:red;
-
 @import "twitter/bootstrap";
 
 html, body {
@@ -23,7 +20,16 @@ html, body {
 }
 
 a:hover {
+    text-decoration: none !important;
+}
+
+.row a:hover{
+    color:#7f8c8d !important;
+}
+
+.navbar-nav li a:hover {
     text-decoration: none;
+    color:#7f8c8d !important; 
 }
 
 #footer {
@@ -36,8 +42,10 @@ a:hover {
     color: #999;
 }
 
+
+
 #footer .school a:hover {
-    color: #3498db;
+    color: #3498db !important;
     text-decoration: none;
 }
 

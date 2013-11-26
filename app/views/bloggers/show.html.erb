@@ -1,11 +1,13 @@
-
+<%= render 'partials/watermarks' %>
 
 <h1><%= @blogger.name %></h1>
 Semester: <span class="label label-info"><%= @blogger.semester %></span><br>
-Posts: <span class="badge badge-inverse"> <%= @blogger.entries.count%></span>
+Posts: <span class="badge badge-inverse"> <%= @blogger.entries.count%></span><br>
+<span class="label"><a href="<%= @blogger.feed_url %>"><%= @blogger.feed_url %></a></span><br>
 <hr>
 
-<% @blogger.entries.each do |entry| %>
+<%= will_paginate @entries %>
+<% @entries.each do |entry| %>
   <h3><%= entry.title %></h3>
   <p><%= entry.published.to_s %></p>
   <%= entry.summarize.html_safe if entry.summarize %>

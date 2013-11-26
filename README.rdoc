@@ -1,28 +1,33 @@
-== README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Three Servers:
+-----
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+- unicorn
+- redis-server
+- bundle exec sidekiq
+
+-----
+
+- checkout branch for feature work
+- merge to local master when finished
+- pull from here
+  - address any merge conflicts locally
+- push master to here
+
+
+
+  THINGS TO DO:
+
+
+    - controller tests
+    - feature tests
+    - validate form data
+
+    - text or email digest (subscriptions)
+      - subscriptions table in db
+      - sidekiq + sidetiq job to email weekly
+      - html + css styled email (personalized -- hello <name>!)
+
+
+    - Adam and Kelley features
+    - twitter tweet

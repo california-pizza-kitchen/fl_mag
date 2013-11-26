@@ -1,0 +1,19 @@
+Hi, <%= @subscriber.first_name %>
+
+This week's issue of the Flatiron Magazine is here.
+
+    <% @new_entries.each do |entry| %>
+  <%= entry.title %> written by <%= entry.author_name %>
+    www.magazine.flatironschool.com/<%= entry.slug %>
+
+    <% end %>
+
+- Flatiron School
+http://flatironschool.com/
+
+
+
+unsubscribe:
+<%= link_to "Unsubscribe", unsubscribe_url(@subscriber.access_token) %>
+
+

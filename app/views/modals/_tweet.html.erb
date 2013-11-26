@@ -1,0 +1,18 @@
+<div class="modal fade" id="tweet" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4>Confirm Tweet</h4>
+        <div class="modal-body" >
+          <%= form_tag("/users/tweet", method: "post") do %>
+            <div class="form-group tweet_msg"></div>
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-success">Tweet</button>
+              <button class="btn btn-default" data-dismiss="modal">Close</a>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

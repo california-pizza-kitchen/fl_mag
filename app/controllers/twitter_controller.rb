@@ -1,33 +1,19 @@
 class TwitterController < ApplicationController
 
+	def tweet
+	 	message = params[:tweet]
+	 	TwitterClient.update(message)
+	 	json_message = {json_message: message }
+	 	render :json => json_message
+	end
 
-def tweet
- 	TwitterClient = Twitter::REST::Client.new
- 	TwitterClient.update(Blogger.name )
-
-end 
- 
-
-end 
-
-author is Blogger.name 
-title is Entry.title
-url is 
- 
-
-#try to jsut tweet the user.name
-
-#author
-#title 
-#url of article 
-#twitter handle of what you are publishing
-
-# q, in your last example with foursquare, what are the values that you kept &
-# what are the values that you interpolated?
-# -- try each of these with update
-# -- see if you can get the tweet 
+end
 
 
-# to update the tweet
-# 	TwitterClient = Twitter::REST::Client.new
-# 	ready_tweet = TwitterClient.("Guest post by" "{}" "#{title}" "{#{author_slug}" "{ }") 
+# #button on one of the views (click to tweet)
+# #button go to a route
+# #config/routes (to handle the request)
+# #point it towards twitter and the tweet method
+# #form has to have a hidden form field 
+
+# modal, partial that you can use (render modal the id you want. hidden in application controller)

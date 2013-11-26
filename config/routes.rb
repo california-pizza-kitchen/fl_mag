@@ -7,6 +7,10 @@ BlogAggregator::Application.routes.draw do
     resources :feeds, param: :slug
   end
 
+  get '/subscribers/unsubscribe/:signature' => 'subscribers#unsubscribe', as: 'unsubscribe'
+
+  post '/subscribe' => 'subscribers#create'
+  post '/unsubscribe' => 'subscribers#destroy'
 
   get  '/register' => 'users#new'
   post '/register' => 'users#create'
@@ -17,15 +21,20 @@ BlogAggregator::Application.routes.draw do
   post '/sessions' => 'sessions#create'
 
   get '/entries/:slug/update' => 'entries#update'
-
   post '/entries/publish' => 'entries#publish'
+  post '/entries/tag' => 'entries#tag'
 
 
   get '/feeds/create_all' => 'feeds#create_all'
+  get '/feeds/tag/:tag_slug' => 'feeds#index_by_tag'
 
+  post '/users/tweet' => 'twitter#tweet'
   get '/users/dashboard' => 'users#show'
+  get '/users/:id/tags' => 'users#tags'
 
-
+  get '/tags/:id/edit' => 'tags#edit'
+  post '/tags/:id/update' => 'tags#update'
+  get '/tags/:id/ignore' => 'tags#ignore'
 
   root 'pages#home'
 

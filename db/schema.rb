@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131120234134) do
+ActiveRecord::Schema.define(version: 20131126150522) do
 
   create_table "bloggers", force: true do |t|
     t.string   "name"
@@ -29,9 +29,16 @@ ActiveRecord::Schema.define(version: 20131120234134) do
     t.text     "summary"
     t.text     "content"
     t.datetime "published"
+    t.datetime "mag_published"
     t.integer  "feed_id"
-    t.boolean  "added?",    default: false
+    t.boolean  "added?",        default: false
     t.string   "slug"
+  end
+
+  create_table "entries_tags", force: true do |t|
+    t.integer "entry_id"
+    t.integer "tag_id"
+    t.boolean "visible",  default: false
   end
 
   create_table "feeds", force: true do |t|
@@ -39,6 +46,23 @@ ActiveRecord::Schema.define(version: 20131120234134) do
     t.string  "feed_xml"
     t.time    "last_modified"
     t.integer "etag"
+  end
+
+  create_table "subscribers", force: true do |t|
+    t.string   "email"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.boolean  "prospect?",  default: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean  "opt_in?",    default: true
+  end
+
+  create_table "tags", force: true do |t|
+    t.string  "word"
+    t.string  "slug"
+    t.string  "display_word"
+    t.boolean "ignore",       default: false
   end
 
   create_table "users", force: true do |t|

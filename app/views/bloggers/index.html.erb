@@ -7,11 +7,12 @@
 <a href="/bloggers/<%=blogger.slug %>">
   <h3><%= blogger.name %>  <small>Semester: <%= blogger.semester %></small></h3>
 </a>
-Published: <span class="label label-warning"><%= blogger.published_entries%></span>
+Published: <span class="label label-warning"><%= blogger.published_entries%></span><br>
 Posts:   <span class="label label-success"><%= blogger.entries.count%></span>
 <hr>
-
 <% end %>
+<br>
+<br>
 
 
 
