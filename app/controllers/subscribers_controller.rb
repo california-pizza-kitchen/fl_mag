@@ -8,8 +8,17 @@ class SubscribersController < ApplicationController
     @subscriber.update(:prospect? => true) if params[:prospect?]
     if @subscriber.save
       SubscriberMailer.new_record_notification(@subscriber).deliver
-      flash[:notice] = 'Thank you for subscribing'
+      flash[:"alert-success"] = 'Thank you for subscribing'
       redirect_to '/feeds'
+    end
+  end
+
+  def unsubscribe
+    if subscriber = Subscriber.read_access_token(params[:signature])
+      subscriber.update_attribute :email_opt_in, false
+      render :text => "You have been unsubscribed"
+    else
+      render :text => "Invalid Unsubscribe link" 
     end
   end
 

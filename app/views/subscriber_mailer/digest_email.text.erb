@@ -14,6 +14,6 @@ http://flatironschool.com/
 
 
 unsubscribe:
-www.magazine.flatironschool.com/unsubscribe/<%= @subscriber.email %>
+<%= link_to "Unsubscribe", unsubscribe_url(@subscriber.access_token) %>
 
 

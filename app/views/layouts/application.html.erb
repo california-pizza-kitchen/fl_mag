@@ -10,11 +10,14 @@
     <div class="wrapper">
       <%= render 'layouts/header' %>
       <div class="container"><br>
-      <%= yield %>
+        <%= render 'partials/alerts'  %>
+        
+        <%= yield %>
+      
       </div>
     </div>
     <%= render 'layouts/footer' %>
-    <%= render 'partials/modal' %>
-    <%= render 'partials/subscribe' %>
+    <%= render 'modals/login' %>
+    <%= render 'modals/subscribe' %>
   </body>
 </html>

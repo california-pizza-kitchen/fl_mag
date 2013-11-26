@@ -32,7 +32,7 @@
           <% @bloggers.each do |blogger|  %>
           <tr>
             <td><%= blogger.semester %> </td>
-            <td><%= blogger.name %></td>
+            <td><a href="/bloggers/<%=blogger.slug %>"><%= blogger.name %></a></td>
             <td><%= blogger.published_entries%> / <%= blogger.entries.count%></td>
           </tr>
           <% end %>
