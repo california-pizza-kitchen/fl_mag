@@ -16,4 +16,3 @@ class EmailWorker
   end
 
 end
-
