@@ -6,8 +6,14 @@ class TagsController < ApplicationController
   end
 
   def update
-    @tag = Tag.find_by(:id => params[:id])
+    @tag = Tag.find(params[:id])
     @tag.update(tag_params)
+    redirect_to '/users/1/tags'
+  end
+
+  def ignore
+    @tag = Tag.find(params[:id])
+    @tag.update(:ignore => true)
     redirect_to '/users/1/tags'
   end
 

@@ -33,6 +33,7 @@ BlogAggregator::Application.routes.draw do
 
   get '/tags/:id/edit' => 'tags#edit'
   post '/tags/:id/update' => 'tags#update'
+  get '/tags/:id/ignore' => 'tags#ignore'
 
   root 'pages#home'
 

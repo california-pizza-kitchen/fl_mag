@@ -60,9 +60,10 @@ ActiveRecord::Schema.define(version: 20131126182714) do
   end
 
   create_table "tags", force: true do |t|
-    t.string "word"
-    t.string "slug"
-    t.string "display_word"
+    t.string  "word"
+    t.string  "slug"
+    t.string  "display_word"
+    t.boolean "ignore",       default: false
   end
 
   create_table "users", force: true do |t|
