@@ -78,7 +78,7 @@ class Entry < ActiveRecord::Base
   end
 
   def self.sort_by_date_published(collection)
-    collection.sort_by{|entry| entry.published}.reverse
+    collection.sort_by{|entry| entry.published}
   end
 
   def self.featured_entries
