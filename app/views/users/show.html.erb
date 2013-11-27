@@ -23,16 +23,20 @@
       <table class="table">
         <thead>
           <tr>
-            <th class="semester">Semester</th>
+            <th>Semester</th>
             <th>Name</th>
+            <th>Twitter</th>
           </tr>
         </thead>
         <tbody>
           <% @bloggers.each do |blogger|  %>
           <tr>
-            <td><%= blogger.semester %> </td>
+            <div class="blogger">
+            <td class="semester"><%= blogger.semester %> </td>
             <td><%= blogger.name %></td>
+            <td class="twitter_handle"><%= blogger.twitter_handle %> </td>
           </tr>
+           </div>
           <% end %>
         </tbody>
       </table>
