@@ -12,4 +12,9 @@ class SubscriberMailer < ActionMailer::Base
     mail to: subscriber.email, :subject => "Flatiron Magazine: Weekly Update"
   end
 
+  def unsubscribe_confirmation(subscriber)
+    @subscriber = subscriber
+    mail to: subscriber.email, :subject => "Flatiron Magazine: Sorry to see you go"
+  end
+
 end

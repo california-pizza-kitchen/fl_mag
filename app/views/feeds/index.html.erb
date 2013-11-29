@@ -1,54 +1,57 @@
 <%= render 'partials/watermarks' %>
-  <div class="row">
-    <div class="col-xs-12 col-sm-6 col-md-8">
-      <h2 style="color:#95a5a6">Featured Posts</h2>
+<div class="full-content">
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-md-8">
+        <h2 style="color:#95a5a6">Featured Posts</h2>
+        <hr>
+        <% @entries.each do |entry| %>
+        <a href="/bloggers/<%= entry.author_slug %>/entries/<%= entry.slug %>">
+          <h1 style="color:black"><%= entry.title.capitalize %></h1>
+        </a>
+        <h4>
+          <a href="/bloggers/<%= entry.author_slug %>">
+            <span style="color:#e74c3c"><%= entry.author_name %></span>
+          </a>
+          <small style="color:#95a5a6">Originally published <%= time_ago_in_words(entry.published)%> ago <a href="<%= entry.url %>" target="blank">here</a></small><br />
+        </h4>
+
+        <%= entry.summarize.html_safe if entry.summarize %>
+        
+        <% entry.tags_added.each do |tag| %>
+          <a href="/feeds/tag/<%= tag.slug %>"><span class="label label-danger"><%= tag.display_word_or_word %></span></a>
+        <% end %>
+        <br><br>
+        <a href="/bloggers/<%= entry.author_slug %>/entries/<%= entry.slug %>">Read More</a>
+        <hr>
+        <% end %>
+        <br>
+      </div>
+
+    <div class="col-xs-6 col-md-4" style="border-left:solid 1px #ecf0f1; height:90%">
+      <h2 style="color:#95a5a6"><small>Also Read</small></h2>
       <hr>
-      <% @entries.reverse_each do |entry| %>
+      <% @entries.each do |entry| %>
       <a href="/bloggers/<%= entry.author_slug %>/entries/<%= entry.slug %>">
-        <h1 style="color:black"><%= entry.title.capitalize %></h1>
+        <h4 style="color:#95a5a6"><%= entry.title.capitalize %></h4>
       </a>
-      <h4>
+     
+      <h6>
         <a href="/bloggers/<%= entry.author_slug %>">
           <span style="color:#e74c3c"><%= entry.author_name %></span>
         </a>
-        <small style="color:#95a5a6">Originally published <%= time_ago_in_words(entry.published)%> ago <a href="<%= entry.url %>" target="blank">here</a></small><br />
-      </h4>
-
-      <%= entry.summarize.html_safe if entry.summarize %>
-      
-      <% entry.tags_added.each do |tag| %>
-        <a href="/feeds/tag/<%= tag.slug %>"><span class="label label-danger"><%= tag.display_word_or_word %></span></a>
+      </h6>
+       <small style="color:#95a5a6">Published <%= time_ago_in_words(entry.published)%> ago</small>
+       <hr>
       <% end %>
-      <br><br>
-      <a href="/bloggers/<%= entry.author_slug %>/entries/<%= entry.slug %>">Read More</a>
-      <hr>
-      <% end %>
-      <br>
+      </div>
     </div>
+    <br>
+</div>
+<div class="about-content jumbotron" style="display: none; background-color: rgba(0,0,0,0)">
+  <h1 id="jumbo-title">curated from current students and alumni.</h1>
+  <p id="jumbo-body">“when you don't create things, you become defined by your tastes rather than ability. your tastes only narrow & exclude people. so create.” ― Why The Lucky Stiff</p>
+</div>
 
-  <div class="col-xs-6 col-md-4" style="border-left:solid 1px #ecf0f1; height:90%">
-    <h2 style="color:#95a5a6"><small>Also Read</small></h2>
-    <hr>
-    <% @entries.reverse_each do |entry| %>
-    <a href="/bloggers/<%= entry.author_slug %>/entries/<%= entry.slug %>">
-      <h4 style="color:#95a5a6"><%= entry.title.capitalize %></h4>
-    </a>
-   
-    <h6>
-      <a href="/bloggers/<%= entry.author_slug %>">
-        <span style="color:#e74c3c"><%= entry.author_name %></span>
-      </a>
-    </h6>
-     <small style="color:#95a5a6">Published <%= time_ago_in_words(entry.published)%> ago</small>
-     <hr>
-    <% end %>
-    </div>
-  </div>
-  <br>
 <br>
-
-
-
-
 
 

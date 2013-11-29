@@ -7,7 +7,7 @@ class UsersController < ApplicationController
     @user = User.first
     @blogger = Blogger.new
     @bloggers = Blogger.all
-    @entries = Entry.page(params[:page]).per_page(10).order('mag_published ASC')
+    @entries = Entry.page(params[:page]).per_page(10).order('published DESC')
   end
 
   def index
