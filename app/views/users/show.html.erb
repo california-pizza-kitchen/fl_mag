@@ -29,14 +29,14 @@
           </tr>
         </thead>
         <tbody>
-          <% @bloggers.each do |blogger|  %>
-          <tr>
-            <div class="blogger">
-            <td class="semester"><%= blogger.semester %> </td>
-            <td><%= blogger.name %></td>
-            <td class="twitter_handle"><%= blogger.twitter_handle %> </td>
+          <div id="tweets">
+          <% @bloggers.each do |blogger| %>
+          <tr>         
+            <td id="semester"><%= blogger.semester %> </td>
+            <td id="name"><%= blogger.name %></td>
+            <td id="twitter_handle"><%= blogger.twitter_handle %> </td>
+            <div>
           </tr>
-           </div>
           <% end %>
         </tbody>
       </table>

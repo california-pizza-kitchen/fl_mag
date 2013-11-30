@@ -17,10 +17,9 @@ $(document).ready(function(){
 
   $(".tweet").click(function(){
    	var title = '"'+$(this).parent(".entry").find("h1").text()+'"'; 
-   	var semester = $(this).parent(".blogger").find(".semester").text(); 
-   	var twitter_handle = $(this).parent(".blogger").find(".twitter_handle").text(); 
+   	var twitter_handle = $("#twitter_handle").html(); 
    	var blogpost_url = "http://"+window.location.host+""+ $(this).parent(".entry").find(".blogpost_url").attr("href"); 
-   	var tweet_string = title+ "- Guest post by " + semester + twitter_handle + blogpost_url; 
+   	var tweet_string = title+ "- Guest post by student " + twitter_handle + blogpost_url; 
    	var data = { tweet: tweet_string };  
 
    	//console.log(data);
