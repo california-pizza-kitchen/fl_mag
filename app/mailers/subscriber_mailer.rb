@@ -18,3 +18,4 @@ class SubscriberMailer < ActionMailer::Base
   end
 
 end
+
