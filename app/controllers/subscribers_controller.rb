@@ -13,6 +13,9 @@ class SubscribersController < ApplicationController
       SubscriberMailer.new_record_notification(@subscriber).deliver
       flash[:"alert-success"] = 'Thank you for subscribing'
       redirect_to '/feeds'
+    else
+      flash[:"alert-danger"] = 'Invalid Email'
+      redirect_to '/feeds'
     end
   end
 
