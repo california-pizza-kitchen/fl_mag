@@ -19,7 +19,7 @@ $(document).ready(function(){
   // Tweet Character Counter
 
   var max_count = 117 //maximum count 140 char minus 22 char for url shortener
-
+  var allow_submit = false;
   $('#updated-tweet-data').focus(function(){
       $(document).keyup(function(){
           var blogpost_url = " http://"+window.location.host+""+ $(this).parent(".entry").find(".blogpost_url").attr("href"); 
@@ -31,7 +31,9 @@ $(document).ready(function(){
             $('#count').removeClass('red_text')
             .addClass('green_text')
             .text('remaining '+remaining_char);
+            allow_submit = true;
           } else {
+            allow_submit = false;
             $('#count').removeClass('green_text')
             .addClass('red_text')
             .text(remaining_char);
@@ -62,26 +64,14 @@ $(document).ready(function(){
 
   	$("#tweet-submit").click(function(event) {
 
-   			console.log(data);
-
         var data = { tweet: $("#updated-tweet-data").val()};
-
-   			$.post('/users/tweet', data, function(return_data){
-
-   				//$('#tweet').modal('hide');
-   				console.log(return_data);
-   			});
-
+        if (allow_submit === true){
+     			$.post('/users/tweet', data, function(return_data){
+     			});
+        }
    			event.preventDefault();
 
    		}); //end form submit
-
-    // $.post('/entries/tweet', entry_slug_data, function(){});
-
-    // $(this).removeClass("btn-success");
-    // $(this).addClass("btn-warning");
-    // $(this).text("Tweeted!");
-
 
   });
 });
