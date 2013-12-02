@@ -31,9 +31,9 @@ $(document).ready(function(){
    		show: true
    	});
 
-  	$('form').submit(function(event) {
+  	$('#post-tweet').click(function(event) {
 
-   			//console.log(data);
+   			console.log(data);
 
    			$.post('/users/tweet', data, function(return_data){
 

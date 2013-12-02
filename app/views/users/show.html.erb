@@ -31,12 +31,13 @@
         <tbody>
           <div id="tweets">
           <% @bloggers.each do |blogger| %>
-          <tr>         
-            <td id="semester"><%= blogger.semester %> </td>
-            <td id="name"><%= blogger.name %></td>
-            <td id="twitter_handle"><%= blogger.twitter_handle %> </td>
-            <div>
-          </tr>
+            <tr>         
+              <td id="semester"><%= blogger.semester %> </td>
+              <td id="name"><%= blogger.name %></td>
+              <td id="twitter_handle"><%= blogger.twitter_handle %> </td>
+              <div>
+            </tr>
+          <div>
           <% end %>
         </tbody>
       </table>
