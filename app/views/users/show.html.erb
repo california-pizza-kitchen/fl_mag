@@ -25,7 +25,6 @@
           <tr>
             <th>Semester</th>
             <th>Name</th>
-            <th>Twitter</th>
           </tr>
         </thead>
         <tbody>
@@ -34,7 +33,7 @@
             <tr>         
               <td id="semester"><%= blogger.semester %> </td>
               <td id="name"><%= blogger.name %></td>
-              <td id="twitter_handle"><%= blogger.twitter_handle %> </td>
+              <!-- <td id="twitter_handle"><%#= blogger.twitter_handle %> </td> -->
               <div>
             </tr>
           <div>
@@ -53,7 +52,7 @@
       <a class="blogpost_url" href="/bloggers/<%= entry.author_slug %>/entries/<%= entry.slug %>">
           <h1><%= entry.title %></h1>
       </a>
-      <a href="#"><h4><%= entry.author_name %></h4></a>
+      <h4><%= entry.author_name %> : <small class="twitter_handle"><%= entry.twitter_handle %></small></h4>
       <% if entry.added? == false %>
         <button type="button" class="btn btn-success publish" data-entry-slug="<%= entry.slug %>">Publish</button>
         <button type="button" class="btn btn-success tweet" data-entry-slug="<%= entry.slug %>">Tweet</button>
