@@ -15,8 +15,14 @@
 
 @import "twitter/bootstrap";
 
+
 html, body {
     height: 100%;
+}
+
+textarea { 
+    height: auto; 
+    width: auto;
 }
 
 a:hover {

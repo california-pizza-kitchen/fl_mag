@@ -22,6 +22,10 @@ class Entry < ActiveRecord::Base
     self.feed.blogger.slug
   end
 
+  def twitter_handle
+    Blogger.find(self.author).twitter_handle
+  end
+
   def tags_added
     self.entries_tags.collect do |entry_tag|
       Tag.find(entry_tag.tag_id) if entry_tag.visible == true
