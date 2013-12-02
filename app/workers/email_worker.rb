@@ -2,7 +2,7 @@ class EmailWorker
   include Sidekiq::Worker
   include Sidetiq::Schedulable
 
-  recurrence { minutely }
+  recurrence { weekly }
 
   def perform
     sub_list = Subscriber.all
