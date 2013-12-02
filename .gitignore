@@ -26,5 +26,6 @@
 # Ignore application configuration
 /config/application.yml
 
-# Ignore twitter information
-/config/*
+# Ignore config data
+/config/initializers/secret_token.rb
+/config/initializers/twitter.rb
