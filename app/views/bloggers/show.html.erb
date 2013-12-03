@@ -1,9 +1,9 @@
 <%= render 'partials/watermarks' %>
 <div class="full-content">
 <h1 style="color:#e74c3c"><%= @blogger.name %></h1>
-<span>Semester: <strong><%= @blogger.semester %></strong>
-Posts: <strong><%= @blogger.entries.count%></strong></span><br>
-<span class="label"><a href="<%= @blogger.feed_url %>"><%= @blogger.feed_url %></a></span><br>
+Semester: <strong><%= @blogger.semester %></strong><br>
+Posts: <strong><%= @blogger.entries.count%></strong><br>
+<a href="<%= @blogger.feed_url %>"><%= @blogger.feed_url %></a>
 <hr>
 
     <div class="row">

@@ -24,13 +24,13 @@
         <a href="/bloggers/<%= entry.author_slug %>/entries/<%= entry.slug %>">Read More</a>
         <hr>
         <% end %>
-        <br>
+
       </div>
 
     <div class="col-xs-6 col-md-4" style="border-left:solid 1px #ecf0f1; height:90%">
       <h2 style="color:#95a5a6"><small>Also Read</small></h2>
       <hr>
-      <% @entries.each do |entry| %>
+      <% @entries.shuffle.each do |entry| %>
       <a href="/bloggers/<%= entry.author_slug %>/entries/<%= entry.slug %>">
         <h4 style="color:#95a5a6"><%= entry.title.capitalize %></h4>
       </a>
