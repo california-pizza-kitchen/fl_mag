@@ -30,4 +30,4 @@
 /config/application.yml
 
 # Ignore config data
-/config/initializers/*.rb
+/config/initializers/secret_token.rb
