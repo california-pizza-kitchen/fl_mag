@@ -47,6 +47,7 @@
   <h1><small>Recently Fetched Posts</small></h1>
 <hr>
   <div class="recent-posts">
+    <%= will_paginate @entries %>
     <% @entries.each do |entry| %>
     <div class="entry" >
       <a class="blogpost_url" href="/bloggers/<%= entry.author_slug %>/entries/<%= entry.slug %>">
