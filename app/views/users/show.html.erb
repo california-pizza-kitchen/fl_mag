@@ -12,22 +12,22 @@
   </div>
   <div class="panel-body">
 
-    <div class="list-group">
+    <div class="list-group" style="height:300px; overflow:auto;">
       <table class="table">
         <thead>
           <tr>
             <th>Semester</th>
             <th>Name</th>
-            <th>Posts</th>
+            <th>Pubslished Posts</th>
           </tr>
         </thead>
         <tbody>
           <div id="tweets">
           <% @bloggers.each do |blogger| %>
-            <tr>         
-              <td id="semester"><%= blogger.semester %> </td>
-              <td id="name"><%= blogger.name %></td>
-              <td id="name"><%= blogger.entries.count %> / <%= blogger.entries.count %> </td>
+            <tr>    
+            <td id="semester"><%= blogger.semester %> </td>
+            <td><a href="/bloggers/<%=blogger.slug%>"<td id="name"><%= blogger.name %></td></a>
+              <td id="name"><%= blogger.published_entries %> / <%= blogger.entries.count %></td>
             </tr>
           </div>
           <% end %>
@@ -36,8 +36,8 @@
     </div>
   </div>
 </div>
-<hr>
-  <h1><small>Recently Fetched Posts</small></h1>
+
+<h1><small>Recently Fetched Posts</small></h1>
 <hr>
   <div class="recent-posts">
     <% @entries.each do |entry| %>
