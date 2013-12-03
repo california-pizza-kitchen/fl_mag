@@ -5,6 +5,10 @@
   <h4><%= @entry.author_name %></h4>
 </a>
 <span class="label"><a href="<%= @entry.url %>"><%= @entry.url %></a></span>
+<br />
+<% @entry.tags_added.each do |tag| %>
+  <a href="/feeds/tag/<%= tag.slug %>"><span class="label label-danger"><%= tag.display_word_or_word %></span></a>
+<% end %>
 <hr>
 <%= @entry.content.html_safe %>
 <hr>
