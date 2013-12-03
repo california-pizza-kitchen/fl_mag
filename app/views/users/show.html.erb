@@ -51,7 +51,7 @@
         <button type="button" class="btn btn-success publish" data-entry-slug="<%= entry.slug %>">Publish</button>
         <button type="button" class="btn btn-info btn-sm tweet" data-entry-slug="<%= entry.slug %>">Tweet</button>
       <% elsif entry.added? == true %>
-        <button type="button" class="btn btn-warning">Published!</button>
+        <button type="button" class="btn btn-warning">Published</button>
       <% end %><br /><br />
       Add Tags: 
       <% entry.entries_tags.each do |entry_tag| %>
