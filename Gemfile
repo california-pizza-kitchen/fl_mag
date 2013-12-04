@@ -20,6 +20,7 @@ gem 'feedzirra'
 gem 'anjlab-bootstrap-rails', '>= 3.0.0.0', :require => 'bootstrap-rails'
 gem 'twitter'
 gem 'capistrano', '~>2.0'
+gem 'rvm-capistrano'
 
 #gem 'better_errors'
 #gem 'binding_of_caller'

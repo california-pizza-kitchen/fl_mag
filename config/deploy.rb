@@ -4,6 +4,7 @@
 
 require "bundler/capistrano"
 require "rvm/capistrano"
+require 'sidekiq/capistrano'
 
 set :application, @application_name
 set :server_ip, @application_ip_address

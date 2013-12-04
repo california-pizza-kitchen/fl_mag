@@ -36,7 +36,7 @@ BlogAggregator::Application.routes.draw do
   post '/tags/:id/update' => 'tags#update'
   get '/tags/:id/ignore' => 'tags#ignore'
 
-  root 'pages#home'
+  root 'feeds#index'
 
 
   get '/bloggers/:blogger_slug/entries/:slug' => 'entries#show'
