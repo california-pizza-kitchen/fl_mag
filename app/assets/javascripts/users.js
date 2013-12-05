@@ -63,6 +63,8 @@ $(document).ready(function(){
     $(document).on('keyup', function(){
       blogpost_url = " http://"+window.location.host+""+ $(this).parent(".entry").find(".blogpost_url").attr("href"); 
       char_count = $('#updated-tweet-data').val().length - blogpost_url.length;
+      console.log(blogpost_url.length);
+      console.log($('#updated-tweet-data').val().length);
       check_character_count(char_count);
     });
   });
