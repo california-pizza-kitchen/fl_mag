@@ -23,7 +23,7 @@ class Entry < ActiveRecord::Base
   end
 
   def twitter_handle
-    Blogger.find(self.author).twitter_handle
+    self.feed.blogger .twitter_handle
   end
 
   def tags_added
