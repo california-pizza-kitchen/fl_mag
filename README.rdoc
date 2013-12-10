@@ -21,8 +21,6 @@ Three Servers:
   THINGS TO DO:
 
 
-    - proper database queries
-    - render the main view in the proper order
     - delayed publishing of posts
       - every hour?
     - other requested features?
