@@ -1,7 +1,6 @@
 class EntriesController < ApplicationController
 
   def show
-    # binding.pry
     @entry = Entry.find_by(:slug => params[:slug])
     @blogger = Blogger.find_by(:slug => params[:blogger_slug])
   end
@@ -17,6 +16,5 @@ class EntriesController < ApplicationController
     entry_tag = EntriesTag.find_by(:entry_id => params[:entry_id], :tag_id => params[:tag_id])
     entry_tag.update(:visible => true)
     redirect_to '/users/1'
-    # binding.pry
   end
 end
