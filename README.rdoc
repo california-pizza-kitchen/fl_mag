@@ -1,3 +1,5 @@
+http://magazine.flatironschool.com
+
 Three Servers:
 -----
 
