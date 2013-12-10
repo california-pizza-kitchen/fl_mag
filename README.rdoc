@@ -1,4 +1,4 @@
-magazine.flatironschool.com
+www.magazine.flatironschool.com
 
 Three Servers:
 -----
