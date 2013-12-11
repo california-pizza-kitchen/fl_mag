@@ -27,9 +27,7 @@ class Entry < ActiveRecord::Base
   end
 
   def tags_added
-    self.entries_tags.collect do |entry_tag|
-      Tag.find(entry_tag.tag_id) if entry_tag.visible == true
-    end.reject(&:nil?)
+    Tag.joins(:entries_tags).where(:entries_tags => {:visible => true, :entry_id => self.id})
   end
 
   def safe_html(html)
@@ -59,7 +57,7 @@ class Entry < ActiveRecord::Base
     end.uniq.include?(true)
   end
 
-# skip.match(/[^a-zA-Z]/).nil?
+  # skip.match(/[^a-zA-Z]/).nil?
 
   def get_tags
     extractor = Phrasie::Extractor.new
@@ -81,19 +79,16 @@ class Entry < ActiveRecord::Base
     end
   end
 
-  def self.sort_by_date_published(collection)
-    collection.sort_by{|entry| entry.published}
+  def self.featured_by_date_published
+    self.where(:added? => true).order('mag_published DESC')
   end
 
   def self.featured_entries
-    self.where(:added? => true).sort_by{ |entry| entry.mag_published }
+    self.where(:added? => true)
   end
 
   def self.collect_by_tag(tag_id)
-    tags = EntriesTag.where(:tag_id => tag_id, :visible => true)
-    tags.collect do |tag|
-      self.where(:id => tag.entry_id)
-    end
+    self.joins(:entries_tags).where(:entries_tags => {:tag_id => tag_id, :visible => true } ).order("mag_published DESC")
   end
 
 end

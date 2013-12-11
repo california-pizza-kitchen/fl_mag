@@ -1,3 +1,5 @@
+http://magazine.flatironschool.com
+
 Three Servers:
 -----
 
@@ -19,15 +21,9 @@ Three Servers:
   THINGS TO DO:
 
 
-    - controller tests
-    - feature tests
-    - validate form data
-
-    - text or email digest (subscriptions)
-      - subscriptions table in db
-      - sidekiq + sidetiq job to email weekly
-      - html + css styled email (personalized -- hello <name>!)
-
-
-    - Adam and Kelley features
-    - twitter tweet
+    - delayed publishing of posts
+      - every hour?
+    - other requested features?
+    
+    - maybe an admin view for every blogger, every post, with tags, publish and tweet buttons, navigable from the admin main view
+    

@@ -14,9 +14,7 @@ class UsersController < ApplicationController
     @user = User.first
     @blogger = Blogger.new
     @bloggers = Blogger.all
-    @entries = Entry.where(:added? => true).page(params[:page]).per_page(20).order('mag_published ASC')
-    # @posts = Post.paginate(:page => params[:page])
-    # Post.order('created_at DESC').page(params[:page]).per_page(10)
+    @entries = Entry.featured_by_date_published[0..19]
   end
 
   def new
