@@ -33,28 +33,28 @@ $(document).ready(function(){
 
   // Tweet Character Counter
 
-  var max_count = 117 //maximum count 140 char minus 22 char for url shortener
-  var allow_submit = false;
-  $('#updated-tweet-data').focus(function(){
-      $(document).keyup(function(){
-          var blogpost_url = " http://"+window.location.host+""+ $(this).parent(".entry").find(".blogpost_url").attr("href"); 
-          // alert(blogpost_url.length);
-          var char_count = $('#updated-tweet-data').val().length - blogpost_url.length;
-          var remaining_char = max_count - char_count;
+  // var max_count = 117 //maximum count 140 char minus 22 char for url shortener
+  // var allow_submit = true;
+  // $('#updated-tweet-data').focus(function(){
+  //     $(document).keyup(function(){
+  //         var blogpost_url = " http://"+window.location.host+""+ $(this).parent(".entry").find(".blogpost_url").attr("href"); 
+  //         // alert(blogpost_url.length);
+  //         var char_count = $('#updated-tweet-data').val().length - blogpost_url.length;
+  //         var remaining_char = max_count - char_count;
           
-          if (char_count < max_count) {
-            $('#count').removeClass('red_text')
-            .addClass('green_text')
-            .text('remaining '+remaining_char);
-            allow_submit = true;
-          } else {
-            allow_submit = false;
-            $('#count').removeClass('green_text')
-            .addClass('red_text')
-            .text(remaining_char);
-          }
-      });
-  });
+  //         // if (char_count < max_count) {
+  //         //   $('#count').removeClass('red_text')
+  //         //   .addClass('green_text')
+  //         //   .text('remaining '+remaining_char);
+  //         //   allow_submit = true;
+  //         // } else {
+  //         //   allow_submit = false;
+  //         //   $('#count').removeClass('green_text')
+  //         //   .addClass('red_text')
+  //         //   .text(remaining_char);
+  //         // }
+  //     });
+  // });
 
 
   // count tweet_string and display number with every key-up event
@@ -80,9 +80,9 @@ $(document).ready(function(){
   	$("#tweet-submit").click(function(event) {
 
         var data = { tweet: $("#updated-tweet-data").val()};
-        if (allow_submit === true){
+        // if (allow_submit === true){
      			$.post('/users/tweet', data, function(return_data){
-     			});
+     			// });
         }
    			event.preventDefault();
 
