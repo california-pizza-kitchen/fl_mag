@@ -74,3 +74,9 @@ a:hover {
 .wrapper > .container {
     padding-top: 60px;
 }
+
+.disabled {
+    background: #ccc;
+    color: #555;
+    border: 1px solid #555;
+}

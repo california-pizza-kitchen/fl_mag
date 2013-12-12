@@ -15,14 +15,19 @@
 
 <div class="row">
   
-  <div class="col-xs-4">
+  <div class="col-xs-3">
     <%= f.label 'Student Name:' %><br />
     <%= f.text_field :name, :class => 'form-control' %><br />
   </div>
 
-  <div class="col-xs-4">
+  <div class="col-xs-3">
     <%= f.label 'Blog URL:' %> <br />
     <%= f.text_field :feed_url, :class => 'form-control' %><br />
+  </div>
+
+  <div class="col-xs-3">
+    <%= f.label 'Twitter Handle:' %> <br />
+    <%= f.text_field :twitter_handle, :class => 'form-control' %><br />
   </div>
   
   <div class="col-xs-1">
