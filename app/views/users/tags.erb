@@ -1,19 +1,38 @@
-
-<% if @tags %>
-  <% @tags.each do |tag| %>
-  <% next if tag.ignore == true %>
-    <%= tag.display_word == nil ? tag.word : tag.display_word %> : 
-    <a href="/tags/<%= tag.id %>/edit">
-      edit tag name
-    </a> : 
-
-    <a href="/tags/<%= tag.id %>/ignore">
-      ignore this tag
-    </a>
-    <br />
-
-  <% end %>
-
-<% else %>
-  No tags to edit!
+<div class="list-group" style="height:600px; overflow:auto;">
+  <table class="table">
+    <thead>
+      <tr>
+        <th><h4>Tag</h4></th>
+        <th><h4>Edit</h4></th>
+        <th><h4>Ignore</h4></th>
+      </tr>
+    </thead>
+    <tbody>
+      <div id="tags">
+        <% if @tags %>
+        <% @tags.each do |tag| %>
+        <% next if tag.ignore == true %>
+      <tr>    
+        <td id="semester">
+          <strong><%= tag.display_word == nil ? tag.word : tag.display_word %> :
+          </strong>
+        </td>
+        <td>
+          <a href="/tags/<%= tag.id %>/edit">
+          Edit Tag Name
+          </a>
+        </td>
+        <td id="name">
+          <a href="/tags/<%= tag.id %>/ignore">
+          Ignore Tag
+          </a>
+        </td>
+      </tr>
+      </div>
+      <% end %>
+    </tbody>
+  </table>
+  <% else %>
+  No tags to Edit
 <% end %>
+</div>
