@@ -31,6 +31,30 @@ $(document).ready(function(){
   });
 
 
+  $(".tag-generate").submit(function(event){
+    var postData = $(this).serializeArray();
+    var formURL = $(this).attr("action");
+
+    $.ajax(
+    {
+      url : formURL,
+      type: "post",
+      data: postData,
+      success:function(data, textStatus, jqXHR) 
+        {
+          var btnHtml = "<button type='button' class='btn btn-warning btn-sm'>" + data.tag_word + "</button> ";
+          $(".tags-list").append(btnHtml);
+        },
+      error: function(jqXHR, textStatus, errorThrown) 
+        {
+            console.log(errorThrown);    
+        }
+    });
+
+    event.preventDefault();
+  });
+
+
   // Tweet Character Counter
   var title; 
   var twitter_handle; 
