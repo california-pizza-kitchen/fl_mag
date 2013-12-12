@@ -63,12 +63,18 @@
           <% end %>
         <% end %>
       </div>
-      <%= form_tag '/tags/create', :class => 'tag-generate' do %>
-        <input type="text" class="tag-word" name="tag[word]" placeholder="Give it a custom tag">
-        <input type="hidden" class="entry-name" name="tag[entry]" value="<%= entry.id %>">
-        <input type="submit" class="tag-submit">
+      <br>
+      <%= form_tag '/tags/create', :class => 'tag-generate form-inline' do %>
+        <div class="form-group">
+          <input type="text" class="tag-word form-control" name="tag[word]" placeholder="Give it a custom tag">
+          <input type="hidden" class="entry-name" name="tag[entry]" value="<%= entry.id %>">
+          <br><br>
+          <input type="submit" value="Add Tag" class="tag-submit btn btn-primary">
+        </div>
       <% end %>
-      <a href="/users/<%= current_user.id %>/tags">edit tags</a>
+      
+      <br>
+      <a href="/users/<%= current_user.id %>/tags">Edit Tags</a>
       <hr>
       <%= entry.summarize.html_safe if entry.summarize %>
       <a href="/bloggers/<%= entry.author_slug %>/entries/<%= entry.slug %>">...read more</a>
@@ -76,6 +82,8 @@
       <br>
      </div> 
     <% end %>
+ 
+
     <%= will_paginate @entries %>
   </div><br /><br /><br />
 
