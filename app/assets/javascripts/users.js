@@ -32,7 +32,6 @@ $(document).ready(function(){
 
 
   // Tweet Character Counter
-
   var title; 
   var twitter_handle; 
   var blogpost_url;
@@ -70,7 +69,6 @@ $(document).ready(function(){
     });
   });
 
-
   // count tweet_string and display number with every key-up event
   // prevent ajax post if tweet_string (without the url) is > 117 characters
 
@@ -106,7 +104,6 @@ $(document).ready(function(){
 			$.post('/users/tweet', data, function(return_data){});
     } 
     event.preventDefault();
-
 
  	}); //end form submit
 

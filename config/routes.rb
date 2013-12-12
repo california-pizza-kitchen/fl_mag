@@ -35,6 +35,7 @@ BlogAggregator::Application.routes.draw do
   get '/tags/:id/edit' => 'tags#edit'
   post '/tags/:id/update' => 'tags#update'
   get '/tags/:id/ignore' => 'tags#ignore'
+  post '/tags/create' => 'tags#find_or_create'
 
   root 'feeds#index'
 
