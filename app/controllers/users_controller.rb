@@ -6,6 +6,7 @@ class UsersController < ApplicationController
   def show
     @user = User.first
     @blogger = Blogger.new
+    @tag = Tag.new
     @bloggers = Blogger.all
     @entries = Entry.page(params[:page]).per_page(10).order('published DESC')
   end

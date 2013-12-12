@@ -30,7 +30,6 @@ $(document).ready(function(){
 
   });
 
-
   // Tweet Character Counter
 
   // var max_count = 117 //maximum count 140 char minus 22 char for url shortener
@@ -60,33 +59,74 @@ $(document).ready(function(){
   // count tweet_string and display number with every key-up event
   // prevent ajax post if tweet_string (without the url) is > 117 characters
 
-  $(".tweet").click(function(){
-   	var title = '"'+$(this).parent(".entry").find("h1").text()+'"'; 
-   	var twitter_handle = $(this).parent(".entry").find(".twitter_handle").html(); 
-   	var blogpost_url = " http://"+window.location.host+""+ $(this).parent(".entry").find(".blogpost_url").attr("href"); 
-   	var tweet_string = title+ "- Guest post by student " + twitter_handle + blogpost_url; 
+  $(".tag-generate").submit(function(event){
+    var postData = $(this).serializeArray();
+    var formURL = $(this).attr("action");
 
-   	$("#updated-tweet-data").val(tweet_string);
-
-   	//console.log(data);
-
-   	$('.tweet_msg').text(tweet_string);
-
-   	//show modal
-   	$('#tweet').modal({
-   		show: true
-   	});
-
-  	$("#tweet-submit").click(function(event) {
-
-        var data = { tweet: $("#updated-tweet-data").val()};
-        // if (allow_submit === true){
-     			$.post('/users/tweet', data, function(return_data){
-     			// });
+    $.ajax(
+    {
+      url : formURL,
+      type: "post",
+      data: postData,
+      success:function(data, textStatus, jqXHR) 
+        {
+          var btnHtml = "<button type='button' class='btn btn-warning btn-sm'>" + data.tag_word + "</button> ";
+          $(".tags-list").append(btnHtml);
+        },
+      error: function(jqXHR, textStatus, errorThrown) 
+        {
+            console.log(errorThrown);    
         }
-   			event.preventDefault();
+    });
 
-   		}); //end form submit
-
+    event.preventDefault();
   });
+
+// <button type="button" class="btn btn-primary btn-sm tag" data-entry-id="<%= entry.id %>" data-entry-tag-id="<%= entry_tag.tag.id %>"><%= entry_tag.tag.display_word_or_word %></button>
+
+
+$("#ajaxform").submit(function(e)
+  {
+      var postData = $(this).serializeArray();
+      var formURL = $(this).attr("action");
+      $.ajax(
+      {
+          url : formURL,
+          type: "POST",
+          data : postData,
+          success:function(data, textStatus, jqXHR) 
+          {
+              //data: return data from server
+          },
+          error: function(jqXHR, textStatus, errorThrown) 
+          {
+              //if fails      
+          }
+      });
+      e.preventDefault(); //STOP default action
+  });
+
+
+  // $(".tweet").click(function(){
+  //  	var title = '"'+$(this).parent(".entry").find("h1").text()+'"'; 
+  //  	var twitter_handle = $(this).parent(".entry").find(".twitter_handle").html(); 
+  //  	var blogpost_url = " http://"+window.location.host+""+ $(this).parent(".entry").find(".blogpost_url").attr("href"); 
+  //  	var tweet_string = title+ "- Guest post by student " + twitter_handle + blogpost_url; 
+
+  //  	$("#updated-tweet-data").val(tweet_string);
+  //  	$('.tweet_msg').text(tweet_string);
+
+  //  	//show modal
+  //  	$('#tweet').modal({
+  //  		show: true
+  //  	});
+
+  // 	$("#tweet-submit").click(function(event) {
+  //     var data = { tweet: $("#updated-tweet-data").val()};
+  //  			$.post('/users/tweet', data, function(return_data){
+  //     }
+ 	// 		event.preventDefault();
+ 	// 	}); //end form submit
+
+  // });
 });

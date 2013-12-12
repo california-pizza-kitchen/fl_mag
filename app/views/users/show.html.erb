@@ -54,12 +54,19 @@
         <button type="button" class="btn btn-warning">Published</button>
       <% end %><br /><br />
       Add Tags: 
-      <% entry.entries_tags.each do |entry_tag| %>
-        <% if entry_tag.visible == false %>
-          <button type="button" class="btn btn-primary btn-sm tag" data-entry-id="<%= entry.id %>" data-entry-tag-id="<%= entry_tag.tag.id %>"><%= entry_tag.tag.display_word_or_word %></button>
-        <% elsif entry_tag.visible == true %>
-            <button type="button" class="btn btn-warning btn-sm tag" data-entry-id="<%= entry.id %>" data-entry-tag-id="<%= entry_tag.tag.id %>"><%= entry_tag.tag.display_word_or_word %></button>
+      <div class="tags-list">
+        <% entry.entries_tags.each do |entry_tag| %>
+          <% if entry_tag.visible == false %>
+            <button type="button" class="btn btn-primary btn-sm tag" data-entry-id="<%= entry.id %>" data-entry-tag-id="<%= entry_tag.tag.id %>"><%= entry_tag.tag.display_word_or_word %></button>
+          <% elsif entry_tag.visible == true %>
+              <button type="button" class="btn btn-warning btn-sm" data-entry-id="<%= entry.id %>" data-entry-tag-id="<%= entry_tag.tag.id %>"><%= entry_tag.tag.display_word_or_word %></button>
+          <% end %>
         <% end %>
+      </div>
+      <%= form_tag '/tags/create', :class => 'tag-generate' do %>
+        <input type="text" class="tag-word" name="tag[word]" placeholder="Give it a custom tag">
+        <input type="hidden" class="entry-name" name="tag[entry]" value="<%= entry.id %>">
+        <input type="submit" class="tag-submit">
       <% end %>
       <a href="/users/<%= current_user.id %>/tags">edit tags</a>
       <hr>
