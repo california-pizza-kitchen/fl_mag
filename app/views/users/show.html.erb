@@ -46,7 +46,6 @@
     <%= will_paginate @entries %>
     <% @entries.each do |entry| %>
       <div class="entry" >
-        /users/:id/entry/:entry_slug
         <a class="blogpost_url" href="/users/<%= current_user.id %>/entry/<%= entry.slug %>">
             <h1><%= entry.title %></h1>
         </a>
