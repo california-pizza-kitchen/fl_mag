@@ -26,7 +26,9 @@ class UsersController < ApplicationController
 
   def admin_blogger_view
     @user = User.first
-    @blogger = Bloggery.find_by(:slug => params[:blogger_slug])
+    @blogger = Blogger.find_by(:slug => params[:blogger_slug])
+    @entries = Entry.where(:author => @blogger.id).page(params[:page]).per_page(10).order('mag_published ASC')
+    # binding.pry
   end
 
   def admin_tag_view

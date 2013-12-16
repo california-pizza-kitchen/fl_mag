@@ -31,10 +31,10 @@ BlogAggregator::Application.routes.draw do
                        post '/users/tweet' => 'twitter#tweet'
                     get '/users/dashboard' => 'users#show'
                      get '/users/:id/tags' => 'users#tags'
-                     
+
         get '/users/:id/entries/:tag_slug' => 'users#admin_tag_view'
-get '/users/:id/:blogger_slug/:entry_slug' => 'users#admin_blog_view'
-            get '/users/:id/:blogger_slug' => 'users#admin_blogger_view'
+        get '/users/:id/entry/:entry_slug' => 'users#admin_blog_view'
+   get '/users/:id/bloggers/:blogger_slug' => 'users#admin_blogger_view'
 
                       get '/tags/:id/edit' => 'tags#edit'
                    post '/tags/:id/update' => 'tags#update'

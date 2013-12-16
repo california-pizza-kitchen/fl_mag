@@ -25,8 +25,11 @@
           <div id="tweets">
           <% @bloggers.each do |blogger| %>
             <tr>    
-            <td id="semester"><%= blogger.semester %> </td>
-            <td><a href="/bloggers/<%=blogger.slug%>"<td id="name"><%= blogger.name %></td></a>
+              <td id="semester"><%= blogger.semester %> </td>
+              <td>
+              <a href="/users/<%= current_user.id %>/bloggers/<%=blogger.slug%>"<td id="name">
+                <%= blogger.name %></td>
+              </a>
               <td id="name"><%= blogger.published_entries %> / <%= blogger.entries.count %></td>
             </tr>
           </div>
