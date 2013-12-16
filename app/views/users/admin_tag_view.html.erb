@@ -2,10 +2,11 @@
 <div class="full_content">
   <div class="row">
     <div class="col-xs-12 col-sm-6 col-md-8">
+      <h2 style="color:#95a5a6"><%= @tag.display_word_or_word %> <small>posts</small></h2><br />
       <% @entries.each do |entry| %>
         <div class="entry" >
           <a class="blogpost_url" href="/bloggers/<%= entry.author_slug %>/entries/<%= entry.slug %>">
-              <h1><%= entry.title %></h1>
+              <h3><%= entry.title %></h3>
           </a>
           <h4><%= entry.author_name %> : <small class="twitter_handle"><%= entry.twitter_handle %></small></h4>
           <% if entry.added? == false %>
@@ -21,7 +22,10 @@
               <% if entry_tag.visible == false %>
                 <button type="button" class="btn btn-primary btn-sm tag" data-entry-id="<%= entry.id %>" data-entry-tag-id="<%= entry_tag.tag.id %>"><%= entry_tag.tag.display_word_or_word %></button>
               <% elsif entry_tag.visible == true %>
-                  <button type="button" class="btn btn-warning btn-sm published" data-entry-slug="<%= entry.slug %>" data-entry-tag-id="<%= entry_tag.tag.id %>"><%= entry_tag.tag.display_word_or_word %></button>
+                 <a href="/users/<%= current_user.id %>/entries/<%= entry_tag.tag.slug %>">
+                  <button type="button" class="btn btn-warning btn-sm published" data-user-id="<%= current_user.id %>" data-entry-id="<%= entry.id %>" data-tag-slug="<%= entry_tag.tag.slug %>"><%= entry_tag.tag.display_word_or_word %>
+                  </button>
+                </a>
               <% end %>
             <% end %>
           </div>
