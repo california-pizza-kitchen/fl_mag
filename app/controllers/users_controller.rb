@@ -33,7 +33,12 @@ class UsersController < ApplicationController
   def admin_tag_view
     @user = User.first
     @tag = Tag.find_by(:slug => params[:tag_slug])
-    @entries = Entry.collect_by_tag(@tag.id)
+    @entries = Entry.collect_by_tag(@tag.id).page(params[:page]).per_page(10).order('published ASC')
+  end
+
+  def admin_mainpage_view
+    @user = User.first
+    @entries = Entry.featured_by_date_published.page(params[:page]).per_page(10).order('mag_published ASC')
   end
 
   def new

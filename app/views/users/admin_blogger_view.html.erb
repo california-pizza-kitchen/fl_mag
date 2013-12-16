@@ -15,9 +15,9 @@ Posts: <strong><%= @blogger.entries.count%></strong></span><br>
 
       <% @entries.each do |entry| %>
         <div class="entry" >
-          <a class="blogpost_url" href="/bloggers/<%= entry.author_slug %>/entries/<%= entry.slug %>">
-              <h1><%= entry.title %></h1>
-          </a>
+            <a class="blogpost_url" href="/users/<%= current_user.id %>/entry/<%= entry.slug %>">
+                <h1><%= entry.title %></h1>
+            </a>
           <h4><%= entry.author_name %> : <small class="twitter_handle"><%= entry.twitter_handle %></small></h4>
           <% if entry.added? == false %>
             <button type="button" class="btn btn-success publish" data-entry-slug="<%= entry.slug %>">Publish</button>
