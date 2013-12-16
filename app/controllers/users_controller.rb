@@ -18,6 +18,23 @@ class UsersController < ApplicationController
     @entries = Entry.featured_by_date_published[0..19]
   end
 
+  def admin_blog_view
+    @user = User.first
+    @blogger = Bloggery.find_by(:slug => params[:blogger_slug])
+    @entry = Entry.find_by(:slug => params[:entry_slug])
+  end
+
+  def admin_blogger_view
+    @user = User.first
+    @blogger = Bloggery.find_by(:slug => params[:blogger_slug])
+  end
+
+  def admin_tag_view
+    @user = User.first
+    @tag = Tag.find_by(:slug => params[:tag_slug])
+    @entries = Entry.collect_by_tag(@tag.id)
+  end
+
   def new
   end
 

@@ -54,7 +54,6 @@ $(document).ready(function(){
     event.preventDefault();
   });
 
-
   // Tweet Character Counter
   var title; 
   var twitter_handle; 
