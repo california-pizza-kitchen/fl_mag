@@ -36,6 +36,7 @@ class Entry < ActiveRecord::Base
 
   def publish
     self.update(:added? => true, :mag_published => Time.now)
+    true
   end
 
   def summarize

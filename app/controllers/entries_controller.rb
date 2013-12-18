@@ -12,8 +12,8 @@ class EntriesController < ApplicationController
   end
 
   def tag
-    entry_tag = EntriesTag.find_by(:entry_id => params[:entry_id], :tag_id => params[:tag_id])
-    entry_tag.update(:visible => true)
+    @entry_tag = EntriesTag.find_by(:entry_id => params[:entry_id], :tag_id => params[:tag_id])
+    @entry_tag.update(:visible => true)
     redirect_to '/users/1'
   end
 
