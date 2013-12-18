@@ -23,7 +23,6 @@ gem 'capistrano', '~>2.0'
 gem 'rvm-capistrano'
 gem 'pry'
 gem 'rspec'
-gem 'rspec-rails'
 gem 'capybara'
 gem 'nokogiri'
 gem 'bootstrap-sass', '~> 3.0.2.0'
@@ -31,6 +30,16 @@ gem 'sanitize'
 gem "figaro"
 gem 'phrasie'
 gem 'will_paginate', '~> 3.0'
+
+group :test do
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
+  gem 'faker'
+  gem 'capybara'
+  gem 'database_cleaner'
+  gem 'launchy'
+  gem 'selenium-webdriver'
+end
 
 
 group :doc do

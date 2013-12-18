@@ -34,6 +34,10 @@ class Entry < ActiveRecord::Base
     Sanitize.clean(html, {:remove_contents => true})
   end
 
+  def publish
+    self.update(:added? => true, :mag_published => Time.now)
+  end
+
   def summarize
     if self.content
       if self.content.include?("<p>")
@@ -43,18 +47,11 @@ class Entry < ActiveRecord::Base
         second = safe_html(second)
         first = first + "</p>" if first && !first.end_with?("</p>")
         second = second + "</p>" if second && !second.end_with?("</p>")
-        first + "<p>" + second if first && second
+        "<p>" + first + "<p>" + second if first && second
       else
         "<p>" + self.content + "</p>"
       end
     end
-  end
-
-  def tag_filter(keyword)
-    skips = ["the", "a", "an", "it", "&", "way", "<", ">", "quo", "p", "code", "project", "=", "[", "]", "\"", " ", "'", "li", "ul", "td", "tr", "da", "href", ":", ",", "h", "o"]
-    return true if skips.collect do |skip|
-      keyword.downcase.include?(skip)
-    end.uniq.include?(true)
   end
 
   # skip.match(/[^a-zA-Z]/).nil?
@@ -63,8 +60,7 @@ class Entry < ActiveRecord::Base
     extractor = Phrasie::Extractor.new
     rough_tags = extractor.phrases(self.content, strength: 3, occur: 2)
     rough_tags.each do |tag|
-      next if tag_filter(tag[0])
-      tag = Tag.find_or_create_by(:word => tag[0].downcase)
+      tag = Tag.where(:word => tag[0].downcase).first_or_create
       EntriesTag.create(:entry_id => self.id, :tag_id => tag.id) if tag.ignore != nil && tag.ignore != true
     end
     self.get_title_tags if self.title != nil
@@ -73,9 +69,14 @@ class Entry < ActiveRecord::Base
   def get_title_tags
     rough_tags = self.title.split(" ")
     rough_tags.each do |tag|
-      next if tag_filter(tag)
-      tag = Tag.find_or_create_by(:word => tag.downcase) 
-      EntriesTag.create(:entry_id => self.id, :tag_id => tag.id) if tag.ignore != nil && tag.ignore != true
+      tag = Tag.where(:word => tag.downcase).first_or_create
+      self.entries_tags.create(:tag_id => tag.id) if tag.ignore != nil && tag.ignore != true
+    end
+  end
+
+  def make_all_tags_visible
+    self.entries_tags.each do |entry_tag|
+      entry_tag.update(visible: true)
     end
   end
 

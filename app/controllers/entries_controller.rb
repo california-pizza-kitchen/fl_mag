@@ -7,7 +7,7 @@ class EntriesController < ApplicationController
 
   def publish
     @entry = Entry.find_by(:slug => params[:slug])
-    @entry.update(:added? => true, :mag_published => Time.now)
+    @entry.publish
     redirect_to '/users/1'
   end
 
