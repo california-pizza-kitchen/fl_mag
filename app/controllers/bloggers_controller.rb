@@ -13,7 +13,6 @@ class BloggersController < ApplicationController
 
 
   def create
-    binding.pry
     @blogger = Blogger.create(blogger_params)
     if @blogger.feed_url
       if @blogger.feed_url.end_with?('/')

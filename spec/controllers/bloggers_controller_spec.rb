@@ -32,21 +32,35 @@ describe BloggersController do
   end
 
   describe "POST #create" do
-    before :each do 
-      @current_user = User.create
-      session[:user_id] = @current_user.id
-    end
-
-    context "with valid attributes" do
-      it "saves the new blogger to the database" do
-        expect{
-          post :create, blogger: attributes_for(:blogger)
-        }.to change(Blogger, :count).by(1)
+    context "when user is logged in" do
+      before :each do 
+        login
       end
 
-      it "redirects to users#show" do
+      context "with valid attributes" do
+        it "saves the new blogger to the database" do
+          expect{
+            post :create, blogger: attributes_for(:blogger)
+          }.to change(Blogger, :count).by(1)
+        end
+
+        it "redirects to users#show" do
+          post :create, blogger: attributes_for(:blogger)
+          expect(response).to redirect_to "/users/show"
+        end
+      end
+    end
+
+    context "when not logged in" do
+      it "does not save the blogger to the database" do
+        expect{
+          post :create, blogger: attributes_for(:blogger)
+        }.to_not change(Blogger, :count)
+      end
+
+      it "redirects to the login path" do
         post :create, blogger: attributes_for(:blogger)
-        expect(response).to redirect_to "/users/show"
+        expect(response).to redirect_to "/login"
       end
     end
 

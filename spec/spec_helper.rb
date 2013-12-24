@@ -43,3 +43,8 @@ RSpec.configure do |config|
   #     --seed 1234
   config.order = "random"
 end
+
+def login
+  @current_user = User.create(password: "joe", password_confirmation: "joe")
+  session[:user_id] = @current_user.id
+end

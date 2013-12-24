@@ -2,13 +2,10 @@ class TagsController < ApplicationController
   before_action :login_required
 
   def edit
-    # binding.pry
     @tag = Tag.find(params[:id])
   end
 
-
   def find_or_create
-    # binding.pry
     tag = Tag.find_or_create_by(:word => params[:tag][:word].downcase)
     EntriesTag.create do |et|
       et.entry_id = params[:tag][:entry]
