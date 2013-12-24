@@ -2,6 +2,6 @@ require 'faker'
 
 FactoryGirl.define do
   factory :tag do
-    word { Faker::Company.name.downcase }
+    word { Faker::Name.name.downcase }
   end
 end

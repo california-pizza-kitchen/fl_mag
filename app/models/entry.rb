@@ -70,12 +70,14 @@ class Entry < ActiveRecord::Base
   end
 
   def get_title_tags
+    # binding.pry
     rough_tags = self.title.split(" ")
     rough_tags.each do |tag|
-      next if !!tag.match(/[^a-zA-Z]/)
+      next if !!tag.match(/[^a-zA-Z]/) || tag.length < 3
+      # next if tag.length < 3
       tag = Tag.where(:word => tag.downcase.gsub(' ','')).first_or_create
-      next if !!EntriesTag.where(:entry_id => self.id, :tag_id => tag.id)
-      self.entries_tags.create(:tag_id => tag.id) if tag.ignore != nil && tag.ignore != true
+      next if EntriesTag.where(:entry_id => self.id, :tag_id => tag.id).count > 0
+      EntriesTag.create(:entry_id => self.id, :tag_id => tag.id) if tag.ignore != true 
     end
   end
 

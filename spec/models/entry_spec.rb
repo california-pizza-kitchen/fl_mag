@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Entry do
   before :each do
     @entry = Entry.create(
-      title: "Title of Blog",
+      title: "Title of this Blog",
       published: Time.now
     )
   end
