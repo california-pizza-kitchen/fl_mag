@@ -1,5 +1,5 @@
 class EntriesController < ApplicationController
-
+  before_action :login_required, except: [:show]
   def show
     @entry = Entry.find_by(:slug => params[:slug])
     @blogger = Blogger.find_by(:slug => params[:blogger_slug])

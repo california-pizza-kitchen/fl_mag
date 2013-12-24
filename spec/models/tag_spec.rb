@@ -2,11 +2,11 @@ require 'spec_helper'
 
 describe Tag do
   before :each do
-    @tag = Tag.create word: "YO"
+    @tag = create(:tag)
   end
 
   it "makes a slug" do
-    expect(@tag.slug).to eq "yo"
+    expect(@tag.slug).to eq @tag.word.downcase.gsub(" ","-").gsub(".","-")
   end
 
   it "displays an edited word when it has one" do
@@ -15,6 +15,6 @@ describe Tag do
   end
 
   it "displays word when it has no display word" do
-    expect(@tag.display_word_or_word).to eq "YO"
+    expect(@tag.display_word_or_word).to eq @tag.word
   end
 end

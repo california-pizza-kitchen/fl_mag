@@ -2,6 +2,7 @@ class TagsController < ApplicationController
   before_action :login_required
 
   def edit
+    # binding.pry
     @tag = Tag.find(params[:id])
   end
 

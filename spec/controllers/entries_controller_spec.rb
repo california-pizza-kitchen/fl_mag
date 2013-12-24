@@ -27,9 +27,8 @@ describe EntriesController do
 
     it "calls publish on an entry" do
       pending "how to stub out a method call?"
-      # expect(@entry).to receive(:publish)
-      get :publish, slug: @entry.slug
-      expect(@entry.added?).to eq true
+      # get :publish, slug: @entry.slug
+      # expect(@entry.added?).to eq true
     end
 
     it "redirects to users#show" do
@@ -41,9 +40,9 @@ describe EntriesController do
   describe "tag" do
     it "assigns the requested entry_tag to @entry_tag" do
       pending "not working yet"
-      @tag = Tag.create(word: 'yo')
-      get :tag, tag_id: @tag.id, entry_id: @entry.id
-      expect(:entry_tag.visible).to eq true
+      # @tag = Tag.create(word: 'yo')
+      # get :tag, tag_id: @tag.id, entry_id: @entry.id
+      # expect(:entry_tag.visible).to eq true
     end
   end
 end

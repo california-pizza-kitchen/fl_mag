@@ -6,5 +6,6 @@ FactoryGirl.define do
     sequence(:url) { |n| "www.#{n}.com" }
     author { Faker::Name.name }
     published Time.now
+    association :feed, factory: :feed
   end
 end

@@ -1,5 +1,6 @@
 class BloggersController < ApplicationController
   respond_to :html
+  before_action :login_required, except: [:index, :show]
 
   def index
     @bloggers = Blogger.all
@@ -12,6 +13,7 @@ class BloggersController < ApplicationController
 
 
   def create
+    binding.pry
     @blogger = Blogger.create(blogger_params)
     if @blogger.feed_url
       if @blogger.feed_url.end_with?('/')

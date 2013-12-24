@@ -32,6 +32,11 @@ describe BloggersController do
   end
 
   describe "POST #create" do
+    before :each do 
+      @current_user = User.create
+      session[:user_id] = @current_user.id
+    end
+
     context "with valid attributes" do
       it "saves the new blogger to the database" do
         expect{

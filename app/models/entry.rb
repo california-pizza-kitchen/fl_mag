@@ -36,7 +36,7 @@ class Entry < ActiveRecord::Base
 
   def publish
     self.update(:added? => true, :mag_published => Time.now)
-    true
+    return true
   end
 
   def summarize
@@ -61,7 +61,9 @@ class Entry < ActiveRecord::Base
     extractor = Phrasie::Extractor.new
     rough_tags = extractor.phrases(self.content, strength: 3, occur: 2)
     rough_tags.each do |tag|
-      tag = Tag.where(:word => tag[0].downcase).first_or_create
+      next if !!tag[0].match(/[^a-zA-Z]/)
+      next if tag[0].length < 3
+      tag = Tag.where(:word => tag[0].downcase.gsub(' ','')).first_or_create
       EntriesTag.create(:entry_id => self.id, :tag_id => tag.id) if tag.ignore != nil && tag.ignore != true
     end
     self.get_title_tags if self.title != nil
@@ -70,7 +72,9 @@ class Entry < ActiveRecord::Base
   def get_title_tags
     rough_tags = self.title.split(" ")
     rough_tags.each do |tag|
-      tag = Tag.where(:word => tag.downcase).first_or_create
+      next if !!tag.match(/[^a-zA-Z]/)
+      tag = Tag.where(:word => tag.downcase.gsub(' ','')).first_or_create
+      next if !!EntriesTag.where(:entry_id => self.id, :tag_id => tag.id)
       self.entries_tags.create(:tag_id => tag.id) if tag.ignore != nil && tag.ignore != true
     end
   end
