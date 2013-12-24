@@ -2,16 +2,17 @@ Hi, <%= @subscriber.first_name %>
 
 This week's issue of the Flatiron Magazine is here.
 
-    <% @new_entries.each do |entry| %>
+<% @new_entries.each do |entry| %>
   <%= entry.title %> written by <%= entry.author_name %>
-    www.magazine.flatironschool.com/<%= entry.slug %>
-
-    <% end %>
+    http://magazine.flatironschool.com/bloggers/<%= entry.author_slug%>/entries/<%= entry.slug %>
+<% end %>
 
 - Flatiron School
 http://flatironschool.com/
 
 Unsubscribe:
-http://magazine.flatiron.com<%=@subscriber.hex_key%>
+http://magazine.flatironschool.com/<%=@subscriber.hex_key%>
+
+
 
 
