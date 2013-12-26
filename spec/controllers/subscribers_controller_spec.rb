@@ -42,14 +42,14 @@ describe SubscribersController do
 
     it "unsubscribes if subscribed" do
       subscriber = create(:opt_in)
-      # post :unsubscribe, signature: subscriber.hex_key
-      # expect(subscriber.opt_in?).to eq(false) 
-      pending "how to test this method?"
+      post :unsubscribe, signature: subscriber.hex_key
+      expect(assigns(:subscriber).opt_in?).to be_false 
     end
 
     it "does nothing if not subscribed" do
       subscriber = create(:opt_out)
-      pending "how to test this method?"
+      post :unsubscribe, signature: subscriber.hex_key
+      expect(assigns(:subscriber).opt_in?).to be_false
     end
   end
 end
