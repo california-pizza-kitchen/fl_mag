@@ -3,19 +3,19 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:edit, :update, :destroy]
   before_action :login_required#, except: [:new, :create]
 
+  def index
+    @user = User.first
+    @blogger = Blogger.new
+    @bloggers = Blogger.all
+    @entries = Entry.featured_by_date_published[0..19]
+  end
+
   def show
     @user = User.first
     @blogger = Blogger.new
     @tag = Tag.new
     @bloggers = Blogger.all
     @entries = Entry.page(params[:page]).per_page(10).order('published DESC')
-  end
-
-  def index
-    @user = User.first
-    @blogger = Blogger.new
-    @bloggers = Blogger.all
-    @entries = Entry.featured_by_date_published[0..19]
   end
 
   def admin_blog_view
