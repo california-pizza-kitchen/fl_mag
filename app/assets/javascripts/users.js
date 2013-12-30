@@ -34,6 +34,7 @@ $(document).ready(function(){
   $(".tag-generate").submit(function(event){
     var postData = $(this).serializeArray();
     var formURL = $(this).attr("action");
+    var id = "#tags-list-" + postData[3].value;
 
     $.ajax(
     {
@@ -43,7 +44,7 @@ $(document).ready(function(){
       success:function(data, textStatus, jqXHR) 
         {
           var btnHtml = "<button type='button' class='btn btn-warning btn-sm'>" + data.tag_word + "</button> ";
-          $(".tags-list").append(btnHtml);
+          $(id).append(btnHtml);
         },
       error: function(jqXHR, textStatus, errorThrown) 
         {
@@ -53,7 +54,6 @@ $(document).ready(function(){
 
     event.preventDefault();
   });
-
 
   // Tweet Character Counter
   var title; 

@@ -29,7 +29,7 @@ class SubscribersController < ApplicationController
     else
       flash[:"alert-warning"] = 'You are not subscribed'
       redirect_to '/feeds'
-      end
+    end
   end
 
   private

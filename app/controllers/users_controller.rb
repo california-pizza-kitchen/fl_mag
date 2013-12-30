@@ -3,6 +3,13 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:edit, :update, :destroy]
   before_action :login_required#, except: [:new, :create]
 
+  def index
+    @user = User.first
+    @blogger = Blogger.new
+    @bloggers = Blogger.all
+    @entries = Entry.featured_by_date_published[0..19]
+  end
+
   def show
     @user = User.first
     @blogger = Blogger.new
@@ -11,11 +18,27 @@ class UsersController < ApplicationController
     @entries = Entry.page(params[:page]).per_page(10).order('published DESC')
   end
 
-  def index
+  def admin_blog_view
     @user = User.first
-    @blogger = Blogger.new
-    @bloggers = Blogger.all
-    @entries = Entry.featured_by_date_published[0..19]
+    @entry = Entry.find_by(:slug => params[:entry_slug])
+    @blogger = @entry.feed.blogger
+  end
+
+  def admin_blogger_view
+    @user = User.first
+    @blogger = Blogger.find_by(:slug => params[:blogger_slug])
+    @entries = Entry.where(:author => @blogger.id).page(params[:page]).per_page(10).order('mag_published ASC')
+  end
+
+  def admin_tag_view
+    @user = User.first
+    @tag = Tag.find_by(:slug => params[:tag_slug])
+    @entries = Entry.collect_by_tag(@tag.id).page(params[:page]).per_page(10).order('published ASC')
+  end
+
+  def admin_mainpage_view
+    @user = User.first
+    @entries = Entry.featured_by_date_published.page(params[:page]).per_page(10).order('mag_published ASC')
   end
 
   def new

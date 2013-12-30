@@ -1,0 +1,58 @@
+<%= render 'partials/watermarks' %>
+<div class="full_content">
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-md-8">
+      <h2 style="color:#95a5a6"><%= @tag.display_word_or_word %> <small>posts</small></h2><br />
+      <%= will_paginate(@entries) %>
+      <% @entries.each do |entry| %>
+        <div class="entry" >
+          <a class="blogpost_url" href="/users/<%= current_user.id %>/entry/<%= entry.slug %>">
+              <h3><%= entry.title %></h3>
+          </a>
+          <h4>
+            <a href="/users/<%= current_user.id %>/bloggers/<%= entry.author_slug%>">
+              <%= entry.author_name %>
+            </a> : <small class="twitter_handle"><%= entry.twitter_handle %></small></h4>
+          <% if entry.added? == false %>
+            <button type="button" class="btn btn-success publish" data-entry-slug="<%= entry.slug %>">Publish</button>
+            <button type="button" class="btn btn-info btn-sm tweet" data-entry-slug="<%= entry.slug %>">Tweet</button>
+          <% elsif entry.added? == true %>
+            <button type="button" class="btn btn-warning">Published</button>
+            <button type="button" class="btn btn-info btn-sm tweet" data-entry-slug="<%= entry.slug %>">Tweet</button>
+          <% end %><br /><br />
+          Add Tags: 
+          <div class="tags-list">
+            <% entry.entries_tags.each do |entry_tag| %>
+              <% if entry_tag.visible == false %>
+                <button type="button" class="btn btn-primary btn-sm tag" data-entry-id="<%= entry.id %>" data-entry-tag-id="<%= entry_tag.tag.id %>"><%= entry_tag.tag.display_word_or_word %></button>
+              <% elsif entry_tag.visible == true %>
+                 <a href="/users/<%= current_user.id %>/entries/<%= entry_tag.tag.slug %>">
+                  <button type="button" class="btn btn-warning btn-sm published" data-user-id="<%= current_user.id %>" data-entry-id="<%= entry.id %>" data-tag-slug="<%= entry_tag.tag.slug %>"><%= entry_tag.tag.display_word_or_word %>
+                  </button>
+                </a>
+              <% end %>
+            <% end %>
+          </div>
+          <br>
+          <%= form_tag '/tags/create', :class => 'tag-generate form-inline' do %>
+            <div class="form-group">
+              <input type="text" class="tag-word form-control" name="tag[word]" placeholder="Give it a custom tag">
+              <input type="hidden" class="entry-name" name="tag[entry]" value="<%= entry.id %>">
+              <br><br>
+              <input type="submit" value="Add Tag" class="tag-submit btn btn-primary">
+            </div>
+          <% end %>
+          
+          <br>
+          <a href="/users/<%= current_user.id %>/tags">Edit Tags</a>
+          <hr>
+          <%= entry.summarize.html_safe if entry.summarize %>
+          <a href="/bloggers/<%= entry.author_slug %>/entries/<%= entry.slug %>">...read more</a>
+          <hr>
+          <br>
+        </div> 
+      <% end %>
+      <%= will_paginate(@entries) %>
+    </div>
+  </div>
+</div>

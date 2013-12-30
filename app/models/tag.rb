@@ -13,11 +13,7 @@ class Tag < ActiveRecord::Base
 
   def self.alphabetized
     self.all.sort_by do |tag| 
-      if tag.display_word
-        tag.display_word
-      else
-        tag.word
-      end
+      tag.word.downcase if tag.word.respond_to?(:downcase)
     end
   end
 

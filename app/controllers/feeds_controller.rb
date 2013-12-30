@@ -1,5 +1,5 @@
 class FeedsController < ApplicationController
-  
+  before_action :login_required, except: [:index, :index_by_tag, :show]
   def index
     @entries = Entry.featured_by_date_published[0..19]
   end
