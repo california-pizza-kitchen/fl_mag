@@ -70,6 +70,9 @@ class BloggersController < ApplicationController
       CreateWorker.perform_async(@blogger.id)
     end
 
+    @school_session = SchoolSession.find_by(:id => params[:blogger][:school_session])
+    @blogger.update(:school_session => @school_session)
+
     respond_to do |format|
       if @blogger.update(blogger_params)
         format.html {redirect_to '/users/show'}

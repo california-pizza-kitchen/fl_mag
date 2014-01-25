@@ -31,8 +31,8 @@
   </div>
   
   <div class="col-xs-1">
-    <%= f.label 'Semester:' %> <br />
-    <%= f.select :semester, (0..10),{},{:class => 'form-control'} %><br /><br />
+    <%= f.label :Session %><br />
+    <%= f.collection_select(:school_session, SchoolSession.all, :id, :name) %> 
   </div>
 
 </div>
