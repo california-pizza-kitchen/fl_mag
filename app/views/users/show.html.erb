@@ -27,11 +27,16 @@
             <tr>    
               <td id="semester"><%= blogger.semester %> </td>
               <td>
-                <a href="/users/<%= current_user.id %>/bloggers/<%= blogger.slug %>"<td id="name">
+                <a href="/users/<%= current_user.id %>/bloggers/<%= blogger.slug %>">
                   <%= blogger.name %>
+                </a> - 
+                <a href="/bloggers/<%= blogger.slug %>/edit">
+                  edit
                 </a>
               </td>
-              <td id="name"><%= blogger.published_entries %> / <%= blogger.entries.count %></td>
+              <td>
+                <%= blogger.published_entries %> / <%= blogger.entries.count %>
+              </td>
               <td>
                 <a href="/users/bloggers/destroy/<%= blogger.slug %>">
                   <button class="destroy-blogger" data-blogger-name="<%= blogger.name %>" data-blogger-slug="<%= blogger.slug %>">x

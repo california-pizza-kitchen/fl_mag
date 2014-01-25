@@ -16,7 +16,7 @@ class BloggersController < ApplicationController
     @blogger = Blogger.create(blogger_params)
     if @blogger.feed_url
       if @blogger.feed_url.end_with?('/')
-        @logger.update(
+        @blogger.update(
           :feed_url => @blogger.feed_url[0..-2]
         )
       end
@@ -40,6 +40,37 @@ class BloggersController < ApplicationController
       if @blogger.completely_destroy
         format.html {redirect_to '/users/show'}
         flash[:"alert-success"] = "Blogger Removed!"
+      else
+        format.html {redirect_to'/users/show', notice: @blogger.errors.full_messages}
+      end
+    end
+  end
+
+  def edit
+    @blogger = Blogger.find_by(:slug => params[:slug])
+  end
+
+  def update
+    @blogger = Blogger.find_by(:id => params[:slug])
+    old_url = @blogger.feed_url
+
+    if old_url != params[:blogger][:feed_url]
+      @blogger.completely_destroy
+      @blogger = Blogger.create(blogger_params)
+      if @blogger.feed_url
+        if @blogger.feed_url.end_with?('/')
+          @blogger.update(
+            :feed_url => @blogger.feed_url[0..-2]
+          )
+        end
+      end
+      CreateWorker.perform_async(@blogger.id)
+    end
+
+    respond_to do |format|
+      if @blogger.update(blogger_params)
+        format.html {redirect_to '/users/show'}
+        flash[:"alert-success"] = "Blogger Added!"
       else
         format.html {redirect_to'/users/show', notice: @blogger.errors.full_messages}
       end

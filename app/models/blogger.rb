@@ -19,11 +19,20 @@ class Blogger < ActiveRecord::Base
     self.entries.where(:added? => true).count
   end
 
-  def completely_destroy
+  def destroy_entries_and_feed
     self.feed.entries.each do |entry|
       entry.destroy
     end
     self.feed.destroy
+  end
+
+  def completely_destroy
+    if self.feed
+      self.feed.entries.each do |entry|
+        entry.destroy
+      end
+      self.feed.destroy
+    end
     self.destroy
   end
 
