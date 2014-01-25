@@ -3,6 +3,7 @@ class Blogger < ActiveRecord::Base
   validates :name, :feed_url, presence: true
   has_one :feed
   has_many :entries, through: :feed
+  belongs_to :school_session
 
 
   before_save :slugify!

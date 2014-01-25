@@ -1,4 +1,5 @@
 <hr>
+<h4><strong>Add a student:</strong></h4>
 <%= form_for(@blogger,:html => {class:"form-group"}) do |f| %> 
   
   <% if @blogger.errors.any? %>
@@ -31,8 +32,8 @@
   </div>
   
   <div class="col-xs-1">
-    <%= f.label 'Semester:' %> <br />
-    <%= f.select :semester, (0..10),{},{:class => 'form-control'} %><br /><br />
+    <%= f.label :Session %><br />
+    <%= f.collection_select(:school_session, SchoolSession.all, :id, :name) %> 
   </div>
 
 </div>

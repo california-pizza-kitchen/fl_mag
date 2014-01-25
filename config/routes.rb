@@ -2,6 +2,7 @@ BlogAggregator::Application.routes.draw do
 
   resources :feeds
   resources :users
+  resources :school_sessions
 
   resources :bloggers, param: :slug do
     resources :feeds, param: :slug
