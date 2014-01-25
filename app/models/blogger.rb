@@ -20,6 +20,14 @@ class Blogger < ActiveRecord::Base
     self.entries.where(:added? => true).count
   end
 
+  def school_session_or_placeholder
+    if self.school_session
+      school_session.name
+    else
+      "unassigned"
+    end
+  end
+
   def destroy_entries_and_feed
     self.feed.entries.each do |entry|
       entry.destroy

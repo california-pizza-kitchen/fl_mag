@@ -21,7 +21,6 @@ ActiveRecord::Schema.define(version: 20140125220939) do
     t.datetime "updated_at"
     t.string   "slug"
     t.string   "twitter_handle"
-    t.integer  "session_id"
     t.integer  "school_session_id"
   end
 
@@ -53,12 +52,6 @@ ActiveRecord::Schema.define(version: 20140125220939) do
 
   create_table "school_sessions", force: true do |t|
     t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "sessions", force: true do |t|
-    t.string   "session"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

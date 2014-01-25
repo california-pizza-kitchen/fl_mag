@@ -26,7 +26,9 @@
           <div id="tweets">
           <% @bloggers.each do |blogger| %>
             <tr>    
-              <td id="semester"><%= blogger.school_sesssion.name if blogger.school_session %> </td>
+              <td id="semester">
+                  <%= blogger.school_session_or_placeholder %>
+              </td>
               <td>
                 <a href="/users/<%= current_user.id %>/bloggers/<%= blogger.slug %>">
                   <%= blogger.name %>

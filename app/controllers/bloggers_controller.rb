@@ -14,6 +14,9 @@ class BloggersController < ApplicationController
 
   def create
     @blogger = Blogger.create(blogger_params)
+    @school_session = SchoolSession.find_by(:id => params[:blogger][:school_session])
+    @blogger.update(:school_session => @school_session)
+
     if @blogger.feed_url
       if @blogger.feed_url.end_with?('/')
         @blogger.update(
