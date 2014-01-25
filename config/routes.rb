@@ -36,6 +36,7 @@ BlogAggregator::Application.routes.draw do
         get '/users/:id/entry/:entry_slug' => 'users#admin_blog_view'
    get '/users/:id/bloggers/:blogger_slug' => 'users#admin_blogger_view'
                  get '/users/:id/mainpage' => 'users#admin_mainpage_view'
+    get '/users/bloggers/destroy/:blogger_slug' => 'bloggers#destroy'
 
                       get '/tags/:id/edit' => 'tags#edit'
                    post '/tags/:id/update' => 'tags#update'

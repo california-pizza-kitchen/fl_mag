@@ -30,6 +30,16 @@ $(document).ready(function(){
 
   });
 
+  // $(".destroy-blogger").click(function(){
+  //   var bloggerSlug = $(this).data("blogger-slug");
+  //   var bloggerName = $(this).data("blogger-name");
+
+  //   if (confirm('Delete ' + bloggerName + ' and all their entries?')) { 
+  //     $.post( "bloggers/destroy/" + bloggerSlug )
+  //     });
+  //   }
+  // });
+
 
   $(".tag-generate").submit(function(event){
     var postData = $(this).serializeArray();

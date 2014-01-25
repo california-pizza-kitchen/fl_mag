@@ -25,7 +25,8 @@ class BloggersController < ApplicationController
     CreateWorker.perform_async(@blogger.id)
     respond_to do |format|
       if @blogger.save
-        format.html {redirect_to '/users/show', notice: "Success!"}
+        format.html {redirect_to '/users/show'}
+        flash[:"alert-success"] = "Blogger Added!"
       else
         format.html {redirect_to'/users/show', notice: @blogger.errors.full_messages}
       end
@@ -33,6 +34,16 @@ class BloggersController < ApplicationController
   end
 
   def destroy
+    # -- destroys entries and feed as well as blogger
+    @blogger = Blogger.find_by(:slug => params[:blogger_slug])
+    respond_to do |format|
+      if @blogger.completely_destroy
+        format.html {redirect_to '/users/show'}
+        flash[:"alert-success"] = "Blogger Removed!"
+      else
+        format.html {redirect_to'/users/show', notice: @blogger.errors.full_messages}
+      end
+    end
   end
 
   private
