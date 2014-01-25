@@ -7,12 +7,12 @@
 
 admin = User.create({name: "admin", email: "admin@admin.com", password: "admin", password_confirmation: "admin"})
 
-ian = Blogger.create({name: "Ian Miller", feed_url: "http://irmiller22.github.io", semester: 3, twitter_handle: "@irmiller22"})
-ian.build_feed(:feed_xml => "http://irmiller22.github.io/atom.xml")
-feed = ian.feed
-feedzirra_object = Feedzirra::Feed.fetch_and_parse(feed.feed_xml) 
-feed.add_entries(feedzirra_object.entries)
-ian.feed.save
+# ian = Blogger.create({name: "Ian Miller", feed_url: "http://irmiller22.github.io", semester: 3, twitter_handle: "@irmiller22"})
+# ian.build_feed(:feed_xml => "http://irmiller22.github.io/atom.xml")
+# feed = ian.feed
+# feedzirra_object = Feedzirra::Feed.fetch_and_parse(feed.feed_xml) 
+# feed.add_entries(feedzirra_object.entries)
+# ian.feed.save
 
 kyle = Blogger.create({name: "Kyle Shike", feed_url: "http://kyleshike.github.io", semester: 3, twitter_handle: "@kyleshike"})
 kyle.build_feed(:feed_xml => "http://kyleshike.github.io/atom.xml")
