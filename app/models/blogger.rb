@@ -28,6 +28,14 @@ class Blogger < ActiveRecord::Base
     end
   end
 
+  def school_session_slug_or_placeholder
+    if self.school_session
+      school_session.slug
+    else
+      "unassigned"
+    end
+  end
+
   def destroy_entries_and_feed
     self.feed.entries.each do |entry|
       entry.destroy

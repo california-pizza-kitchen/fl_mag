@@ -15,7 +15,7 @@ class SchoolSessionsController < ApplicationController
   end
 
   def edit
-    @school_session = SchoolSession.find(params[:id])
+    @school_session = SchoolSession.find(params[:id]) 
   end
 
   def update

@@ -11,6 +11,17 @@
   <div class="panel-heading">
     <h3 class="panel-title"><%= @bloggers.count  %> Bloggers</h3>
   </div>
+  <select class="school-sessions-dropdown">
+    <% @school_sessions.each_with_index do |school_session, i| %>
+      <option value="<%= i %>" data-session-slug="<%= school_session.slug %>">
+        <%= school_session.name %>
+      </option>
+    <% end %>
+    <option value="<%= @school_sessions.count %>" data-session-slug="unassigned">
+      Unassigned
+    </option>
+  </select>
+  <%#= select "school_session", "name", SchoolSession.all.collect {|p| [ p.name, p.id ] } %> 
   <div class="panel-body">
 
     <div class="list-group" style="height:300px; overflow:auto;">
@@ -26,7 +37,7 @@
         <tbody>
           <div id="tweets">
           <% @bloggers.each do |blogger| %>
-            <tr>  
+            <tr class="<%= blogger.school_session_slug_or_placeholder %>">  
               <td>
                 <a href="/users/bloggers/destroy/<%= blogger.slug %>">
                   <button class="destroy-blogger" data-blogger-name="<%= blogger.name %>" data-blogger-slug="<%= blogger.slug %>">x
