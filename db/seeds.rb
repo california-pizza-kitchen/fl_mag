@@ -230,4 +230,8 @@ michael.feed.save
 
 # Entry.assign_school_sessions
 
-
+Blogger.all.each do |blogger|
+  blogger.feed.entries.each do |entry|
+    entry.assign_school_session
+  end
+end

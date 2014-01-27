@@ -159,25 +159,45 @@ a:hover {
     margin-bottom: 20px;
 }
 
-/*.dash-btn {
-    border-radius: 2px !important;
-    background-color: #555 !important;
-    border-color: #555 !important;
-    font-size: 13px !important;
-}*/
-/*.student-table-wrapper {
-    margin-left: 20px;
-    padding-left: 20px;
-    height: 500px;
-    width: 40%;
-    float: left;
-    border-left: 1px solid #ccc;
-}*/
+.student-table-wrapper {
+    width: 100%;
+    padding-top: 10px;
+    border-top: 1px solid #ccc;
+    margin: auto;
+    clear: both;
+    display: inline-block;
+}
 
-/*.list-group {
+.student-table-wrapper h2 {
+    text-align: center;
+}
+
+.panel-and-heading {
+    width: 50%;
+    float: right;
+    margin-right: 25%;
+    margin-bottom: 40px !important;
+}
+
+.panel-and-heading button {
+    border-radius: 2px;
+    background-color: #555;
+    border-color: #555;
+    font-size: 13px;
+    height: 25px;
+    width: 25px;
+    padding: 1px;
+}
+
+.panel-and-heading button:hover {
+    background-color: #ccc;
+    border-color: #ccc;
+}
+
+.list-group {
     height: 75%;
     overflow: auto;
-}*/
+}
 
 .destroy-blogger {
     text-align: center;
