@@ -202,3 +202,29 @@ a:hover {
 .destroy-blogger {
     text-align: center;
 }
+
+/* Tags */
+
+.tags-wrapper {
+    display: none;
+    margin-top: 10px;
+}
+.tags-list a {
+    margin-bottom: 10px !important;
+}
+.tag-form {
+    width: 65%;
+    float: left;
+    margin-top: 10px;
+}
+.tag-word {
+    width: 68% !important;
+}
+.tag-submit {
+    border-radius: 2px !important;
+    background-color: #555 !important;
+    border-color: #555 !important;
+    font-size: 13px !important;
+}
+
+

@@ -40,6 +40,20 @@ $(document).ready(function(){
     $(this).css('background-color', '#2069e8;');
   });
 
+  $(".view-tags-btn").click(function(){
+    var tagList = $(this).attr('id');
+    var display = $('.' + tagList).css('display');
+    
+
+    if(display == "none"){
+      $('.' + tagList).css('display', 'inline-block');
+      $(this).text("Hide Tags");
+    } else {
+      $('.' + tagList).css('display', 'none');
+      $(this).text("Show Tags");
+    };
+  });
+
   // tag entries
   $("body").on("click", ".tag", function(event){
     event.preventDefault();
@@ -61,26 +75,35 @@ $(document).ready(function(){
   $(".tag-generate").submit(function(event){
     var postData = $(this).serializeArray();
     var formURL = $(this).attr("action");
-    var id = "#tags-list-" + postData[3].value;
+    var id = $(this).parent().attr('class');
+    id = "." + id.split(" ")[1];
 
-    $.ajax(
-    {
-      url : formURL,
-      type: "post",
-      data: postData,
-      success:function(data, textStatus, jqXHR) 
-        {
-          var btnHtml = "<button type='button' class='btn btn-warning btn-sm'>" + data.tag_word + "</button> ";
-          $(id).append(btnHtml);
-        },
-      error: function(jqXHR, textStatus, errorThrown) 
-        {
-            console.log(errorThrown);    
-        }
-    });
-
+    // if ($.trim($("#email").val()) === "" || $.trim($("#user_name").val()) === "") {
+    //     alert('you did not fill out one of the fields');
+    //     return false;
+    if ($('.tag-word').val() == "") {
+    } else {
+      $.ajax(
+      {
+        url : formURL,
+        type: "post",
+        data: postData,
+        success:function(data, textStatus, jqXHR) 
+          {
+            var btnHtml = "<button type='button' class='btn btn-warning btn-sm'>" + data.tag_word + "</button> ";
+            $(id + ' div').first().append(btnHtml);
+          },
+        error: function(jqXHR, textStatus, errorThrown) 
+          {
+              console.log(errorThrown);    
+          }
+      });
+    }
     event.preventDefault();
   });
+
+  // prevent blank tag creation:
+
 
   // Tweet Character Counter
   var title; 

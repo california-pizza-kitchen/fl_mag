@@ -1,6 +1,5 @@
 class Tag < ActiveRecord::Base
   has_many :entries_tags
-
   before_save :slugify!
 
   def slugify!
