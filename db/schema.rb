@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140126141358) do
+ActiveRecord::Schema.define(version: 20140126154746) do
 
   create_table "bloggers", force: true do |t|
     t.string   "name"
@@ -33,8 +33,9 @@ ActiveRecord::Schema.define(version: 20140126141358) do
     t.datetime "published"
     t.datetime "mag_published"
     t.integer  "feed_id"
-    t.boolean  "added?",        default: false
+    t.boolean  "added?",            default: false
     t.string   "slug"
+    t.integer  "school_session_id"
   end
 
   create_table "entries_tags", force: true do |t|

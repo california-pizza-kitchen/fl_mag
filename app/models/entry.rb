@@ -1,6 +1,7 @@
 class Entry < ActiveRecord::Base
   belongs_to :feed
   belongs_to :blogger
+  belongs_to :school_session
   has_many :entries_tags
   has_many :tags, through: :entries_tags
 
@@ -8,6 +9,12 @@ class Entry < ActiveRecord::Base
 
   def slugify!
     self.title != nil ? self.slug = self.title.downcase.gsub(/[\W,\s]/,'-') : self.slug = self.id
+  end
+
+  def assign_school_session
+    if self.feed.blogger.school_session
+      self.school_session = self.feed.blogger.school_session
+    end
   end
 
   def self.most_recent
@@ -20,6 +27,18 @@ class Entry < ActiveRecord::Base
 
   def author_slug
     self.feed.blogger.slug
+  end
+
+  def session
+    self.feed.blogger.school_session_or_placeholder
+  end
+
+  def session_slug
+    self.feed.blogger.school_session_slug_or_placeholder
+  end
+
+  def self.no_session_count
+    where(:school_session_id => nil).count
   end
 
   def twitter_handle
@@ -59,7 +78,7 @@ class Entry < ActiveRecord::Base
 
   def get_tags
     extractor = Phrasie::Extractor.new
-    rough_tags = extractor.phrases(self.content, strength: 3, occur: 2)
+    rough_tags = extractor.phrases(self.content, strength: 3, occur: 3)
     rough_tags.each do |tag|
       next if !!tag[0].match(/[^a-zA-Z]/)
       next if tag[0].length < 3
@@ -97,6 +116,14 @@ class Entry < ActiveRecord::Base
 
   def self.collect_by_tag(tag_id)
     self.joins(:entries_tags).where(:entries_tags => {:tag_id => tag_id, :visible => true } ).order("mag_published DESC")
+  end
+
+  def self.collect_by_school_session(school_session_id)
+    self.where(:school_session_id => school_session_id)
+  end
+
+  def self.collect_unassigned
+    self.where(:school_session_id => nil)
   end
 
 end

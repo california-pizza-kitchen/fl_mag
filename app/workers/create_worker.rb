@@ -20,6 +20,10 @@ class CreateWorker
     feedzirra_object.sanitize_entries! 
     blogger.feed.save
     blogger.feed.add_entries(feedzirra_object.entries)
+    blogger.feed.entries.each do |entry|
+      entry.assign_school_session
+      entry.save
+    end
   end
 
 end

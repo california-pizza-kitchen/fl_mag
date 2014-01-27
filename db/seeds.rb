@@ -10,12 +10,16 @@ admin = User.create({name: "admin", email: "admin@admin.com", password: "admin",
 ruby = SchoolSession.create({name: "Ruby 003"})
 ios = SchoolSession.create({name: "IOS 000"})
 
-# ian = Blogger.create({name: "Ian Miller", feed_url: "http://irmiller22.github.io", semester: 3, twitter_handle: "@irmiller22"})
-# ian.build_feed(:feed_xml => "http://irmiller22.github.io/atom.xml")
-# feed = ian.feed
-# feedzirra_object = Feedzirra::Feed.fetch_and_parse(feed.feed_xml) 
-# feed.add_entries(feedzirra_object.entries)
-# ian.feed.save
+ian = Blogger.create({name: "Ian Miller", feed_url: "http://irmiller22.github.io", semester: 3, twitter_handle: "@irmiller22", school_session: ruby})
+ian.build_feed(:feed_xml => "http://irmiller22.github.io/atom.xml")
+feed = ian.feed
+feedzirra_object = Feedzirra::Feed.fetch_and_parse(feed.feed_xml) 
+feed.add_entries(feedzirra_object.entries)
+ian.feed.save
+ian.feed.entries.each do |entry|
+  entry.assign_school_session
+  entry.save
+end
 
 kyle = Blogger.create({name: "Kyle Shike", feed_url: "http://kyleshike.github.io", semester: 3, twitter_handle: "@kyleshike", school_session: ruby})
 kyle.build_feed(:feed_xml => "http://kyleshike.github.io/atom.xml")
@@ -23,6 +27,10 @@ feed = kyle.feed
 feedzirra_object = Feedzirra::Feed.fetch_and_parse(feed.feed_xml) 
 feed.add_entries(feedzirra_object.entries)
 kyle.feed.save
+kyle.feed.entries.each do |entry|
+  entry.assign_school_session
+  entry.save
+end
 
 john = Blogger.create({name: "John Richardson", feed_url: "http://richardsonjm.github.io", semester: 3, twitter_handle: "@richardsonjm", school_session: ios})
 john.build_feed(:feed_xml => "http://richardsonjm.github.io/atom.xml")
@@ -31,56 +39,56 @@ feedzirra_object = Feedzirra::Feed.fetch_and_parse(feed.feed_xml)
 feed.add_entries(feedzirra_object.entries)
 john.feed.save
 
-# charlotte = Blogger.create({name: "Charlotte Chang", feed_url: "http://glamouracademy.github.io", semester: 3})
-# charlotte.build_feed(:feed_xml => "http://glamouracademy.github.io/atom.xml")
-# feed = charlotte.feed
-# feedzirra_object = Feedzirra::Feed.fetch_and_parse(feed.feed_xml)
-# feed.add_entries(feedzirra_object.entries)
-# charlotte.feed.save
+charlotte = Blogger.create({name: "Charlotte Chang", feed_url: "http://glamouracademy.github.io", semester: 3, school_session: ruby})
+charlotte.build_feed(:feed_xml => "http://glamouracademy.github.io/atom.xml")
+feed = charlotte.feed
+feedzirra_object = Feedzirra::Feed.fetch_and_parse(feed.feed_xml)
+feed.add_entries(feedzirra_object.entries)
+charlotte.feed.save
 
-# tiffany = Blogger.create({name: "Tiffany Peon", feed_url: "http://apeonlearnstoprogram.tumblr.com", semester: 3, twitter_handle: "@peontiffany"})
-# tiffany.build_feed(:feed_xml => "http://apeonlearnstoprogram.tumblr.com/rss")
-# feed = tiffany.feed
-# feedzirra_object = Feedzirra::Feed.fetch_and_parse(feed.feed_xml)
-# feed.add_entries(feedzirra_object.entries)
-# tiffany.feed.save
+tiffany = Blogger.create({name: "Tiffany Peon", feed_url: "http://apeonlearnstoprogram.tumblr.com", semester: 3, twitter_handle: "@peontiffany"})
+tiffany.build_feed(:feed_xml => "http://apeonlearnstoprogram.tumblr.com/rss")
+feed = tiffany.feed
+feedzirra_object = Feedzirra::Feed.fetch_and_parse(feed.feed_xml)
+feed.add_entries(feedzirra_object.entries)
+tiffany.feed.save
 
-# michael = Blogger.create({name: "Michael Polycarpou", feed_url: "http://polycarpou.github.io", semester: 3, twitter_handle: "@"})
-# michael.build_feed(:feed_xml => "http://polycarpou.github.io/atom.xml")
-# feed = michael.feed
-# feedzirra_object = Feedzirra::Feed.fetch_and_parse(feed.feed_xml)
-# feed.add_entries(feedzirra_object.entries)
-# michael.feed.save
+michael = Blogger.create({name: "Michael Polycarpou", feed_url: "http://polycarpou.github.io", semester: 3, twitter_handle: "@", school_session: ios})
+michael.build_feed(:feed_xml => "http://polycarpou.github.io/atom.xml")
+feed = michael.feed
+feedzirra_object = Feedzirra::Feed.fetch_and_parse(feed.feed_xml)
+feed.add_entries(feedzirra_object.entries)
+michael.feed.save
 
-# amanda = Blogger.create({name: "Amanda Himmelstoss", feed_url: "http://ahimmelstoss.github.io", semester: 3, twitter_handle: "@ahimmelstoss"})
+# amanda = Blogger.create({name: "Amanda Himmelstoss", feed_url: "http://ahimmelstoss.github.io", semester: 3, twitter_handle: "@ahimmelstoss", school_session: ruby})
 # amanda.build_feed(:feed_xml => "http://ahimmelstoss.github.io/atom.xml")
 # feed = amanda.feed
 # feedzirra_object = Feedzirra::Feed.fetch_and_parse(feed.feed_xml)
 # feed.add_entries(feedzirra_object.entries)
 # amanda.feed.save
 
-# emily = Blogger.create({name: "Emily Xie", feed_url: "http://emilyxxie.github.io", semester: 3})
+# emily = Blogger.create({name: "Emily Xie", feed_url: "http://emilyxxie.github.io", semester: 3, school_session: ruby})
 # emily.build_feed(:feed_xml => "http://emilyxxie.github.io/atom.xml")
 # feed = emily.feed
 # feedzirra_object = Feedzirra::Feed.fetch_and_parse(feed.feed_xml)
 # feed.add_entries(feedzirra_object.entries)
 # emily.feed.save
 
-# greg = Blogger.create({name: "Greg Eng", feed_url: "http://gregeng.github.io", semester: 3})
+# greg = Blogger.create({name: "Greg Eng", feed_url: "http://gregeng.github.io", semester: 3, school_session: ruby})
 # greg.build_feed(:feed_xml => "http://gregeng.github.io/atom.xml")
 # feed = greg.feed
 # feedzirra_object = Feedzirra::Feed.fetch_and_parse(feed.feed_xml)
 # feed.add_entries(feedzirra_object.entries)
 # greg.feed.save
 
-# joe = Blogger.create({name: "Joe O'Conor", feed_url: "http://jnoconor.github.io", semester: 3})
+# joe = Blogger.create({name: "Joe O'Conor", feed_url: "http://jnoconor.github.io", semester: 3, school_session: ruby})
 # joe.build_feed(:feed_xml => "http://jnoconor.github.io/atom.xml")
 # feed = joe.feed
 # feedzirra_object = Feedzirra::Feed.fetch_and_parse(feed.feed_xml)
 # feed.add_entries(feedzirra_object.entries)
 # joe.feed.save
 
-# sam_o = Blogger.create({name: "Samuel Owens", feed_url: "http://samueldowens.github.io", semester: 3})
+# sam_o = Blogger.create({name: "Samuel Owens", feed_url: "http://samueldowens.github.io", semester: 3, school_session: ruby})
 # sam_o.build_feed(:feed_xml => "http://samueldowens.github.io/atom.xml")
 # feed = sam_o.feed
 # feedzirra_object = Feedzirra::Feed.fetch_and_parse(feed.feed_xml)
@@ -220,6 +228,6 @@ john.feed.save
 # feed.add_entries(feedzirra_object.entries)
 # edina.feed.save
 
-
+# Entry.assign_school_sessions
 
 

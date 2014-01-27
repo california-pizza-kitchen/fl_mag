@@ -1,5 +1,26 @@
 $(document).ready(function(){
 
+  // list bloggers by school session in table
+  $(".school-sessions-dropdown").change(function(){
+    var selectedSession = $('.school-sessions-dropdown option:selected').data('session-slug');
+    var bloggerCount = $('.school-sessions-dropdown option:selected').data('total-session-bloggers');
+    var entriesCount = $('.school-sessions-dropdown option:selected').data('total-session-entries');
+
+    $(".panel-title").text(bloggerCount + " Bloggers - " + entriesCount + " entries");
+
+    $(".student-list tr").each(function(){
+      if(selectedSession == "all"){
+        $(this).css( 'display', 'table-row' );
+      } else if($(this).hasClass(selectedSession)){
+        $(this).css( 'display', 'table-row' );
+      } else {
+        $(this).css('display', 'none');
+      };
+    });
+
+  });
+
+  // publish entries
   $("body").on("click", ".publish", function(event){
     event.preventDefault();
 
@@ -15,6 +36,7 @@ $(document).ready(function(){
 
   });
 
+  // tag entries
   $("body").on("click", ".tag", function(event){
     event.preventDefault();
 
@@ -30,17 +52,8 @@ $(document).ready(function(){
 
   });
 
-  // $(".destroy-blogger").click(function(){
-  //   var bloggerSlug = $(this).data("blogger-slug");
-  //   var bloggerName = $(this).data("blogger-name");
 
-  //   if (confirm('Delete ' + bloggerName + ' and all their entries?')) { 
-  //     $.post( "bloggers/destroy/" + bloggerSlug )
-  //     });
-  //   }
-  // });
-
-
+  // create and add tag:
   $(".tag-generate").submit(function(event){
     var postData = $(this).serializeArray();
     var formURL = $(this).attr("action");
@@ -93,6 +106,7 @@ $(document).ready(function(){
     }
   }
 
+  // count tweet characters
   $('#updated-tweet-data').focus(function(){
     $(document).on('keyup', function(){
       blogpost_url = " http://"+window.location.host+""+ $(this).parent(".entry").find(".blogpost_url").attr("href"); 

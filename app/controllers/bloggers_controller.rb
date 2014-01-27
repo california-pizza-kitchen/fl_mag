@@ -72,11 +72,15 @@ class BloggersController < ApplicationController
 
     @school_session = SchoolSession.find_by(:id => params[:blogger][:school_session])
     @blogger.update(:school_session => @school_session)
-
+    @blogger.feed.entries.each do |entry|
+      entry.assign_school_session
+      entry.save
+    end
+      
     respond_to do |format|
       if @blogger.update(blogger_params)
         format.html {redirect_to '/users/show'}
-        flash[:"alert-success"] = "Blogger Added!"
+        flash[:"alert-success"] = "Blogger Updated!"
       else
         format.html {redirect_to'/users/show', notice: @blogger.errors.full_messages}
       end

@@ -36,6 +36,10 @@ class Blogger < ActiveRecord::Base
     end
   end
 
+  def self.no_session_count
+    where(:school_session_id => nil).count
+  end
+
   def destroy_entries_and_feed
     self.feed.entries.each do |entry|
       entry.destroy

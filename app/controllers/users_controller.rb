@@ -20,6 +20,21 @@ class UsersController < ApplicationController
     @entries = Entry.page(params[:page]).per_page(10).order('published DESC')
   end
 
+  def admin_session_view
+    @user = User.first
+    if params[:school_session_slug] == "all"
+      @entries = Entry.page(params[:page]).per_page(10).order('published DESC')
+      @title_string = "All"
+    elsif params[:school_session_slug] == "unassigned"
+      @entries = Entry.collect_unassigned.page(params[:page]).per_page(10).order('published DESC')
+      @title_string = "Unassigned"
+    else
+      @school_session = SchoolSession.find_by(:slug => params[:school_session_slug])
+      @title_string = @school_session.name
+      @entries = Entry.collect_by_school_session(@school_session.id).page(params[:page]).per_page(10).order('published DESC')
+    end
+  end
+
   def admin_blog_view
     @user = User.first
     @entry = Entry.find_by(:slug => params[:entry_slug])
@@ -29,7 +44,7 @@ class UsersController < ApplicationController
   def admin_blogger_view
     @user = User.first
     @blogger = Blogger.find_by(:slug => params[:blogger_slug])
-    @entries = Entry.where(:author => @blogger.id).page(params[:page]).per_page(10).order('mag_published ASC')
+    @entries = Entry.where(:author => @blogger.id).page(params[:page]).per_page(10).order('published ASC')
   end
 
   def admin_tag_view
