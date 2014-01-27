@@ -44,23 +44,18 @@
             <div class="tags-list">
               <% entry.entries_tags.each do |entry_tag| %>
                 <% if entry_tag.visible == false %>
-                  <button 
-                    type="button" 
-                    class="btn btn-primary btn-sm tag" 
+                  <span class="label label-untagged tag" 
                     data-entry-id="<%= entry.id %>" 
                     data-entry-tag-id="<%= entry_tag.tag.id %>">
                     <%= entry_tag.tag.display_word_or_word %>
-                  </button>
+                  </span>
                 <% elsif entry_tag.visible == true %>
-                   <a href="/users/<%= current_user.id %>/entries/<%= entry_tag.tag.slug %>">
-                    <button type="button" 
-                      class="btn btn-warning btn-sm published" 
-                      data-user-id="<%= current_user.id %>" 
-                      data-entry-id="<%= entry.id %>" 
-                      data-tag-slug="<%= entry_tag.tag.slug %>">
-                      <%= entry_tag.tag.display_word_or_word %>
-                    </button>
-                  </a>
+                  <span  class="label label-danger published" 
+                    data-user-id="<%= current_user.id %>" 
+                    data-entry-id="<%= entry.id %>" 
+                    data-tag-slug="<%= entry_tag.tag.slug %>">
+                    <%= entry_tag.tag.display_word_or_word %>
+                  </span>
                 <% end %>
               <% end %>
             </div>

@@ -66,7 +66,7 @@ $(document).ready(function(){
     $.post('/entries/tag', entry_tag_data, function(){});
 
     $(this).removeClass("btn-success");
-    $(this).addClass("btn-warning");
+    $(this).addClass("label-danger");
 
   });
 
@@ -90,8 +90,8 @@ $(document).ready(function(){
         data: postData,
         success:function(data, textStatus, jqXHR) 
           {
-            var btnHtml = "<button type='button' class='btn btn-warning btn-sm'>" + data.tag_word + "</button> ";
-            $(id + ' div').first().append(btnHtml);
+            var tagHtml = "<span class=\"label label-danger published\">" + data.tag_word + "</span> ";
+            $(id + ' div').first().append(tagHtml);
           },
         error: function(jqXHR, textStatus, errorThrown) 
           {

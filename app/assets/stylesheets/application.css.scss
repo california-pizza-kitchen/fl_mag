@@ -87,31 +87,30 @@ a:hover {
     clear: both;
     width: 100%;
     display: inline-block;
-    margin-bottom: 30px;
+    margin-bottom: 10%;
 }
 
-.forms-wrapper {
-    width: 100%;
-    clear: both;
-    display: inline-block;
+.forms-and-table-wrapper button {
+    border-radius: 2px;
+    background-color: #555;
+    border-color: #555;
+    font-size: 13px;
 }
 
-.forms-wrapper form {
+.forms-and-table-wrapper form {
     font-size: 15px;
     padding-left: 10%;
 }
 
-.forms-wrapper h2 {
+.forms-and-table-wrapper h2 {
     text-align: center;
 }
 
-.forms-wrapper input{
-    width: 50%;
+.forms-and-table-wrapper input{
+    width: 70%;
 }
 
 .school-session-wrapper {
-    width: 50%;
-    float: left;
     padding-left: 10px;
 }
 
@@ -130,23 +129,23 @@ a:hover {
     margin-bottom: 10px;
 }
 
-.forms-and-table-wrapper button {
-    border-radius: 2px;
-    background-color: #555;
-    border-color: #555;
-    font-size: 13px;
+.three-col {
+    width: 30%;
+    float: left;
+}
+.four-col {
+    width: 40%;
+    float: left;
 }
 
 .session-browse-wrapper {
     margin: auto;
     text-align: center;
     border-bottom: 1px solid #ccc;
+    margin-bottom: 40px;
 }
 
 .student-form-wrapper {
-    width: 50%;
-    float: left;
-    border-right: 1px solid #ccc;
 }
 
 #blogger_school_session {
@@ -155,16 +154,28 @@ a:hover {
    font-size: 16px;
    border: 1px solid #ccc;
    height: 34px;
-    /*-webkit-appearance: none;*/
-    margin-bottom: 20px;
+   margin-bottom: 20px;
+}
+
+.school-sessions-dropdown {
+   width: 150px;
+   padding: 5px;
+   font-size: 16px;
+   border: 1px solid #ccc;
+   height: 34px;
+   margin-bottom: 20px;
 }
 
 .student-table-wrapper {
-    width: 100%;
-    padding-top: 10px;
-    border-top: 1px solid #ccc;
     margin: auto;
-    clear: both;
+    border-right: 1px solid #ccc;
+    border-left: 1px solid #ccc;
+}
+
+.edit-students-title {
+    margin: auto;
+    margin-bottom: -25px;
+    text-align: center;
     display: inline-block;
 }
 
@@ -173,10 +184,10 @@ a:hover {
 }
 
 .panel-and-heading {
-    width: 50%;
-    float: right;
-    margin-right: 25%;
-    margin-bottom: 40px !important;
+    height: 500px;
+}
+
+.panel-and-heading {
 }
 
 .panel-and-heading button {
@@ -209,8 +220,15 @@ a:hover {
     display: none;
     margin-top: 10px;
 }
+.label-untagged {
+    background-color: #ddd;
+}
 .tags-list a {
     margin-bottom: 10px !important;
+}
+.tags-list span{
+    margin: 2px;
+    cursor: pointer;
 }
 .tag-form {
     width: 65%;
