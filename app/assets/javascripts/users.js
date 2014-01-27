@@ -17,7 +17,6 @@ $(document).ready(function(){
         $(this).css('display', 'none');
       };
     });
-
   });
 
   // publish entries
@@ -34,6 +33,11 @@ $(document).ready(function(){
     $(this).addClass("btn-warning");
     $(this).text("Published!");
 
+  });
+
+  // dash button decoration
+  $(".dash-btn").mouseover(function(){
+    $(this).css('background-color', '#2069e8;');
   });
 
   // tag entries

@@ -12,15 +12,11 @@
     </div>
   <% end %>
 
-  <div class="row">
+  <div class="form-inputs">
     
-    <div class="col-xs-3">
       <%= f.label 'Session Name:' %><br />
       <%= f.text_field :name, :class => 'form-control' %><br />
-    </div>
-
-    <%= f.submit 'Create Session', :class => 'btn btn-primary' %>
 
   </div>
-
+  <button class="btn btn-primary dash-btn">Create Session</button>
 <% end %>

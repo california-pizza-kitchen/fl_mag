@@ -1,112 +1,41 @@
 <h1> Welcome <small><%= current_user.name %></small></h1>
 
 <div class="forms-and-table-wrapper">
-  <div class="forms-wrapper">
-    <div class="session-browse-wrapper">
-      <h2><small>Select a school session to browse:</small></h2>
-      <ul class="school-session-list">
-        <li>
-          <a href="/users/<%= current_user.id %>/schoolsession/all">
-            <button class="btn btn-primary">All Entries</button>
-          </a>
-        </li>
-        <% @school_sessions.each_with_index do |school_session, i| %>
-        <li>
-          <a href="/users/<%= current_user.id %>/schoolsession/<%= school_session.slug %>">
-            <button class="btn btn-primary"><%= school_session.name %> Entries</button>
-          </a>
-        </li>
-        <% end %>
-        <li>
-          <a href="/users/<%= current_user.id %>/schoolsession/unassigned">
-            <button class="btn btn-primary">Unassigned Entries</button>
-          </a>
-        </li>
-      </ul>
-    </div>
+  <div class="session-browse-wrapper">
+    <h2><small>Select a school session to browse:</small></h2>
+    <ul class="school-session-list">
+      <li>
+        <a href="/users/<%= current_user.id %>/schoolsession/all">
+          <button class="btn btn-primary">All Entries</button>
+        </a>
+      </li>
+      <% @school_sessions.each_with_index do |school_session, i| %>
+      <li>
+        <a href="/users/<%= current_user.id %>/schoolsession/<%= school_session.slug %>">
+          <button class="btn btn-primary"><%= school_session.name %> Entries</button>
+        </a>
+      </li>
+      <% end %>
+      <li>
+        <a href="/users/<%= current_user.id %>/schoolsession/unassigned">
+          <button class="btn btn-primary">Unassigned Entries</button>
+        </a>
+      </li>
+    </ul>
+  </div>
 
+  <div class="forms-wrapper">
     <div class="student-form-wrapper">
       <h2><small>Add a Student:</small></h2>
       <%= render 'student_form' %>
     </div>
     <div class="school-session-wrapper">
-      <h2><small>Add a Semester:</small></h2>
+      <h2><small>Add a School Session:</small></h2>
       <%= render 'school_session_form' %>
     </div>
   </div>
 
-  <div class="student-table-wrapper">
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <h3 class="panel-title"><%= @bloggers.count  %> Bloggers - <%= @entries.count %> Entries</h3>
-      <select class="school-sessions-dropdown">
-        <option 
-          value="0" 
-          data-session-slug="all"
-          data-total-session-bloggers = "<%= @bloggers.count %>"
-          data-total-session-entries = "<%= @entries.count %>">
-          All
-        </option>
-        <% @school_sessions.each_with_index do |school_session, i| %>
-          <option 
-            value="<%= i + 1%>" 
-            data-total-session-bloggers =  "<%= school_session.bloggers_count %>" 
-            data-session-slug           =   "<%= school_session.slug %>"
-            data-total-session-entries  =   "<%= school_session.entries_count %>">
-            <%= school_session.name %>
-          </option>
-        <% end %>
-        <option 
-          value="<%= @school_sessions.count + 2%>" 
-          data-session-slug="unassigned"
-          data-total-session-bloggers = "<%= Entry.no_session_count %>"
-          data-total-session-entries = "<%= Blogger.no_session_count %>">
-          Unassigned
-        </option>
-      </select>
-    </div>
-    <%#= select "school_session", "name", SchoolSession.all.collect {|p| [ p.name, p.id ] } %> 
-    <div class="panel-body">
-
-      <div class="list-group">
-        <table class="table">
-          <thead>
-            <tr>
-              <th></th>
-              <th>Name</th>
-              <th>Pubslished Entries</th>
-            </tr>
-          </thead>
-          <tbody class="student-list">
-            <div id="tweets">
-              <% @bloggers.each do |blogger| %>
-                <tr class="<%= blogger.school_session_slug_or_placeholder %>">  
-                <td>
-                  <a href="/users/bloggers/destroy/<%= blogger.slug %>">
-                    <button class="destroy-blogger" data-blogger-name="<%= blogger.name %>" data-blogger-slug="<%= blogger.slug %>">x
-                    </button>
-                  </a>
-                </td>  
-                <td>
-                  <a href="/users/<%= current_user.id %>/bloggers/<%= blogger.slug %>">
-                    <%= blogger.name %>
-                  </a> - 
-                  <a href="/bloggers/<%= blogger.slug %>/edit">
-                    edit
-                  </a>
-                </td>
-                <td>
-                  <%= blogger.published_entries %> / <%= blogger.entries.count %>
-                </td>
-                </tr>
-              <% end %>
-            </div>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
-</div>
+  
 
 </div>
 

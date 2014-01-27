@@ -12,28 +12,28 @@
     </div>
   <% end %>
 
-<div class="row">
+<div class="form-inputs">
   
-  <div class="col-xs-3">
+ 
     <%= f.label 'Student Name:' %><br />
     <%= f.text_field :name, :class => 'form-control' %><br />
-  </div>
 
-  <div class="col-xs-3">
+
+ 
     <%= f.label 'Blog URL:' %> <br />
     <%= f.text_field :feed_url, :class => 'form-control' %><br />
-  </div>
+  
 
-  <div class="col-xs-3">
+ 
     <%= f.label 'Twitter Handle:' %> <br />
     <%= f.text_field :twitter_handle, :class => 'form-control' %><br />
-  </div>
   
-  <div class="col-xs-1">
+  
+ 
     <%= f.label :Session %><br />
-    <%= f.collection_select(:school_session, SchoolSession.all, :id, :name) %> 
-  </div>
+    <%= f.collection_select(:school_session, SchoolSession.all, :id, :name) %> <br />
+  
 
 </div>
-  <%= f.submit 'Create Blogger', :class => 'btn btn-primary dash-btn' %>
+  <button class="btn btn-primary dash-btn">Create Session</button>
 <% end %>
