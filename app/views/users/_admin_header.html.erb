@@ -25,5 +25,14 @@
         </option>
       <% end %>
     </select>
+
+    <span>By Student:</span>
+    <select class="entry-browse-dropdown blogger-dropdown">
+      <% @bloggers.each_with_index do |blogger, i| %>
+        <option data-slug="<%= blogger.slug %>">
+          <%= blogger.name %>
+        </option>
+      <% end %>
+    </select>
   </div>
 </div>

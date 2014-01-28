@@ -22,6 +22,7 @@ class UsersController < ApplicationController
   end
 
   def admin_session_view
+    @bloggers = Blogger.all
     @school_sessions = SchoolSession.order('created_at DESC')
     @tags = Tag.all_tagged_tags
     @user = User.first
@@ -39,6 +40,7 @@ class UsersController < ApplicationController
   end
 
   def admin_blog_view
+    @bloggers = Blogger.all
     @tags = Tag.all_tagged_tags
     @school_sessions = SchoolSession.order('created_at DESC')
     @user = User.first
@@ -47,6 +49,7 @@ class UsersController < ApplicationController
   end
 
   def admin_blogger_view
+    @bloggers = Blogger.all
     @tags = Tag.all_tagged_tags
     @school_sessions = SchoolSession.order('created_at DESC')
     @user = User.first
@@ -55,6 +58,7 @@ class UsersController < ApplicationController
   end
 
   def admin_tag_view
+    @bloggers = Blogger.all
     @tags = Tag.all_tagged_tags
     @school_sessions = SchoolSession.order('created_at DESC')
     @user = User.first
@@ -63,6 +67,7 @@ class UsersController < ApplicationController
   end
 
   def admin_mainpage_view
+    @bloggers = Blogger.all
     @tags = Tag.all_tagged_tags
     @school_sessions = SchoolSession.order('created_at DESC')
     @user = User.first

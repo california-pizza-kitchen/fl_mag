@@ -15,6 +15,12 @@ $(document).ready(function(){
     window.location = '/users/1/entries/' + selectedGrouping;
   });
 
+  $('.blogger-dropdown').change(function(){
+    var selectedGrouping = $('.blogger-dropdown option:selected').data('slug');
+    console.log(selectedGrouping);
+    window.location = '/users/1/bloggers/' + selectedGrouping;
+  })
+
   // list bloggers by school session in table
   $(".school-sessions-dropdown").change(function(){
     var selectedSession = $('.school-sessions-dropdown option:selected').data('session-slug');
