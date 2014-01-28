@@ -1,0 +1,29 @@
+<h1> Welcome <small><%= current_user.name %></small></h1>
+<div class="entry-browse-wrapper">
+  <h2><small>Select a category to browse entries:</small></h2>
+  <div class="entry-browse-select-dropdowns">
+    <span>By Session:</span>
+    <select class="entry-browse-dropdown session-dropdown">
+      <option data-slug="all">
+        All Entries
+      </option>
+      <% @school_sessions.each_with_index do |school_session, i| %>
+      <option data-slug="<%= school_session.slug %>">
+        <%= school_session.name %> Entries
+      </option>
+      <% end %>
+      <option data-slug="unassigned">
+        Unassigned Entries
+      </option>
+    </select>
+
+    <span>By Tags:</span>
+    <select class="entry-browse-dropdown tags-dropdown">
+      <% @tags.each_with_index do |tag, i| %>
+        <option data-slug="<%= tag.slug %>">
+          <%= tag.display_word_or_word %>
+        </option>
+      <% end %>
+    </select>
+  </div>
+</div>

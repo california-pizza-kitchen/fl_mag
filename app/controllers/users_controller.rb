@@ -14,13 +14,16 @@ class UsersController < ApplicationController
     @user = User.first
     @blogger = Blogger.new
     @tag = Tag.new
+    @tags = Tag.all_tagged_tags
     @school_session = SchoolSession.new
-    @school_sessions = SchoolSession.all
+    @school_sessions = SchoolSession.order('created_at DESC')
     @bloggers = Blogger.all
     @entries = Entry.page(params[:page]).per_page(10).order('published DESC')
   end
 
   def admin_session_view
+    @school_sessions = SchoolSession.order('created_at DESC')
+    @tags = Tag.all_tagged_tags
     @user = User.first
     if params[:school_session_slug] == "all"
       @entries = Entry.page(params[:page]).per_page(10).order('published DESC')
@@ -36,26 +39,34 @@ class UsersController < ApplicationController
   end
 
   def admin_blog_view
+    @tags = Tag.all_tagged_tags
+    @school_sessions = SchoolSession.order('created_at DESC')
     @user = User.first
     @entry = Entry.find_by(:slug => params[:entry_slug])
     @blogger = @entry.feed.blogger
   end
 
   def admin_blogger_view
+    @tags = Tag.all_tagged_tags
+    @school_sessions = SchoolSession.order('created_at DESC')
     @user = User.first
     @blogger = Blogger.find_by(:slug => params[:blogger_slug])
-    @entries = Entry.where(:author => @blogger.id).page(params[:page]).per_page(10).order('published ASC')
+    @entries = Entry.where(:author => @blogger.id).page(params[:page]).per_page(10).order('published DESC')
   end
 
   def admin_tag_view
+    @tags = Tag.all_tagged_tags
+    @school_sessions = SchoolSession.order('created_at DESC')
     @user = User.first
     @tag = Tag.find_by(:slug => params[:tag_slug])
     @entries = Entry.collect_by_tag(@tag.id).page(params[:page]).per_page(10).order('published ASC')
   end
 
   def admin_mainpage_view
+    @tags = Tag.all_tagged_tags
+    @school_sessions = SchoolSession.order('created_at DESC')
     @user = User.first
-    @entries = Entry.featured_by_date_published.page(params[:page]).per_page(10).order('mag_published ASC')
+    @entries = Entry.featured_by_date_published.page(params[:page]).per_page(10).order('mag_published DESC')
   end
 
   def new

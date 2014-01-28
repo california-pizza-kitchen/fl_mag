@@ -138,11 +138,12 @@ a:hover {
     float: left;
 }
 
-.session-browse-wrapper {
+.entry-browse-wrapper {
     margin: auto;
     text-align: center;
     border-bottom: 1px solid #ccc;
     margin-bottom: 40px;
+    padding-bottom: 30px;
 }
 
 .student-form-wrapper {
@@ -206,7 +207,7 @@ a:hover {
 }
 
 .list-group {
-    height: 75%;
+    height: 410px;
     overflow: auto;
 }
 
@@ -221,13 +222,15 @@ a:hover {
     margin-top: 10px;
 }
 .label-untagged {
-    background-color: #ddd;
+    background-color: #999;
 }
 .tags-list a {
     margin-bottom: 10px !important;
 }
 .tags-list span{
     margin: 2px;
+}
+.label-untagged {
     cursor: pointer;
 }
 .tag-form {

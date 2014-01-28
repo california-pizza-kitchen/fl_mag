@@ -1,33 +1,11 @@
 <%= render 'partials/watermarks' %>
+<%= render 'admin_header' %>
 <div class="full-content">
     <div class="row">
       <div class="col-xs-12 col-sm-6 col-md-8">
         <h2 style="color:#95a5a6">Featured Posts</h2>
         <hr>
-        <%= will_paginate(@entries) %>
-
-        <% @entries.each do |entry| %>
-        <a href="/bloggers/<%= entry.author_slug %>/entries/<%= entry.slug %>">
-          <h1 style="color:black"><%= entry.title.capitalize %></h1>
-        </a>
-        <h4>
-          <a href="/bloggers/<%= entry.author_slug %>">
-            <span style="color:#e74c3c"><%= entry.author_name %></span>
-          </a>
-          <small style="color:#95a5a6">Originally published <%= time_ago_in_words(entry.published)%> ago <a href="<%= entry.url %>" target="blank">here</a></small><br />
-        </h4>
-
-        <%= entry.summarize.html_safe if entry.summarize %>
-        
-        <% entry.tags_added.each do |tag| %>
-          <a href="/feeds/tag/<%= tag.slug %>"><span class="label label-danger"><%= tag.display_word_or_word %></span></a>
-        <% end %>
-        <br><br>
-        <a href="/bloggers/<%= entry.author_slug %>/entries/<%= entry.slug %>">Read More</a>
-        <hr>
-        <% end %>
-        
-        <%= will_paginate(@entries) %>
+        <%= render 'entry_content.html.erb' %>
       </div>
 
     <div class="col-xs-6 col-md-4" style="border-left:solid 1px #ecf0f1; height:90%">

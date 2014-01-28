@@ -16,4 +16,7 @@ class Tag < ActiveRecord::Base
     end
   end
 
+  def self.all_tagged_tags
+    self.joins(:entries_tags).where(:entries_tags => {:visible => true } )
+  end
 end

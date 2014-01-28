@@ -14,26 +14,18 @@
 
 <div class="form-inputs">
   
- 
     <%= f.label 'Student Name:' %><br />
     <%= f.text_field :name, :class => 'form-control' %><br />
-
-
  
     <%= f.label 'Blog URL:' %> <br />
     <%= f.text_field :feed_url, :class => 'form-control' %><br />
-  
 
- 
     <%= f.label 'Twitter Handle:' %> <br />
     <%= f.text_field :twitter_handle, :class => 'form-control' %><br />
-  
-  
- 
+
     <%= f.label :Session %><br />
     <%= f.collection_select(:school_session, SchoolSession.all, :id, :name) %> <br />
-  
 
 </div>
-  <button class="btn btn-primary dash-btn">Create Session</button>
+  <button class="btn btn-primary dash-btn">Add Student</button>
 <% end %>

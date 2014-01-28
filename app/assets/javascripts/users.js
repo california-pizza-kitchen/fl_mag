@@ -1,5 +1,20 @@
 $(document).ready(function(){
 
+  // browse entries from dashboard dropdown
+  $('.entry-browse-wrapper select').each(function(){
+    $(this).prop("selectedIndex", -1);
+  });
+
+  $('.session-dropdown').change(function(){
+    var selectedGrouping = $('.session-dropdown option:selected').data('slug');
+    window.location = '/users/1/schoolsession/' + selectedGrouping;
+  });
+
+  $('.tags-dropdown').change(function(){
+    var selectedGrouping = $('.tags-dropdown option:selected').data('slug');
+    window.location = '/users/1/entries/' + selectedGrouping;
+  });
+
   // list bloggers by school session in table
   $(".school-sessions-dropdown").change(function(){
     var selectedSession = $('.school-sessions-dropdown option:selected').data('session-slug');
@@ -73,29 +88,29 @@ $(document).ready(function(){
 
   // create and add tag:
   $(".tag-generate").submit(function(event){
+    console.log("submit realized");
     var postData = $(this).serializeArray();
     var formURL = $(this).attr("action");
     var id = $(this).parent().attr('class');
     id = "." + id.split(" ")[1];
+    var input = '.tag-word-' + id.split('-')[2];
 
-    // if ($.trim($("#email").val()) === "" || $.trim($("#user_name").val()) === "") {
-    //     alert('you did not fill out one of the fields');
-    //     return false;
-    if ($('.tag-word').val() == "") {
+    if ($(input).val() == "") {
     } else {
       $.ajax(
       {
-        url : formURL,
+        url : formURL,  
         type: "post",
         data: postData,
         success:function(data, textStatus, jqXHR) 
           {
             var tagHtml = "<span class=\"label label-danger published\">" + data.tag_word + "</span> ";
             $(id + ' div').first().append(tagHtml);
+            $(input).val('');
           },
         error: function(jqXHR, textStatus, errorThrown) 
           {
-              console.log(errorThrown);    
+              console.log(errorThrown)    
           }
       });
     }

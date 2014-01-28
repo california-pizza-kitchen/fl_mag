@@ -1,28 +1,7 @@
-<h1> Welcome <small><%= current_user.name %></small></h1>
-
+<%= render 'partials/watermarks' %>
+<%= render 'admin_header' %>
 <div class="forms-and-table-wrapper">
-  <div class="session-browse-wrapper">
-    <h2><small>Select a school session to browse:</small></h2>
-    <ul class="school-session-list">
-      <li>
-        <a href="/users/<%= current_user.id %>/schoolsession/all">
-          <button class="btn btn-primary">All Entries</button>
-        </a>
-      </li>
-      <% @school_sessions.each_with_index do |school_session, i| %>
-      <li>
-        <a href="/users/<%= current_user.id %>/schoolsession/<%= school_session.slug %>">
-          <button class="btn btn-primary"><%= school_session.name %> Entries</button>
-        </a>
-      </li>
-      <% end %>
-      <li>
-        <a href="/users/<%= current_user.id %>/schoolsession/unassigned">
-          <button class="btn btn-primary">Unassigned Entries</button>
-        </a>
-      </li>
-    </ul>
-  </div>
+
 
   <div class="three-col student-form-wrapper">
     <h2><small>Add a Student:</small></h2>

@@ -13,7 +13,7 @@ class Entry < ActiveRecord::Base
 
   def assign_school_session
     if self.feed.blogger.school_session
-      self.school_session = self.feed.blogger.school_session
+      update :school_session => self.feed.blogger.school_session
     end
   end
 
