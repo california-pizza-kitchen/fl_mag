@@ -1,4 +1,6 @@
-<%= will_paginate(@entries) %>
+<div class="entry-pagination">
+  <%= will_paginate(@entries) %>
+</div>
 <% @entries.each_with_index do |entry, i| %>
   <div class="entry" >
     <a class="blogpost_url" href="/users/<%= current_user.id %>/entry/<%= entry.slug %>">

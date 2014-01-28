@@ -249,3 +249,63 @@ a:hover {
 }
 
 
+/* Pagination Style */
+.entry-pagination {
+  background: white;
+  cursor: default;
+  /* self-clearing method: */ 
+}
+.entry-pagination a, .entry-pagination span, .entry-pagination em {
+    padding: 0.2em 0.5em;
+    display: block;
+    float: left;
+    margin-right: 1px; 
+}
+.entry-pagination .disabled {
+    color: #999999;
+    border: 1px solid #dddddd;
+    display: none; 
+}
+.entry-pagination .current {
+    font-style: normal;
+    font-weight: bold;
+    background: #555;
+    color: white;
+    border: 1px solid #777; 
+}
+.entry-pagination a {
+    text-decoration: none;
+    color: #555;
+    border: 2px solid #ccc; 
+}
+.entry-pagination a:hover, .entry-pagination a:focus {
+      color: #000033;
+      border-color: #000033; 
+}
+.entry-pagination .page_info {
+    background: #2e6ab1;
+    color: white;
+    padding: 0.4em 0.6em;
+    width: 22em;
+    margin-bottom: 0.3em;
+    text-align: center; 
+}
+.entry-pagination .page_info b {
+      color: #000033;
+      background: #6aa6ed;
+      padding: 0.1em 0.25em; 
+}
+.entry-pagination:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden; 
+}
+* html .entry-pagination {
+    height: 1%; 
+}
+*:first-child + html .entry-pagination {
+    overflow: hidden; 
+}
+
