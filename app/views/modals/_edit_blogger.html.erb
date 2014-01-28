@@ -1,0 +1,40 @@
+<%= form_for(@blogger, :html => {class:"form-group"}) do |f| %> 
+  
+  <% if @blogger.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@blogger.errors.count, "error") %> prohibited this blogger from being saved:</h2>
+
+      <ul>
+      <% @blogger.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<div class="row">
+  
+  <div class="col-xs-3">
+    <%= f.label 'Student Name:' %><br />
+    <%= f.text_field :name, :value => @blogger.name, :class => 'form-control' %><br />
+  </div>
+
+  <div class="col-xs-3">
+    <%= f.label 'Blog URL:' %> <br />
+    <%= f.text_field :feed_url, :value => @blogger.feed_url, :class => 'form-control' %><br />
+  </div>
+
+  <div class="col-xs-3">
+    <%= f.label 'Twitter Handle:' %> <br />
+    <%= f.text_field :twitter_handle, :value => @blogger.twitter_handle, :class => 'form-control' %><br />
+  </div>
+  
+  <div class="col-xs-1">
+    <%= f.label :Session %><br />
+    <%= f.collection_select(:school_session, SchoolSession.all, :id, :name, :selected => @blogger.school_session_id) %> 
+  </div>
+
+</div>
+  <%= f.submit 'Update Blogger', :class => 'btn btn-primary' %>
+  <a href="/users/dashboard">cancel</a>
+<% end %>
