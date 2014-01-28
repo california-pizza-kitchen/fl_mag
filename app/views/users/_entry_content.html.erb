@@ -8,13 +8,14 @@
       <a href="/users/<%= current_user.id %>/bloggers/<%= entry.author_slug%>">
         <%= entry.author_name %>
       </a>
-      <small class="twitter_handle">
+      <small>
         <%= entry.twitter_handle %>
         <span style="color:#95a5a6">
           <strong>
             Originally published <%= time_ago_in_words(entry.published)%> ago
           </strong>
         </span>
+      </small>
       </h4>
     <% if entry.added? == false %>
       <button 
