@@ -103,6 +103,7 @@ a:hover {
 }
 
 .forms-and-table-wrapper h2 {
+    margin-bottom: 20px;
     text-align: center;
 }
 
@@ -165,9 +166,24 @@ a:hover {
     margin-bottom: 40px;
     padding-bottom: 30px;
 }
-
+.entry-browse-dropdown {
+    width: 150px;
+    padding: 5px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    height: 34px;
+    margin-bottom: 20px;
+}
 .student-form-wrapper {
 }
+
+input.form-error {
+    border: 3px solid #EE2C2C;
+    border-radius: 2px;
+    background-color: #F08080;
+    color: red;
+}
+
 
 #blogger_school_session {
    width: 150px;

@@ -1,5 +1,62 @@
 $(document).ready(function(){
 
+  // create student form validation 
+  function validateStudentFields() {
+    var bloggerName = $('#blogger_name').val();
+    var bloggerUrl = $('#blogger_feed_url').val();
+    var bloggerTwitterHandle  = $('#blogger_twitter_handle').val();
+    if(bloggerName == '' || bloggerName == null) {
+      $('#blogger_name').addClass('form-error');
+      $('#blogger_name').val('name can\'t be blank');
+      return true;
+    };
+
+    if(bloggerUrl.indexOf("http://") != 0) {
+      $('#blogger_feed_url').addClass('form-error');
+      $('#blogger_feed_url').val('must start with http://');
+      return true;
+    }
+
+    if(bloggerTwitterHandle != '' && bloggerTwitterHandle != null) {
+      if(bloggerTwitterHandle.indexOf('@') == -1) {
+        $('#blogger_twitter_handle').addClass('form-error');
+        $('#blogger_twitter_handle').val('must start with @');
+        return true;
+      }
+    }
+  };
+
+  // reset input values
+  $('#blogger_name, #blogger_feed_url, #blogger_twitter_handle, #school_session_name').click(function() {
+    if($(this).hasClass('form-error')) {
+      $(this).removeClass('form-error');
+      $(this).val('');
+    };
+  });
+
+  // apply validations to submit
+  $('#new_blogger').submit(function(event) {
+    if(validateStudentFields() ){
+      event.preventDefault();
+    }
+  });
+
+  // validation for school session
+  function newSchoolValiate() {
+    var inputVal = $('#school_session_name').val();
+    if(inputVal == '' || inputVal == null){
+      $('#school-session-name').addClass('form-error');
+      $('#school-session-name').val('can\'t be blank');
+    }
+  };
+
+  $('#new_school_session').submit(function(event) {
+    alert('yea');
+    if(newSchoolValidate() ){
+      event.preventDefault();
+    }
+  });
+
   // browse entries from dashboard dropdown
   $('.entry-browse-wrapper select').each(function(){
     $(this).prop("selectedIndex", -1);

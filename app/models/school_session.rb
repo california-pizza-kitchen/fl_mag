@@ -1,5 +1,6 @@
 class SchoolSession < ActiveRecord::Base
   validates :name, uniqueness: true
+  validates :slug, uniqueness: true
   has_many :bloggers
   has_many :entries
   before_save :slugify!
