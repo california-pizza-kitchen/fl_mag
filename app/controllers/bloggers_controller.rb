@@ -68,6 +68,7 @@ class BloggersController < ApplicationController
         end
       end
       CreateWorker.perform_async(@blogger.id)
+      sleep(3)
     end
 
     @school_session = SchoolSession.find_by(:id => params[:blogger][:school_session])
