@@ -117,6 +117,25 @@ a:hover {
 .school-session-wrapper form {
     margin-left: 20px;
 }
+.remove-session-wrapper h2 {
+    margin: 20px 0 20px 20px;
+}
+.remove-session-wrapper ul {
+    margin-left: 20px;
+}
+.remove-session-wrapper li {
+    list-style-type: none;
+}
+.remove-session-wrapper button {
+    border-radius: 2px;
+    background-color: #555;
+    border-color: #555;
+    font-size: 13px;
+    height: 25px;
+    width: 25px;
+    padding: 1px;
+    margin-right: 10px;
+}
 
 .school-session-list {
     margin: 0 0 20px;

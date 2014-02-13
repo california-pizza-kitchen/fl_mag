@@ -84,8 +84,27 @@
   </div>
 
   <div class="three-col school-session-wrapper">
-    <h2><small>Add a School Session:</small></h2>
-    <%= render 'school_session_form' %>
+    <div class="add-session-wrapper">
+      <h2><small>Add a School Session:</small></h2>
+      <%= render 'school_session_form' %>
+    </div>
+
+    <div class="remove-session-wrapper">
+      <h2><small>Remove a School Session:</small></h2>
+      <ul>
+        <% @school_sessions.each do |school_session| %>
+          <li>
+            <a href="/users/school_sessions/destroy/<%= school_session.id %>">
+              <button 
+                class="btn btn-primary destroy-school-session" 
+                data-school-session="<%= school_session.id %>">
+                x</button>
+            </a>
+            <%= school_session.name %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
   </div>
 
 </div>

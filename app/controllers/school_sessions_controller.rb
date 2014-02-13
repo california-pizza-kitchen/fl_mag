@@ -31,6 +31,18 @@ class SchoolSessionsController < ApplicationController
     end
   end
 
+  def destroy 
+    @school_session = SchoolSession.find(params[:id])
+    respond_to do |format|
+      if @school_session.destroy
+        format.html {redirect_to '/users/show'}
+        flash[:"alert-success"] = "Session Removed!"
+      else
+        format.html {redirect_to'/users/show', notice: @blogger.errors.full_messages}
+      end
+    end
+  end
+
   private
 
   def strong_params
