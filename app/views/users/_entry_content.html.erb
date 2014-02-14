@@ -35,7 +35,8 @@
     <% elsif entry.added? == true %>
       <button 
         type="button" 
-        class="btn btn-warning">
+        class="btn btn-warning published"
+        data-entry-slug="<%= entry.slug %>">
         Published
       </button>
       <button 

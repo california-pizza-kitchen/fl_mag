@@ -100,18 +100,33 @@ $(document).ready(function(){
   // publish entries
   $("body").on("click", ".publish", function(event){
     event.preventDefault();
+    var entry_slug_data = {
+      slug: $(this).data("entry-slug")
+    }
+    $.post('/entries/publish', entry_slug_data, function(){});
 
+    $(this).removeClass('publish');
+    $(this).removeClass("btn-success");
+    $(this).addClass("btn-warning");
+    $(this).addClass("published");
+    $(this).text("Published!");
+  });
+
+  // unpublish
+  $("body").on("click", ".published", function(event){
+    event.preventDefault();
     var entry_slug_data = {
       slug: $(this).data("entry-slug")
     }
 
-    $.post('/entries/publish', entry_slug_data, function(){});
+    $.post('/entries/unpublish', entry_slug_data, function(){});
 
-    $(this).removeClass("btn-success");
-    $(this).addClass("btn-warning");
-    $(this).text("Published!");
-
-  });
+    $(this).removeClass("published");
+    $(this).removeClass("btn-warning");
+    $(this).addClass("publish");
+    $(this).addClass("btn-success");
+    $(this).text("Publish");
+  })
 
   // dash button decoration
   $(".dash-btn").mouseover(function(){

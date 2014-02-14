@@ -58,6 +58,11 @@ class Entry < ActiveRecord::Base
     return true
   end
 
+  def unpublish
+    self.update(:added? => false, :mag_published => nil)
+    return true
+  end
+
   def summarize
     if self.content
       if self.content.include?("<p>")
