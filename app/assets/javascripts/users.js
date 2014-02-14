@@ -150,18 +150,29 @@ $(document).ready(function(){
   // tag entries
   $("body").on("click", ".tag", function(event){
     event.preventDefault();
-
     var entry_tag_data = {
-      tag_id: $(this).data("entry-tag-id"),
+      tag_id: $(this).data("tag-id"),
       entry_id: $(this).data("entry-id")
     }
-
     $.post('/entries/tag', entry_tag_data, function(){});
-
     $(this).removeClass("btn-success");
+    $(this).removeClass("tag");
+    $(this).addClass("tagged");
     $(this).addClass("label-danger");
-
   });
+
+  $("body").on("click", ".tagged", function(event){
+    event.preventDefault();
+    var entry_tag_data = {
+      tag_id: $(this).data("tag-id"),
+      entry_id: $(this).data("entry-id")
+    }
+    $.post('/entries/untag', entry_tag_data, function(){});
+    $(this).removeClass("label-danger");
+    $(this).removeClass("tagged");
+    $(this).addClass("tag");
+    $(this).addClass("label-untagged");
+  })
 
 
   // create and add tag:

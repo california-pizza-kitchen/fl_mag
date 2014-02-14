@@ -53,14 +53,13 @@
           <% if entry_tag.visible == false %>
             <span class="label label-untagged tag" 
               data-entry-id="<%= entry.id %>" 
-              data-entry-tag-id="<%= entry_tag.tag.id %>">
+              data-tag-id="<%= entry_tag.tag.id %>">
               <%= entry_tag.tag.display_word_or_word %>
             </span>
           <% elsif entry_tag.visible == true %>
-            <span  class="label label-danger published" 
-              data-user-id="<%= current_user.id %>" 
+            <span  class="label label-danger tagged" 
               data-entry-id="<%= entry.id %>" 
-              data-tag-slug="<%= entry_tag.tag.slug %>">
+              data-tag-id="<%= entry_tag.tag.id %>">
               <%= entry_tag.tag.display_word_or_word %>
             </span>
           <% end %>
