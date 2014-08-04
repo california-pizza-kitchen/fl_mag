@@ -3,7 +3,7 @@ class Feed < ActiveRecord::Base
   has_many :entries
 
   def self.fetch(feed_xml)
-    feed = Feedzirra::Feed.fetch_and_parse(feed_xml)
+    feed = Feedjira::Feed.fetch_and_parse(feed_xml)
     feed.sanitize_entries!
   end
   
