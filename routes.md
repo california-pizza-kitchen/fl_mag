@@ -12,7 +12,7 @@
 {
   title: entry.title,
   url: entry.url,
-  content: entry.content.html_safe,
+  content: summarized ? entry.content.summarize.html_safe : entry.content.html_safe,
   schoolSession: entry.session_slug,
   tags: [
     entry.tags.each do |tag|
