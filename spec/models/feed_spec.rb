@@ -4,7 +4,7 @@ describe Feed do
 
   it "fetches and sanitizes entries from feed url" do
     url = "http://kyleshike.github.io/atom.xml"
-    feed = Feedzirra::Feed.fetch_and_parse(url)
+    feed = Feedjira::Feed.fetch_and_parse(url)
     feed = feed.sanitize_entries!
     expect(Feed.fetch(url).first.content).to eq feed.first.content
   end

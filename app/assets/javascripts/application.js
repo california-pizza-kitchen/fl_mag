@@ -15,6 +15,6 @@
 //= require ../../../vendor/assets/mmenu/js/jquery.mmenu.js
 //= require_tree .
 
-//= require twitter/bootstrap
+//= require bootstrap
 
 
