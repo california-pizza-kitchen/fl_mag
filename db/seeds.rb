@@ -109,12 +109,13 @@ feedjira_object = Feedjira::Feed.fetch_and_parse(feed.feed_xml)
 feed.add_entries(feedjira_object.entries)
 ray.feed.save
 
-saron = Blogger.create({name: "Saron Yitbarek", feed_url: "http://bloggytoons.com", semester: 3, twitter_handle: "@saronyitbarek"})
-saron.build_feed(:feed_xml => "http://bloggytoons.com/posts?format=rss")
-feed = saron.feed
-feedjira_object = Feedjira::Feed.fetch_and_parse(feed.feed_xml)
-feed.add_entries(feedjira_object.entries)
-saron.feed.save
+# NoMethodError: undefined method `entries' for 403:Fixnum
+# saron = Blogger.create({name: "Saron Yitbarek", feed_url: "http://bloggytoons.com", semester: 3, twitter_handle: "@saronyitbarek"})
+# saron.build_feed(:feed_xml => "http://bloggytoons.com/posts?format=rss")
+# feed = saron.feed
+# feedjira_object = Feedjira::Feed.fetch_and_parse(feed.feed_xml)
+# feed.add_entries(feedjira_object.entries)
+# saron.feed.save
 
 stephanie = Blogger.create({name: "Stephanie Oh", feed_url: "http://stephaniehoh.github.io", semester: 3, twitter_handle: "@SostephOh"})
 stephanie.build_feed(:feed_xml => "http://stephaniehoh.github.io/atom.xml")
