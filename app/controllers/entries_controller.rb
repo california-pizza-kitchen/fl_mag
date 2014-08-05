@@ -1,13 +1,5 @@
 class EntriesController < ApplicationController
-  before_action :login_required, except: [:index, :show]
-
-  def index
-    @blogger = Blogger.find_by(:slug => params[:blogger_slug])
-    @entries = @blogger.entries
-    respond_to do |format|
-      format.json { render json: @entries.map(&:as_json) }
-    end
-  end
+  before_action :login_required, except: [:show, :index]
 
   def show
     @entry = Entry.find_by(:slug => params[:slug])
@@ -15,6 +7,14 @@ class EntriesController < ApplicationController
     respond_to do |format|
       format.html
       format.json { render json: @entry.as_json }
+    end
+  end
+
+  def index
+    @blogger = Blogger.find_by(:slug => params[:blogger_slug])
+    @entries = @blogger.entries
+    respond_to do |format|
+      format.json { render json: @entries.map(&:as_json) }
     end
   end
 

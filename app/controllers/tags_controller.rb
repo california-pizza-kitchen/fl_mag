@@ -1,5 +1,19 @@
 class TagsController < ApplicationController
-  before_action :login_required
+  before_action :login_required, except: [:show, :index]
+
+  def show
+    @tag = Tag.find_by(word: params[:word])
+    respond_to do |format|
+      format.json { render json: @tag.as_json_verbose }
+    end
+  end
+
+  def index
+    @tags = Tag.all
+    respond_to do |format|
+      format.json { render json: @tags.map(&:as_json_concise) }
+    end
+  end
 
   def edit
     @tag = Tag.find(params[:id])

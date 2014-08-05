@@ -52,6 +52,8 @@ BlogAggregator::Application.routes.draw do
          get '/bloggers/:blogger_slug/entries/:slug' => 'entries#show'
                get '/bloggers/:blogger_slug/entries' => 'entries#index'
 
+                                   get '/tags/:word' => 'tags#show'
+                                         get '/tags' => 'tags#index'
 
   root 'feeds#index'
 end

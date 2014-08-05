@@ -146,7 +146,7 @@ class Entry < ActiveRecord::Base
       "content" => self.content.html_safe,
       "tags" => self.tags.collect do |tag|
         {
-          "name" => tag.display_word_or_word,
+          "name" => tag.word,
           "url" => "#{ENV['ROOT_URL']}/tags/#{tag.slug}",
           "_self" => "#{ENV['ROOT_URL']}/tags/#{tag.slug}.json"
         }

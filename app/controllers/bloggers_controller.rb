@@ -1,14 +1,6 @@
 class BloggersController < ApplicationController
   respond_to :html
-  before_action :login_required, except: [:index, :show]
-
-  def index
-    @bloggers = Blogger.all
-    respond_to do |format|
-      format.html
-      format.json { render json: @bloggers.map(&:as_json) }
-    end
-  end
+  before_action :login_required, except: [:show, :index]
 
   def show
     @blogger = Blogger.find_by(:slug => params[:slug])
@@ -19,6 +11,13 @@ class BloggersController < ApplicationController
     end
   end
 
+  def index
+    @bloggers = Blogger.all
+    respond_to do |format|
+      format.html
+      format.json { render json: @bloggers.map(&:as_json) }
+    end
+  end
 
   def create
     @blogger = Blogger.create(blogger_params)
