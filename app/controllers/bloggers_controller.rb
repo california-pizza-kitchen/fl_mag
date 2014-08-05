@@ -13,6 +13,10 @@ class BloggersController < ApplicationController
   def show
     @blogger = Blogger.find_by(:slug => params[:slug])
     @entries = Entry.where(:author => @blogger.id).page(params[:page]).per_page(10).order('mag_published ASC')
+    respond_to do |format|
+      format.html
+      format.json { render json: @blogger.as_json }
+    end
   end
 
 
