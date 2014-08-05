@@ -20,7 +20,7 @@ class Entry < ActiveRecord::Base
   def self.most_recent
     order("published DESC").limit(1).first
   end
-  
+
   def author_name
     self.feed.blogger.name
   end
@@ -101,7 +101,7 @@ class Entry < ActiveRecord::Base
       # next if tag.length < 3
       tag = Tag.where(:word => tag.downcase.gsub(' ','')).first_or_create
       next if EntriesTag.where(:entry_id => self.id, :tag_id => tag.id).count > 0
-      EntriesTag.create(:entry_id => self.id, :tag_id => tag.id) if tag.ignore != true 
+      EntriesTag.create(:entry_id => self.id, :tag_id => tag.id) if tag.ignore != true
     end
   end
 
@@ -146,7 +146,7 @@ class Entry < ActiveRecord::Base
       "content" => self.content.html_safe,
       "tags" => self.tags.collect do |tag|
         {
-          "name" => tag.word,
+          "tag" => tag.word,
           "url" => "#{ENV['ROOT_URL']}/tags/#{tag.slug}",
           "_self" => "#{ENV['API_ROOT']}/tags/#{tag.slug}"
         }
