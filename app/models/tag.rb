@@ -28,7 +28,7 @@ class Tag < ActiveRecord::Base
     {
       "tag" => self.word,
       "entries_count" => self.entries.size,
-      "_self" => "#{ENV['ROOT_URL']}/tags/#{self.word}.json",
+      "_self" => "#{ENV['API_ROOT']}/tags/#{self.word}",
     }
   end
 
@@ -36,18 +36,18 @@ class Tag < ActiveRecord::Base
     {
       "tag" => self.word,
       "entries_count" => self.entries.size,
-      "_self" => "#{ENV['ROOT_URL']}/tags/#{self.word}.json",
+      "_self" => "#{ENV['API_ROOT']}/tags/#{self.word}",
       "entries" => self.entries.collect do |entry|
         {
           "title" => entry.title,
           "blog_url" => entry.url,
           "url" => "#{ENV['ROOT_URL']}/bloggers/#{entry.feed.blogger.slug}/entries/#{entry.slug}",
-          "_self" => "#{ENV['ROOT_URL']}/bloggers/#{entry.feed.blogger.slug}/entries/#{entry.slug}.json",
+          "_self" => "#{ENV['API_ROOT']}/bloggers/#{entry.feed.blogger.slug}/entries/#{entry.slug}",
           "school_session" => entry.session_slug,
           "blogger" =>  {
                           "name" => entry.feed.blogger.name,
                           "url" => "#{ENV['ROOT_URL']}/bloggers/#{entry.feed.blogger.slug}",
-                          "_self" => "#{ENV['ROOT_URL']}/bloggers/#{entry.feed.blogger.slug}.json"
+                          "_self" => "#{ENV['API_ROOT']}/bloggers/#{entry.feed.blogger.slug}"
                         }
         }
       end

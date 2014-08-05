@@ -50,10 +50,21 @@ BlogAggregator::Application.routes.draw do
                                  post '/tags/create' => 'tags#find_or_create'
 
          get '/bloggers/:blogger_slug/entries/:slug' => 'entries#show'
-               get '/bloggers/:blogger_slug/entries' => 'entries#index'
-
-                                   get '/tags/:word' => 'tags#show'
-                                         get '/tags' => 'tags#index'
 
   root 'feeds#index'
+
+  namespace :api, defaults: {format: 'json'} do
+    namespace :v0 do
+      resources :bloggers, param: :slug, only: [:show, :index] do
+        resources :entries, param: :slug, only: [:show, :index]
+      end
+      resources :entries, param: :slug, only: [:index]
+      resources :tags, param: :word, only: [:show, :index]
+
+      resources :school_sessions, param: :slug, only: [:show, :index] do
+        resources :bloggers, param: :slug, only: [:index]
+        resources :entries, param: :slug, only: [:index]
+      end
+    end
+  end
 end

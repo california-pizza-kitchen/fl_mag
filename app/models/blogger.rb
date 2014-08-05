@@ -65,7 +65,7 @@ class Blogger < ActiveRecord::Base
       "last_published_at" => self.entries.sort_by(&:published).last.published,
       "blog_url" => self.feed_url,
       "url" => "#{ENV['ROOT_URL']}/bloggers/#{self.slug}",
-      "_self" => "#{ENV['ROOT_URL']}/bloggers/#{self.slug}.json",
+      "_self" => "#{ENV['API_ROOT']}/bloggers/#{self.slug}",
       "entries" => self.entries.collect do |entry|
         {
           "title" => entry.title,
@@ -73,8 +73,8 @@ class Blogger < ActiveRecord::Base
           "published_date" => entry.published,
           "blog_url" => entry.url,
           "url" => "#{ENV['ROOT_URL']}/bloggers/#{self.slug}/entries/#{entry.slug}",
-          "_self" => "#{ENV['ROOT_URL']}/bloggers/#{self.slug}/entries/#{entry.slug}.json",
-          "summary" => entry.summarize.html_safe
+          "_self" => "#{ENV['API_ROOT']}/bloggers/#{self.slug}/entries/#{entry.slug}",
+          "content" => entry.content.html_safe
         }
       end
     }

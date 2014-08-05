@@ -136,19 +136,19 @@ class Entry < ActiveRecord::Base
       "title" => self.title,
       "blog_url" => self.url,
       "url" => "#{ENV['ROOT_URL']}/bloggers/#{self.feed.blogger.slug}/entries/#{self.slug}",
-      "_self" => "#{ENV['ROOT_URL']}/bloggers/#{self.feed.blogger.slug}/entries/#{self.slug}.json",
+      "_self" => "#{ENV['API_ROOT']}/bloggers/#{self.feed.blogger.slug}/entries/#{self.slug}",
       "school_session" => self.session_slug,
       "blogger" =>  {
                       "name" => self.feed.blogger.name,
                       "url" => "#{ENV['ROOT_URL']}/bloggers/#{self.feed.blogger.slug}",
-                      "_self" => "#{ENV['ROOT_URL']}/bloggers/#{self.feed.blogger.slug}.json"
+                      "_self" => "#{ENV['API_ROOT']}/bloggers/#{self.feed.blogger.slug}"
                     },
       "content" => self.content.html_safe,
       "tags" => self.tags.collect do |tag|
         {
           "name" => tag.word,
           "url" => "#{ENV['ROOT_URL']}/tags/#{tag.slug}",
-          "_self" => "#{ENV['ROOT_URL']}/tags/#{tag.slug}.json"
+          "_self" => "#{ENV['API_ROOT']}/tags/#{tag.slug}"
         }
       end
     }
