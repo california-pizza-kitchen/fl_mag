@@ -51,6 +51,10 @@ group :doc do
   gem 'sdoc', require: false
 end
 
+# API GEMS
+gem 'rack-cors', :require => 'rack/cors'
+gem 'dotenv-rails'
+
 # Use ActiveModel has_secure_password
 
 

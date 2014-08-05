@@ -63,6 +63,11 @@ GEM
     curb (0.8.6)
     database_cleaner (1.3.0)
     diff-lcs (1.2.5)
+    dotenv (0.11.1)
+      dotenv-deployment (~> 0.0.2)
+    dotenv-deployment (0.0.2)
+    dotenv-rails (0.11.1)
+      dotenv (= 0.11.1)
     equalizer (0.0.9)
     erubis (2.7.0)
     execjs (2.2.1)
@@ -133,6 +138,7 @@ GEM
       method_source (~> 0.8.1)
       slop (~> 3.4)
     rack (1.5.2)
+    rack-cors (0.2.9)
     rack-test (0.6.2)
       rack (>= 1.0)
     rails (4.0.1)
@@ -264,6 +270,7 @@ DEPENDENCIES
   capybara
   coffee-rails (~> 4.0.0)
   database_cleaner
+  dotenv-rails
   factory_girl_rails
   faker
   feedjira
@@ -275,6 +282,7 @@ DEPENDENCIES
   pg
   phrasie
   pry
+  rack-cors
   rails (= 4.0.1)
   rspec
   rspec-rails
