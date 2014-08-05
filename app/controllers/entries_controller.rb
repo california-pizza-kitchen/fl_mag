@@ -3,6 +3,10 @@ class EntriesController < ApplicationController
   def show
     @entry = Entry.find_by(:slug => params[:slug])
     @blogger = Blogger.find_by(:slug => params[:blogger_slug])
+    # respond_to do |format|
+    #   format.html
+    #   format.json { render json: @entry.to_json }
+    # end
   end
 
   def publish

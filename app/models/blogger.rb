@@ -57,4 +57,34 @@ class Blogger < ActiveRecord::Base
     self.destroy
   end
 
+  def as_json
+    {
+      "name" => name,
+      "school_session" => school_session_slug_or_placeholder,
+      "number_of_entries" => entries.length,
+      "last_published_at" => entries.sort_by(&:published).last.published,
+      "blog_url" => feed_url,
+      "url" => "#{ENV['ROOT_URL']}/bloggers/#{slug}",
+      "_self" => "#{ENV['ROOT_URL']}/bloggers/#{slug}.json",
+      "entries" => entries.collect do |entry|
+        {
+          "title" => entry.title,
+          "slug" => entry.slug,
+          "published_date" => entry.published,
+          "blog_url" => entry.url,
+          "url" => "#{ENV['ROOT_URL']}/bloggers/#{slug}/entries/#{entry.slug}",
+          "_self" => "#{ENV['ROOT_URL']}/bloggers/#{slug}/entries/#{entry.slug}.json",
+          "summary" => entry.summarize.html_safe,
+          "tags" => entry.tags.collect do |tag|
+            {
+              "name" => tag.display_word_or_word,
+              "url" => "#{ENV['ROOT_URL']}/tags/#{tag.slug}",
+              "_self" => "#{ENV['ROOT_URL']}/tags/#{tag.slug}.json"
+            }
+          end
+        }
+      end
+    }
+  end
+
 end

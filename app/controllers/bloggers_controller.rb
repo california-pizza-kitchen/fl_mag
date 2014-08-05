@@ -4,6 +4,10 @@ class BloggersController < ApplicationController
 
   def index
     @bloggers = Blogger.all
+    respond_to do |format|
+      format.html
+      format.json { render json: @bloggers.map(&:as_json) }
+    end
   end
 
   def show
