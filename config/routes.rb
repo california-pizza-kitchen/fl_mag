@@ -50,7 +50,7 @@ BlogAggregator::Application.routes.draw do
                                  post '/tags/create' => 'tags#find_or_create'
 
          get '/bloggers/:blogger_slug/entries/:slug' => 'entries#show'
-
+               get '/bloggers/:blogger_slug/entries' => 'entries#index'
 
 
   root 'feeds#index'

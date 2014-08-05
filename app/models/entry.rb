@@ -131,4 +131,27 @@ class Entry < ActiveRecord::Base
     self.where(:school_session_id => nil)
   end
 
+  def as_json
+    {
+      "title" => self.title,
+      "blog_url" => self.url,
+      "url" => "#{ENV['ROOT_URL']}/bloggers/#{self.feed.blogger.slug}/entries/#{self.slug}",
+      "_self" => "#{ENV['ROOT_URL']}/bloggers/#{self.feed.blogger.slug}/entries/#{self.slug}.json",
+      "school_session" => self.session_slug,
+      "blogger" =>  {
+                      "name" => self.feed.blogger.name,
+                      "url" => "#{ENV['ROOT_URL']}/bloggers/#{self.feed.blogger.slug}",
+                      "_self" => "#{ENV['ROOT_URL']}/bloggers/#{self.feed.blogger.slug}.json"
+                    },
+      "content" => self.content.html_safe,
+      "tags" => self.tags.collect do |tag|
+        {
+          "name" => tag.display_word_or_word,
+          "url" => "#{ENV['ROOT_URL']}/tags/#{tag.slug}",
+          "_self" => "#{ENV['ROOT_URL']}/tags/#{tag.slug}.json"
+        }
+      end
+    }
+  end
+
 end
