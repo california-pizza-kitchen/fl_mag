@@ -1,4 +1,6 @@
 class Entry < ActiveRecord::Base
+  include APIQueryable
+
   belongs_to :feed
   belongs_to :blogger
   belongs_to :school_session
@@ -131,6 +133,12 @@ class Entry < ActiveRecord::Base
     self.where(:school_session_id => nil)
   end
 
+  # API
+
+  def self.default_order
+    'published DESC'
+  end
+
   def as_json
     {
       "title" => self.title,
@@ -153,5 +161,7 @@ class Entry < ActiveRecord::Base
       end
     }
   end
+
+
 
 end

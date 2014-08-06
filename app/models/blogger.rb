@@ -1,10 +1,11 @@
 class Blogger < ActiveRecord::Base
-  validates :feed_url, uniqueness: true 
+  include APIQueryable
+
+  validates :feed_url, uniqueness: true
   validates :name, :feed_url, presence: true
   has_one :feed
   has_many :entries, through: :feed
   belongs_to :school_session
-
 
   before_save :slugify!
 
@@ -55,6 +56,12 @@ class Blogger < ActiveRecord::Base
       self.feed.destroy
     end
     self.destroy
+  end
+
+  # API Stuff
+
+  def self.default_order
+    'name ASC'
   end
 
   def as_json
