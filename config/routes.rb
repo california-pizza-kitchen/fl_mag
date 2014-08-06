@@ -55,13 +55,13 @@ BlogAggregator::Application.routes.draw do
 
   namespace :api, defaults: {format: 'json'} do
     namespace :v0 do
-      resources :bloggers, param: :slug, only: [:show, :index] do
-        resources :entries, param: :slug, only: [:show, :index]
+      resources :bloggers, param: :slug, only: [:index, :show] do
+        resources :entries, param: :slug, only: [:index, :show]
       end
       resources :entries, param: :slug, only: [:index]
-      resources :tags, param: :word, only: [:show, :index]
+      resources :tags, param: :word, only: [:index, :show]
 
-      resources :school_sessions, param: :slug, only: [:show, :index] do
+      resources :school_sessions, param: :slug, only: [:index, :show] do
         resources :bloggers, param: :slug, only: [:index]
         resources :entries, param: :slug, only: [:index]
       end
