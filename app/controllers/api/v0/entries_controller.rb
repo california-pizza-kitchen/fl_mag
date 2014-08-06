@@ -18,7 +18,6 @@ module API
         @entry = Entry.find_by(:slug => params[:slug])
         render json: @entry.as_json
       end
-
     end
   end
 end

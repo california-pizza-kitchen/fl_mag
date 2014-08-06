@@ -58,7 +58,7 @@ BlogAggregator::Application.routes.draw do
       resources :bloggers, param: :slug, only: [:index, :show] do
         resources :entries, param: :slug, only: [:index, :show]
       end
-      resources :entries, param: :slug, only: [:index]
+      resources :entries, param: :slug, only: [:index, :show]
       resources :tags, param: :word, only: [:index, :show]
 
       resources :school_sessions, param: :slug, only: [:index, :show] do
