@@ -1,4 +1,6 @@
 class SchoolSession < ActiveRecord::Base
+  include APIQueryable
+
   validates :name, uniqueness: true
   validates :slug, uniqueness: true
   has_many :bloggers
@@ -16,6 +18,8 @@ class SchoolSession < ActiveRecord::Base
   def entries_count
     self.entries.count
   end
+
+  # API
 
   def as_json
     {
