@@ -2,7 +2,6 @@ module Api
   module V0
     class SchoolSessionsController < ApplicationController
       def show
-        #CHANGE
         @school_session = SchoolSession.find_by(:slug => params[:slug])
         render json: @school_session.as_json
       end
