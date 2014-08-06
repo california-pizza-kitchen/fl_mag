@@ -142,10 +142,11 @@ class Entry < ActiveRecord::Base
   def as_json
     {
       "title" => self.title,
+      "school_session" => self.session_slug,
       "blog_url" => self.url,
       "url" => "#{ENV['ROOT_URL']}/bloggers/#{self.feed.blogger.slug}/entries/#{self.slug}",
       "_self" => "#{ENV['API_ROOT']}/bloggers/#{self.feed.blogger.slug}/entries/#{self.slug}",
-      "school_session" => self.session_slug,
+      "slug" => self.slug,
       "blogger" =>  {
                       "name" => self.feed.blogger.name,
                       "url" => "#{ENV['ROOT_URL']}/bloggers/#{self.feed.blogger.slug}",
