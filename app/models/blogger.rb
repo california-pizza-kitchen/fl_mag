@@ -73,7 +73,6 @@ class Blogger < ActiveRecord::Base
       "blog_url" => self.feed_url,
       "url" => "#{ENV['ROOT_URL']}/bloggers/#{self.slug}",
       "_self" => "#{ENV['API_ROOT']}/bloggers/#{self.slug}",
-      "slug" => self.slug,
       "entries" => self.entries.collect do |entry|
         {
           "title" => entry.title,
