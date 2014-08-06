@@ -1,4 +1,4 @@
-module Api
+module API
   module V0
     class SchoolSessionsController < ApplicationController
       def show

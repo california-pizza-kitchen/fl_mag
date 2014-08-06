@@ -1,4 +1,4 @@
-module Api
+module API
   module V0
     class EntriesController < ApplicationController
       def show
