@@ -21,6 +21,10 @@ class SchoolSession < ActiveRecord::Base
 
   # API
 
+  def self.default_order
+    "start_date DESC"
+  end
+
   def as_json
     {
       "name" => self.name,
