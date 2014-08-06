@@ -146,6 +146,7 @@ class Entry < ActiveRecord::Base
       "url" => "#{ENV['ROOT_URL']}/bloggers/#{self.feed.blogger.slug}/entries/#{self.slug}",
       "_self" => "#{ENV['API_ROOT']}/bloggers/#{self.feed.blogger.slug}/entries/#{self.slug}",
       "school_session" => self.session_slug,
+      "published_date" => self.published,
       "blogger" =>  {
                       "name" => self.feed.blogger.name,
                       "url" => "#{ENV['ROOT_URL']}/bloggers/#{self.feed.blogger.slug}",
