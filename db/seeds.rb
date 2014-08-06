@@ -7,8 +7,8 @@
 
 admin = User.create({name: "admin", email: "admin@admin.com", password: "admin", password_confirmation: "admin"})
 
-ruby = SchoolSession.create({name: "Ruby 003"})
-ios = SchoolSession.create({name: "IOS 000"})
+ruby = SchoolSession.create({name: "Ruby 003", start_date: "2013-09-23"})
+ios = SchoolSession.create({name: "IOS 000", start_date: "2013-09-30"})
 
 ian = Blogger.create({name: "Ian Miller", feed_url: "http://irmiller22.github.io", semester: 3, twitter_handle: "@irmiller22", school_session: ruby})
 ian.build_feed(:feed_xml => "http://irmiller22.github.io/atom.xml")
