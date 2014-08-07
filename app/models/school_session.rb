@@ -35,6 +35,7 @@ class SchoolSession < ActiveRecord::Base
           {
             "name" => blogger.name,
             "number_of_entries" => blogger.entries.length,
+            "blog_url" => blogger.feed_url,
             "_self" => "#{ENV['API_ROOT']}/bloggers/#{blogger.slug}"
           }
         },
