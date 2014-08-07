@@ -139,10 +139,18 @@ class Entry < ActiveRecord::Base
     'published DESC'
   end
 
-  def as_json
+  def as_json_concise
     {
       "title" => self.title,
-      "school_session" => self.session_slug,
+      "published_date" => self.published,
+      "slug" => self.slug,
+      "school_session" => self.session_slug
+    }
+  end
+
+  def as_json_verbose
+    {
+      "title" => self.title,
       "blog_url" => self.url,
       "url" => "#{ENV['ROOT_URL']}/bloggers/#{self.feed.blogger.slug}/entries/#{self.slug}",
       "_self" => "#{ENV['API_ROOT']}/bloggers/#{self.feed.blogger.slug}/entries/#{self.slug}",
@@ -164,7 +172,4 @@ class Entry < ActiveRecord::Base
       end
     }
   end
-
-
-
 end

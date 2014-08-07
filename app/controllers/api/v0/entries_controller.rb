@@ -11,12 +11,16 @@ module API
           @entries = Entry.api_query(params[:order], params[:limit], params[:offset])
         end
 
-        render json: @entries.map(&:as_json)
+        if params[:concise] == "true"
+          render json: @entries.map(&:as_json_concise)
+        else
+          render json: @entries.map(&:as_json_verbose)
+        end
       end
 
       def show
         @entry = Entry.find_by(:slug => params[:slug])
-        render json: @entry.as_json
+        render json: @entry.as_json_verbose
       end
     end
   end
