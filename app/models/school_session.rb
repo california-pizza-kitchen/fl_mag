@@ -25,7 +25,17 @@ class SchoolSession < ActiveRecord::Base
     "start_date DESC"
   end
 
-  def as_json
+  def as_json_concise
+    {
+      "name" => self.name,
+      "slug" => self.slug,
+      "_self" => "#{ENV['API_ROOT']}/school_sessions/#{self.slug}",
+      "bloggers_count" => self.bloggers_count,
+      "entries_count" => self.entries_count
+    }
+  end
+
+  def as_json_verbose
     {
       "name" => self.name,
       "slug" => self.slug,
