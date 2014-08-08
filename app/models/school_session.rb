@@ -25,22 +25,49 @@ class SchoolSession < ActiveRecord::Base
     "start_date DESC"
   end
 
-  def as_json
+  def as_json_concise
     {
       "name" => self.name,
       "slug" => self.slug,
       "_self" => "#{ENV['API_ROOT']}/school_sessions/#{self.slug}",
       "bloggers_count" => self.bloggers_count,
-      "bloggers" => self.bloggers.collect{|blogger|
-          {
-            "name" => blogger.name,
-            "number_of_entries" => blogger.entries.length,
-            "blog_url" => blogger.feed_url,
-            "_self" => "#{ENV['API_ROOT']}/bloggers/#{blogger.slug}"
-          }
-        },
+      "entries_count" => self.entries_count
+    }
+  end
+
+  def as_json_bloggers
+    {
+      "name" => self.name,
+      "slug" => self.slug,
+      "_self" => "#{ENV['API_ROOT']}/school_sessions/#{self.slug}",
+      "bloggers_count" => self.bloggers_count,
+      "bloggers" => self.bloggers.collect { |blogger|
+        {
+          "name" => blogger.name,
+          "number_of_entries" => blogger.entries.length,
+          "blog_url" => blogger.feed_url,
+          "_self" => "#{ENV['API_ROOT']}/bloggers/#{blogger.slug}"
+        }
+      }
+    }
+  end
+
+  def as_json_verbose
+    {
+      "name" => self.name,
+      "slug" => self.slug,
+      "_self" => "#{ENV['API_ROOT']}/school_sessions/#{self.slug}",
+      "bloggers_count" => self.bloggers_count,
+      "bloggers" => self.bloggers.collect { |blogger|
+        {
+          "name" => blogger.name,
+          "number_of_entries" => blogger.entries.length,
+          "blog_url" => blogger.feed_url,
+          "_self" => "#{ENV['API_ROOT']}/bloggers/#{blogger.slug}"
+        }
+      },
       "entries_count" => self.entries_count,
-      "entries" => self.entries.collect do |entry|
+      "entries" => self.entries.collect { |entry|
         {
           "title" => entry.title,
           "_self" => "#{ENV['API_ROOT']}/bloggers/#{entry.feed.blogger.slug}/entries/#{entry.slug}",
@@ -49,7 +76,7 @@ class SchoolSession < ActiveRecord::Base
                           "_self" => "#{ENV['API_ROOT']}/bloggers/#{entry.feed.blogger.slug}"
                         }
         }
-      end
+      }
     }
   end
 

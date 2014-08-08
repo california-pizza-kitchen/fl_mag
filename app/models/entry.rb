@@ -160,6 +160,7 @@ class Entry < ActiveRecord::Base
       "blogger" =>  {
                       "name" => self.feed.blogger.name,
                       "url" => "#{ENV['ROOT_URL']}/bloggers/#{self.feed.blogger.slug}",
+                      "blog_url" => self.feed.blogger.feed_url,
                       "_self" => "#{ENV['API_ROOT']}/bloggers/#{self.feed.blogger.slug}"
                     },
       "content" => self.content.html_safe,
