@@ -17,6 +17,10 @@ class Blogger < ActiveRecord::Base
     self.entries.most_recent
   end
 
+  def last_published_at
+    self.entries.sort_by(&:published).last.published unless self.entries.empty?
+  end
+
   def published_entries
     self.entries.where(:added? => true).count
   end
@@ -69,7 +73,7 @@ class Blogger < ActiveRecord::Base
       "name" => self.name,
       "school_session" => self.school_session_slug_or_placeholder,
       "number_of_entries" => self.entries.length,
-      "last_published_at" => self.entries.sort_by(&:published).last.published,
+      "last_published_at" => self.last_published_at,
       "blog_url" => self.feed_url,
       "url" => "#{ENV['ROOT_URL']}/bloggers/#{self.slug}",
       "_self" => "#{ENV['API_ROOT']}/bloggers/#{self.slug}",
