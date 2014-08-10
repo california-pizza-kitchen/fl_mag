@@ -19,14 +19,14 @@ describe API::V0::EntriesController, :type => :controller do
       expect(json.collect{ |j| j[:title] }).to include(@entry_1.title, @entry_2.title, @entry_3.title)
     end
 
-    context 'with query parameters' do
+    describe 'with query parameters' do
       before do
         @entry_1.update(published: 3.days.ago)
         @entry_2.update(published: 2.days.ago)
         @entry_3.update(published: 1.days.ago)
       end
 
-      context 'limit and offset parameters' do
+      describe 'limit and offset parameters' do
         it 'limits number of entries by \'limit\' parameter' do
           get :index, format: :json, limit: 2
 
@@ -42,7 +42,7 @@ describe API::V0::EntriesController, :type => :controller do
         end
       end
 
-      context 'order parameter' do
+      describe 'order parameter' do
         it 'orders entries by \'published DESC\' by default' do
           get :index, format: :json
 
