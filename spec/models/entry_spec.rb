@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Entry do
+describe Entry, :type => :model do
   before :each do
     @entry = Entry.create(
       title: "Title of this Blog",
@@ -37,7 +37,7 @@ describe Entry do
 
   it "summarizes content with its <p> tags" do
     @entry.content = "<p>it was the</p><p>best of times,</p><p>it was the</p><p>worst of times</p>"
-    expect(@entry.summarize).to eq("<p>it was the</p><p>best of times,</p>")
+    expect(@entry.summarize).to eq("<p>it was the </p><p>best of times, </p>")
   end
 
   it "summarizes content when it does not have <p> tags" do
@@ -56,7 +56,7 @@ describe Entry do
     it "gets tags from content" do
       @entry.content = "flufernutter flufernutter flufernutter flufernutter"
       @entry.get_tags
-      expect(@entry.tags.first.word).to eq "flufernutter" 
+      expect(@entry.tags.first.word).to eq "flufernutter"
     end
 
     it "gets tags from its title" do

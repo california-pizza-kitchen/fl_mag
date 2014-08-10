@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe EntriesController do
+describe EntriesController, :type => :controller do
   before :each do 
     @entry = create(:entry) 
     @joe = create(:blogger)
@@ -37,7 +37,7 @@ describe EntriesController do
 
       it "calls publish on an entry" do
         get :publish, slug: @entry.slug
-        expect(assigns(:entry).added?).to be_true
+        expect(assigns(:entry).added?).to be_truthy
       end
 
       it "redirects to users#show" do
@@ -75,7 +75,7 @@ describe EntriesController do
       entry_tag = EntriesTag.find_by(entry_id: @entry.id, tag_id: tag.id)
       get :tag, tag_id: tag.id, entry_id: @entry.id
 
-      expect(assigns(:entry_tag).visible).to be_true
+      expect(assigns(:entry_tag).visible).to be_truthy
     end
   end
 end

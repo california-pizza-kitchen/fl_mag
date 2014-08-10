@@ -31,6 +31,7 @@ gem 'will_paginate', '~> 3.0'
 
 group :test do
   gem 'rspec-rails'
+  gem 'rspec-collection_matchers'
   gem 'factory_girl_rails'
   gem 'faker'
   gem 'database_cleaner'

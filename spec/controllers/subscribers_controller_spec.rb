@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe SubscribersController do
+describe SubscribersController, :type => :controller do
   describe "POST #create" do
     describe "with valid attributes" do
       it "saves the subscriber to the database" do
@@ -43,13 +43,13 @@ describe SubscribersController do
     it "unsubscribes if subscribed" do
       subscriber = create(:opt_in)
       post :unsubscribe, signature: subscriber.hex_key
-      expect(assigns(:subscriber).opt_in?).to be_false 
+      expect(assigns(:subscriber).opt_in?).to be_falsey 
     end
 
     it "does nothing if not subscribed" do
       subscriber = create(:opt_out)
       post :unsubscribe, signature: subscriber.hex_key
-      expect(assigns(:subscriber).opt_in?).to be_false
+      expect(assigns(:subscriber).opt_in?).to be_falsey
     end
   end
 end

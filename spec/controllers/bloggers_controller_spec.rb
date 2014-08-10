@@ -1,7 +1,7 @@
 require 'spec_helper'
 
-describe BloggersController do
-  
+describe BloggersController, :type => :controller do
+
   describe "GET #index" do
     it "populates an array of bloggers" do
       joe = create(:blogger)
@@ -33,7 +33,7 @@ describe BloggersController do
 
   describe "POST #create" do
     context "when user is logged in" do
-      before :each do 
+      before :each do
         login
       end
 
@@ -73,6 +73,7 @@ describe BloggersController do
 
       it "redirects to users#show with an error notice" do
         pending "how to stub a chron job?"
+        fail
       end
     end
   end

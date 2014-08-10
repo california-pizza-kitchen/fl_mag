@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Blogger do
+describe Blogger, :type => :model do
   before :each do
     @blogger = create(:blogger)
     @blogger2 = build(:invalid_blogger)

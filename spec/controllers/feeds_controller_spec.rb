@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe FeedsController do
+describe FeedsController, :type => :controller do
   before :each do
     @entry_1 = create(:entry, added?: true, mag_published: Time.now)
     @entry_2 = create(:entry, added?: true, mag_published: Time.now)

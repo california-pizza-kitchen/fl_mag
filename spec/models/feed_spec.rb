@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Feed do
+describe Feed, :type => :model do
 
   it "fetches and sanitizes entries from feed url" do
     url = "http://kyleshike.github.io/atom.xml"

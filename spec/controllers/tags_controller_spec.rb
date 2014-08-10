@@ -1,11 +1,11 @@
 require 'spec_helper'
 
-describe TagsController do
+describe TagsController, :type => :controller do
   before :each do
     @tag = create(:tag)
   end
 
-  context "when the user is signed in" do 
+  context "when the user is signed in" do
     before :each do
       login
     end
@@ -34,6 +34,7 @@ describe TagsController do
 
       it "returns a json object for javascript to read" do
         pending "how to test json render?"
+        fail
       end
     end
 
@@ -97,6 +98,7 @@ describe TagsController do
 
       it "returns a json object for javascript to read" do
         pending "is there ever a chance that this method is called when not logged in?"
+        fail
       end
     end
 

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Tag do
+describe Tag, :type => :model do
   before :each do
     @tag = create(:tag)
   end
