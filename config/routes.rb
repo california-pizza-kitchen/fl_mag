@@ -55,6 +55,7 @@ BlogAggregator::Application.routes.draw do
 
   namespace :api, defaults: {format: 'json'} do
     namespace :v0 do
+      get '/docs', to: "static#docs", format: 'html'
       resources :bloggers, param: :slug, only: [:index, :show] do
         resources :entries, param: :slug, only: [:index, :show]
       end
