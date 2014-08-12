@@ -1,1 +1,75 @@
-Hi
+<h1>Flatiron Magazine REST API v0</h1>
+
+<p>
+  The Flatiron Magazine is a compilation of the technical blog posts written by students at the <%= link_to "Flatiron School", "http://flatironschool.com" %>. The REST API is designed to give convenient access to this material via a JSON feed. Four primary resources are included in the API: entries, bloggers, school sessions, and tags.
+</p>
+
+<h3>Entries</h3>
+
+<ul>
+  <li>GET /api/v0/entries/:slug</li>
+    <p>
+      An entry resource is comprised of a title, URL of the original blog post, URL on the Flatiron Magazine website, school session name, school session slug, published date, and full HTML content of the blog post. In addition, an entry contains the name, blog URL, and Flatiron Magazine URL of the entry's blogger as well as an array of tags associated with the entry.
+    </p>
+  <li>GET /api/v0/entries</li>
+    <p>
+      By default returns the ten most recent blog posts by Flatiron students in reverse chronological order by date published. Responds to the "limit", "order", and "offset" query parameters. In addition, the query parameter "concise=true" will return only the title, published date, slug, and school session slug of entries.
+    </p>
+</ul>
+
+<h3>Bloggers</h3>
+
+<ul>
+  <li>GET /api/v0/bloggers/:slug</li>
+    <p>
+      A blogger resource is comprised of a name, school session name, school session slug, number of entries, date of last entry published, blog URL, and Flatiron Magazine URL. In addition, a blogger resource includes the blogger's entries, including the title, slug, published date, blog URL, Flatiron Magazine URL, and full HTML content.
+    </p>
+  <li>GET /api/v0/bloggers</li>
+    <p>
+      By default returns the first ten Flatiron students sorted alphabetically by first name. Responds to the "limit", "order", and "offset" query parameters.
+    </p>
+  <li>GET /api/v0/bloggers/:blogger_slug/entries</li>
+    <p>
+      By default returns the ten most recent blog posts by the specified blogger in reverse chronological order by date published. Responds to the "limit", "order", and "offset" query parameters. In addition, the query parameter "concise=true" will return only the title, published date, slug, and school session slug of entries.
+    </p>
+  <li>GET /api/v0/bloggers/:blogger_slug/entries/:slug</li>
+    <p>
+      Returns the same content as GET /api/v0/entries/:slug.
+    </p>
+</ul>
+
+<h3>School Sessions</h3>
+
+<ul>
+  <li>GET /api/v0/school_sessions/:slug</li>
+    <p>
+      A school session resource is comprised of the name, slug, bloggers count, and entries count. A school session also contains an array of associated bloggers, each with a name, number of entries, and blog URL. Finally, a school session contains an array of associated entries, each of which contains a title and blogger name.
+    </p>
+  <li>GET /api/v0/school_sessions</li>
+    <p>
+      By default returns the ten most recent school sessions of the Flatiron school in reverse chronological order by start date. Responds to the "limit", "order", and "offset" query parameters. In addition, the query parameter "concise=true" will return only the name, slug, bloggers count, and entries count of each school session. Finally, the query parameter "bloggers=true" will return only the concise information about bloggers associated with the school session, and will not return information about the entries associated with the school session.<br>
+      Note that as of August 2014, the Flatiron School has graduated 11 classes, and this number will continue to grow going forward.
+    </p>
+  <li>GET /api/v0/school_sessions/:school_session_slug/bloggers</li>
+    <p>
+      By default returns the first ten Flatiron students associated with the specified school session sorted alphabetically by first name. Responds to the "limit", "order", and "offset" query parameters.<br>
+      Historically, school sessions at the Flatiron School have ranged in size from approximately 20 to 40 students.
+    </p>
+  <li>GET /api/v0/school_sessions/:school_session_slug/entries</li>
+    <p>
+      By default returns the ten most recent blog posts by bloggers associated with the specified school session in reverse chronological order by date published. Responds to the "limit", "order", and "offset" query parameters. In addition, the query parameter "concise=true" will return only the title, published date, slug, and school session slug of entries.
+    </p>
+</ul>
+
+<h3>Tags</h3>
+
+<ul>
+  <li>GET /api/v0/tags/:word</li>
+    <p>
+      Tags are an experimental feature of the Flatiron Magazine. This API call returns all blog entries associated with a given tag, including the entry's title, blog post URL, Flatiron Magazine URL, school session slug, blogger name, and blogger Flatiron Magazine URL.
+    </p>
+  <li>GET /api/v0/tags</li>
+    <p>
+      By default, all tags are returned, each with a number of associated blog entries.
+    </p>
+</ul>
