@@ -71,7 +71,8 @@ class Blogger < ActiveRecord::Base
   def as_json
     {
       "name" => self.name,
-      "school_session" => self.school_session_slug_or_placeholder,
+      "school_session_slug" => self.school_session_slug_or_placeholder,
+      "school_session_name" => self.school_session.name,
       "number_of_entries" => self.entries.length,
       "last_published_at" => self.last_published_at,
       "blog_url" => self.feed_url,
