@@ -807,13 +807,6 @@ feedjira_object = Feedjira::Feed.fetch_and_parse(feed.feed_xml)
 feed.add_entries(feedjira_object.entries)
 tristans.feed.save
 
-williamj = Blogger.create(name: "William Jeffries", feed_url: "http://wfjeff.wordpress.com/", semester: 4, school_session: ruby004)
-williamj.build_feed(feed_xml: "http://wfjeff.wordpress.com/feed/")
-feed = williamj.feed
-feedjira_object = Feedjira::Feed.fetch_and_parse(feed.feed_xml)
-feed.add_entries(feedjira_object.entries)
-williamj.feed.save
-
 wontaey = Blogger.create(name: "Wontae Yang", feed_url: "https://wontaeyang.silvrback.com/", semester: 4, school_session: ruby004)
 wontaey.build_feed(feed_xml: "https://wontaeyang.silvrback.com/feed/")
 feed = wontaey.feed
