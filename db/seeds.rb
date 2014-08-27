@@ -807,13 +807,6 @@ feedjira_object = Feedjira::Feed.fetch_and_parse(feed.feed_xml)
 feed.add_entries(feedjira_object.entries)
 tristans.feed.save
 
-williamj = Blogger.create(name: "William Jeffries", feed_url: "http://wfjeff.wordpress.com/", semester: 4, school_session: ruby004)
-williamj.build_feed(feed_xml: "http://wfjeff.wordpress.com/feed/")
-feed = williamj.feed
-feedjira_object = Feedjira::Feed.fetch_and_parse(feed.feed_xml)
-feed.add_entries(feedjira_object.entries)
-williamj.feed.save
-
 wontaey = Blogger.create(name: "Wontae Yang", feed_url: "https://wontaeyang.silvrback.com/", semester: 4, school_session: ruby004)
 wontaey.build_feed(feed_xml: "https://wontaeyang.silvrback.com/feed/")
 feed = wontaey.feed
@@ -860,13 +853,6 @@ feed = bens.feed
 feedjira_object = Feedjira::Feed.fetch_and_parse(feed.feed_xml)
 feed.add_entries(feedjira_object.entries)
 bens.feed.save
-
-biancat = Blogger.create({name: "Bianca Tompkins", feed_url: "http://biancatompkins.wordpress.com/", semester: 5, school_session: ruby005})
-biancat.build_feed(:feed_xml => "http://biancatompkins.wordpress.com/rss")
-feed = biancat.feed
-feedjira_object = Feedjira::Feed.fetch_and_parse(feed.feed_xml)
-feed.add_entries(feedjira_object.entries)
-biancat.feed.save
 
 brandonh = Blogger.create({name: "Brandon Hopkins", feed_url: "http://bajh.github.io/", semester: 5, school_session: ruby005})
 brandonh.build_feed(:feed_xml => "http://bajh.github.io/atom.xml")
@@ -1184,6 +1170,13 @@ feedjira_object = Feedjira::Feed.fetch_and_parse(feed.feed_xml)
 feed.add_entries(feedjira_object.entries)
 albertl.feed.save
 
+carterl = Blogger.create({name: "Carter Levin", feed_url: "http://clevin95.github.io/", semester: 2, school_session: ios002})
+carterl.build_feed(:feed_xml => "http://clevin95.github.io/atom.xml")
+feed = carterl.feed
+feedjira_object = Feedjira::Feed.fetch_and_parse(feed.feed_xml)
+feed.add_entries(feedjira_object.entries)
+carterl.feed.save
+
 heidih = Blogger.create({name: "Heidi Hansen", feed_url: "http://heidihansen.org/", semester: 2, school_session: ios002})
 heidih.build_feed(:feed_xml => "http://heidihansen.org/atom.xml")
 feed = heidih.feed
@@ -1191,12 +1184,26 @@ feedjira_object = Feedjira::Feed.fetch_and_parse(feed.feed_xml)
 feed.add_entries(feedjira_object.entries)
 heidih.feed.save
 
+leor = Blogger.create({name: "Leo Reubelt", feed_url: "http://leoreubelt.wordpress.com/", semester: 2, school_session: ios002})
+leor.build_feed(:feed_xml => "http://leoreubelt.wordpress.com/feed/")
+feed = leor.feed
+feedjira_object = Feedjira::Feed.fetch_and_parse(feed.feed_xml)
+feed.add_entries(feedjira_object.entries)
+leor.feed.save
+
 marcuss = Blogger.create({name: "Marcus Smith", feed_url: "http://msmithers93blog.wordpress.com/", semester: 2, school_session: ios002})
 marcuss.build_feed(:feed_xml => "http://msmithers93blog.wordpress.com/feed/")
 feed = marcuss.feed
 feedjira_object = Feedjira::Feed.fetch_and_parse(feed.feed_xml)
 feed.add_entries(feedjira_object.entries)
 marcuss.feed.save
+
+matthews = Blogger.create({name: "Matthew Surowiec", feed_url: "http://www.boolshithappens.com/", semester: 2, school_session: ios002})
+matthews.build_feed(:feed_xml => "http://www.boolshithappens.com/feed/")
+feed = matthews.feed
+feedjira_object = Feedjira::Feed.fetch_and_parse(feed.feed_xml)
+feed.add_entries(feedjira_object.entries)
+matthews.feed.save
 
 michaelv = Blogger.create({name: "Michael Vilabrera", feed_url: "http://mvilabrera.wordpress.com/", semester: 2, school_session: ios002})
 michaelv.build_feed(:feed_xml => "http://mvilabrera.wordpress.com/feed/")
@@ -1218,6 +1225,13 @@ feed = tarikf.feed
 feedjira_object = Feedjira::Feed.fetch_and_parse(feed.feed_xml)
 feed.add_entries(feedjira_object.entries)
 tarikf.feed.save
+
+troyb = Blogger.create({name: "Troy Barrett", feed_url: "http://tmull.blogspot.com/", semester: 2, school_session: ios002})
+troyb.build_feed(:feed_xml => "http://tmull.blogspot.com/atom.xml")
+feed = troyb.feed
+feedjira_object = Feedjira::Feed.fetch_and_parse(feed.feed_xml)
+feed.add_entries(feedjira_object.entries)
+troyb.feed.save
 
 viktorf = Blogger.create({name: "Viktor Falkner", feed_url: "http://meetthefalkner.wordpress.com/", semester: 2, school_session: ios002})
 viktorf.build_feed(:feed_xml => "http://meetthefalkner.wordpress.com/feed/")
