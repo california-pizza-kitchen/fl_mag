@@ -454,13 +454,6 @@ feedjira_object = Feedjira::Feed.fetch_and_parse(feed.feed_xml)
 feed.add_entries(feedjira_object.entries)
 stevenb.feed.save
 
-thomasd = Blogger.create(name:"Thomas Deatherage", feed_url: "http://deatheragetr.github.io", semester: 2, school_session: ruby002)
-thomasd.build_feed(feed_xml: "http://deatheragetr.github.io/atom.xml")
-feed = thomasd.feed
-feedjira_object = Feedjira::Feed.fetch_and_parse(feed.feed_xml)
-feed.add_entries(feedjira_object.entries)
-thomasd.feed.save
-
 
 # Ruby003
 
