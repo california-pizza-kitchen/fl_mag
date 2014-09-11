@@ -1,6 +1,6 @@
-@application_name = "fl_mag"
-@application_ip_address = "192.241.184.6"
-@application_repo = "git@github.com:kyleshike/fl_mag.git"
+@application_name = "fl-mag-test"
+@application_ip_address = "104.131.37.91"
+@application_repo = "git@github.com:california-pizza-kitchen/fl_mag.git"
 
 require "bundler/capistrano"
 require "rvm/capistrano"
@@ -13,6 +13,8 @@ set :use_sudo, false
 set :user, "deployer"
 set :deploy_to, "/home/#{user}/#{application}"
 set :scm, :git
+# Allow command-line overriding of branch to deploy from
+set :branch, ENV['BRANCH'] || "master"
 
 set :rvm_type, :system
 
@@ -42,16 +44,16 @@ namespace :db do
   desc <<-DESC
     Creates the database.yml configuration file in shared path.
 
-    By default, this task uses a template unless a template 
-    called database.yml.erb is found either is :template_dir 
-    or /config/deploy folders. The default template matches 
+    By default, this task uses a template unless a template
+    called database.yml.erb is found either is :template_dir
+    or /config/deploy folders. The default template matches
     the template for config/database.yml file shipped with Rails.
 
-    When this recipe is loaded, db:setup is automatically configured 
-    to be invoked after deploy:setup. You can skip this task setting 
-    the variable :skip_db_setup to true. This is especially useful 
-    if you are using this recipe in combination with 
-    capistrano-ext/multistaging to avoid multiple db:setup calls 
+    When this recipe is loaded, db:setup is automatically configured
+    to be invoked after deploy:setup. You can skip this task setting
+    the variable :skip_db_setup to true. This is especially useful
+    if you are using this recipe in combination with
+    capistrano-ext/multistaging to avoid multiple db:setup calls
     when running deploy:setup for all stages one by one.
   DESC
   task :setup, :except => { :no_release => true } do
@@ -97,26 +99,26 @@ namespace :settings do
   desc <<-DESC
     Creates the database.yml configuration file in shared path.
 
-    By default, this task uses a template unless a template 
-    called database.yml.erb is found either is :template_dir 
-    or /config/deploy folders. The default template matches 
+    By default, this task uses a template unless a template
+    called database.yml.erb is found either is :template_dir
+    or /config/deploy folders. The default template matches
     the template for config/database.yml file shipped with Rails.
 
-    When this recipe is loaded, db:setup is automatically configured 
-    to be invoked after deploy:setup. You can skip this task setting 
-    the variable :skip_db_setup to true. This is especially useful 
-    if you are using this recipe in combination with 
-    capistrano-ext/multistaging to avoid multiple db:setup calls 
+    When this recipe is loaded, db:setup is automatically configured
+    to be invoked after deploy:setup. You can skip this task setting
+    the variable :skip_db_setup to true. This is especially useful
+    if you are using this recipe in combination with
+    capistrano-ext/multistaging to avoid multiple db:setup calls
     when running deploy:setup for all stages one by one.
   DESC
   task :setup, :except => { :no_release => true } do
 
     default_template = <<-EOF
-      MAILGUN_USERNAME: 
-      MAILGUN_PASSWORD: 
-      MAILGUN_DOMAIN: 
-      TWITTER_PUBLIC: 
-      TWITTER_PRIVATE: 
+      MAILGUN_USERNAME:
+      MAILGUN_PASSWORD:
+      MAILGUN_DOMAIN:
+      TWITTER_PUBLIC:
+      TWITTER_PRIVATE:
     EOF
 
     location = fetch(:template_dir, "config/") + '/application.yml'

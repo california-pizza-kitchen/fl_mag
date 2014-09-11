@@ -40,13 +40,19 @@ group :test do
   gem 'simplecov'
 end
 
-group :test, :development do
-  gem 'sqlite3'
-end
+# DigitalOcean
 
-group :production do
-  gem 'pg'
-end
+gem 'sqlite3'
+
+# Heroku
+
+# group :test, :development do
+#   gem 'sqlite3'
+# end
+
+# group :production do
+#   gem 'pg'
+# end
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
