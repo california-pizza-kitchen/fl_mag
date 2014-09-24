@@ -518,7 +518,7 @@ greg.feed.save
 ian = Blogger.create({name: "Ian Miller", feed_url: "http://irmiller22.github.io", semester: 3, twitter_handle: "@irmiller22", school_session: ruby003})
 ian.build_feed(:feed_xml => "http://irmiller22.github.io/atom.xml")
 feed = ian.feed
-feedjira_object = Feedjira::Feed.fetch_and_parse(feed.feed_xml) 
+feedjira_object = Feedjira::Feed.fetch_and_parse(feed.feed_xml)
 feed.add_entries(feedjira_object.entries)
 ian.feed.save
 
@@ -532,14 +532,14 @@ joe.feed.save
 john = Blogger.create({name: "John Richardson", feed_url: "http://richardsonjm.github.io", semester: 3, twitter_handle: "@richardsonjm", school_session: ruby003})
 john.build_feed(:feed_xml => "http://richardsonjm.github.io/atom.xml")
 feed = john.feed
-feedjira_object = Feedjira::Feed.fetch_and_parse(feed.feed_xml) 
+feedjira_object = Feedjira::Feed.fetch_and_parse(feed.feed_xml)
 feed.add_entries(feedjira_object.entries)
 john.feed.save
 
 kyle = Blogger.create({name: "Kyle Shike", feed_url: "http://kyleshike.github.io", semester: 3, twitter_handle: "@kyleshike", school_session: ruby003})
 kyle.build_feed(:feed_xml => "http://kyleshike.github.io/atom.xml")
 feed = kyle.feed
-feedjira_object = Feedjira::Feed.fetch_and_parse(feed.feed_xml) 
+feedjira_object = Feedjira::Feed.fetch_and_parse(feed.feed_xml)
 feed.add_entries(feedjira_object.entries)
 kyle.feed.save
 
@@ -987,8 +987,8 @@ feedjira_object = Feedjira::Feed.fetch_and_parse(feed.feed_xml)
 feed.add_entries(feedjira_object.entries)
 matthiasl.feed.save
 
-mitchb = Blogger.create({name: "Mitch Boyer", feed_url: "http://mrmitchboyer.github.io/", semester: 5, school_session: ruby005})
-mitchb.build_feed(:feed_xml => "http://mrmitchboyer.github.io/atom.xml")
+mitchb = Blogger.create({name: "Mitch Boyer", feed_url: "http://mitchboyer.com/blog", semester: 5, school_session: ruby005})
+mitchb.build_feed(:feed_xml => "http://mitchboyer.com/blog/atom.xml")
 feed = mitchb.feed
 feedjira_object = Feedjira::Feed.fetch_and_parse(feed.feed_xml)
 feed.add_entries(feedjira_object.entries)
